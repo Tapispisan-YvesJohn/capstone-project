@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LandingComponent
+    LandingComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
