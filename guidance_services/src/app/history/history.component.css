@@ -33,7 +33,7 @@
 
 .sidebar {
     background-color: #800000;
-    width: 200px;
+    width: 300px;
     height: calc(100vh - 80px);
     padding: 10px;
     display: flex;
@@ -52,15 +52,15 @@
 
 .sidebar ul li a {
     text-decoration: none;
-    color: #fff;
+    color: #000000;
     padding: 10px;
     display: block;
     border-radius: 5px;
-    background-color: #333;
+    background-color: #f2eb20;
 }
 
 .sidebar ul li a:hover {
-    background-color: #555;
+    background-color: #fbf861;
 }
 
 .profile {
