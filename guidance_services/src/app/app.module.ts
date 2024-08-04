@@ -14,6 +14,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { CreateRecordComponent } from './create-record/create-record.component';
 import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
 import { ApplicationStatusComponent } from './application-status/application-status.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ApplicationStatusComponent } from './application-status/application-sta
     HomepageComponent,
     CreateRecordComponent,
     ReviewApplicantsComponent,
-    ApplicationStatusComponent
+    ApplicationStatusComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { CreateRecordComponent } from './create-record/create-record.component';
 import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
 import { ApplicationStatusComponent } from './application-status/application-status.component';
+import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'create-record', component: CreateRecordComponent },
   { path: 'review-applicants', component: ReviewApplicantsComponent },
   { path: 'application-status', component: ApplicationStatusComponent },
+  { path: 'history', component: HistoryComponent }
 ];
 
 @NgModule({
