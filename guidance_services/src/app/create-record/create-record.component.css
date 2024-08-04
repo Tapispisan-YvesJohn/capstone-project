@@ -1,0 +1,131 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 80px;
+    margin-right: 20px;
+}
+
+.header-text {
+    flex-grow: 1;
+}
+
+.header-text h1 {
+    margin: 0;
+    color: #800000;
+}
+
+.header-text p {
+    margin: 0;
+    color: #800000;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    background-color: #800000;
+    width: 200px;
+    height: calc(100vh - 80px);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+    background-color: #333;
+}
+
+.sidebar ul li a:hover {
+    background-color: #555;
+}
+
+.profile {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.profile a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    display: block;
+    border-radius: 5px;
+    background-color: #333;
+}
+
+.profile a:hover {
+    background-color: #555;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+form {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.form-row label {
+    flex: 1;
+    min-width: 150px;
+    margin-right: 10px;
+}
+
+.form-row input {
+    flex: 2;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #800000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a00000;
+}
