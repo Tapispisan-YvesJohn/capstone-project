@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LandingComponent } from './landing/landing.component';
+import { LoginComponent } from './login/login.component';
+import { AccessControlModule } from './access-control/access-control.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +24,8 @@ import { HistoryComponent } from './history/history.component';
 @NgModule({
   declarations: [
     AppComponent,
+    LandingComponent,
+    LoginComponent,
     LoginComponent,
     LandingComponent,
     HomepageComponent,
@@ -30,6 +37,9 @@ import { HistoryComponent } from './history/history.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    RouterModule,
+    AccessControlModule
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
@@ -37,6 +47,7 @@ import { HistoryComponent } from './history/history.component';
   providers: [
     provideAnimationsAsync()
   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
