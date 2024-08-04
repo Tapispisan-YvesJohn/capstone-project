@@ -8,12 +8,31 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { AccessControlModule } from './access-control/access-control.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { LoginComponent } from './login/login.component';
+import { LandingComponent } from './landing/landing.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { CreateRecordComponent } from './create-record/create-record.component';
+import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
+import { ApplicationStatusComponent } from './application-status/application-status.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    LoginComponent
+    LoginComponent,
+    LoginComponent,
+    LandingComponent,
+    HomepageComponent,
+    CreateRecordComponent,
+    ReviewApplicantsComponent,
+    ApplicationStatusComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +40,12 @@ import { AccessControlModule } from './access-control/access-control.module';
     ReactiveFormsModule,
     RouterModule,
     AccessControlModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [
+    provideAnimationsAsync()
   ],
   providers: [],
   bootstrap: [AppComponent]
