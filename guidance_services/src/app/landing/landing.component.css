@@ -1,3 +1,11 @@
+:host {
+  display: block;
+  background-image: url('/assets/images/PUP_Pylon.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;  
+}
+
 .container {
     display: flex;
     justify-content: center;

@@ -1,0 +1,93 @@
+<div class="header">
+  <img src="../../assets/images/pup-logo.png" alt="PUP Logo" class="logo">
+  <div class="header-text">
+    <h1>Polytechnic University of the Philippines</h1>
+    <p>Guidance Information System</p>
+  </div>
+</div>
+
+<form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+<div>
+  <label for="username">Username:</label>
+  <input id="username" formControlName="username" type="text">
+  @if (usernameControl.invalid && usernameControl.touched) {
+    <div class="error-message">
+      @if (usernameControl.errors?.['required']) {
+        <div>Username is required.</div>
+      }
+      @if (usernameControl.errors?.['minlength']) {
+        <div>Username must be at least 3 characters long.</div>
+      }
+    </div>
+  }
+</div>
+
+<div>
+  <label for="email">Email:</label>
+  <input id="email" formControlName="email" type="email">
+  @if (emailControl.invalid && emailControl.touched) {
+    <div class="error-message">
+      @if (emailControl.errors?.['required']) {
+        <div>Email is required.</div>
+      }
+      @if (emailControl.errors?.['email']) {
+        <div>Invalid email format.</div>
+      }
+    </div>
+  }
+</div>
+
+<div>
+  <label for="password">Password:</label>
+  <input id="password" formControlName="password" type="password">
+  @if (passwordControl.invalid && passwordControl.touched) {
+    <div class="error-message">
+      @if (passwordControl.errors?.['required']) {
+        <div>Password is required.</div>
+      }
+      @if (passwordControl.errors?.['minlength']) {
+        <div>Password must be at least 6 characters long.</div>
+      }
+    </div>
+  }
+</div>
+
+<div>
+  <label for="role">Role:</label>
+  <select id="role" formControlName="role">
+    @for (role of roles; track role) {
+      <option [value]="role.name">{{ role.name }}</option>
+    }
+  </select>
+  @if (roleControl.invalid && roleControl.touched) {
+    <div class="error-message">
+      @if (roleControl.errors?.['required']) {
+        <div>Role is required.</div>
+      }
+    </div>
+  }
+  <input id="newRole" formControlName="newRole" type="text" placeholder="Add new role">
+  <button type="button" (click)="addRole()">Add Role</button>
+</div>
+
+<div>
+  <label>Permissions:</label>
+  <div>
+    <input type="checkbox" formControlName="create"> Create
+  </div>
+  <div>
+    <input type="checkbox" formControlName="edit"> Edit
+  </div>
+  <div>
+    <input type="checkbox" formControlName="view"> View
+  </div>
+  <div>
+    <input type="checkbox" formControlName="delete"> Delete
+  </div>
+  <div>
+    <input type="checkbox" formControlName="print"> Print
+  </div>
+</div>
+
+<button type="submit">Create Admin Account</button>
+</form>
