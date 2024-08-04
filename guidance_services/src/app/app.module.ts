@@ -13,6 +13,7 @@ import { LandingComponent } from './landing/landing.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CreateRecordComponent } from './create-record/create-record.component';
 import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
+import { ApplicationStatusComponent } from './application-status/application-status.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReviewApplicantsComponent } from './review-applicants/review-applicants
     LandingComponent,
     HomepageComponent,
     CreateRecordComponent,
-    ReviewApplicantsComponent
+    ReviewApplicantsComponent,
+    ApplicationStatusComponent
   ],
   imports: [
     BrowserModule,
