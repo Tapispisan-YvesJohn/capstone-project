@@ -5,12 +5,9 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LandingComponent } from './landing/landing.component';
-import { LoginComponent } from './login/login.component';
 import { AccessControlModule } from './access-control/access-control.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login/login.component';
@@ -39,15 +36,13 @@ import { HistoryComponent } from './history/history.component';
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule,
-    AccessControlModule
+    AccessControlModule ,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
