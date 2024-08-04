@@ -14,7 +14,7 @@
             class="admin-icon">
         <h2>Admin Module</h2>
       </div>
-      <form [formGroup]="loginForm">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="email">Email:</label>
           <input type="email" id="email" formControlName="email">
@@ -40,7 +40,7 @@
         }
         </div>
         <div class="form-group">
-          <button type="submit">Login</button>
+          <button type="submit" [disabled]="loginForm.invalid">Login</button>
         </div>
         <div class="form-footer">
           <a href="#">Forgot password?</a>
