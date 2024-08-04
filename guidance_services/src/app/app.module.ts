@@ -10,12 +10,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { CreateRecordComponent } from './create-record/create-record.component';
+import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
+import { ApplicationStatusComponent } from './application-status/application-status.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LandingComponent
+    LandingComponent,
+    HomepageComponent,
+    CreateRecordComponent,
+    ReviewApplicantsComponent,
+    ApplicationStatusComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
         response => {
           this.isLoading = false;
           console.log("User Logged In");
+          this.router.navigate(['/homepage']); // Redirect to homepage
         },
         error => {
           this.isLoading = false;
@@ -44,7 +45,6 @@ export class LoginComponent implements OnInit {
       );
     }
   }
-
   get emailControl() {
     return this.loginForm.get('email');
   }
