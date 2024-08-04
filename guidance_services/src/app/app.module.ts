@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router'; 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,12 +10,7 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { AccessControlModule } from './access-control/access-control.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
-import { LoginComponent } from './login/login.component';
-import { LandingComponent } from './landing/landing.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CreateRecordComponent } from './create-record/create-record.component';
 import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
@@ -26,8 +22,6 @@ import { HistoryComponent } from './history/history.component';
     AppComponent,
     LandingComponent,
     LoginComponent,
-    LoginComponent,
-    LandingComponent,
     HomepageComponent,
     CreateRecordComponent,
     ReviewApplicantsComponent,
@@ -39,15 +33,13 @@ import { HistoryComponent } from './history/history.component';
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule,
-    AccessControlModule
+    AccessControlModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

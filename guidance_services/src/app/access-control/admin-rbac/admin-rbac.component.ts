@@ -19,8 +19,10 @@ export class AdminRbacComponent implements OnInit {
   ngOnInit() {
     this.adminForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       role: ['', Validators.required],
+      newRole: [''],
       create: [false],
       edit: [false],
       view: [false],
@@ -32,7 +34,7 @@ export class AdminRbacComponent implements OnInit {
   onSubmit() {
     if (this.adminForm.valid) {
       console.log(this.adminForm.value);
-    
+      // Handle form submission, e.g., send data to the backend
     } else {
       console.log('Form is invalid');
       this.logValidationErrors();
@@ -50,7 +52,8 @@ export class AdminRbacComponent implements OnInit {
     });
   }
 
-  addRole(roleName: string) {
+  addRole() {
+    const roleName = this.adminForm.get('newRole').value;
     if (roleName) {
       const newRole = {
         id: this.roles.length + 1,
@@ -58,11 +61,16 @@ export class AdminRbacComponent implements OnInit {
         permissions: []
       };
       this.roles.push(newRole);
+      this.adminForm.get('newRole').reset();
     }
   }
 
   get usernameControl() {
     return this.adminForm.get('username');
+  }
+
+  get emailControl() {
+    return this.adminForm.get('email');
   }
 
   get passwordControl() {
