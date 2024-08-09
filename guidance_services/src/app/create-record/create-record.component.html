@@ -22,54 +22,204 @@
 
     <div class="content">
         <h2>Create Record</h2>
-        <form>
+        <form [formGroup]="createRecordForm" (ngSubmit)="onSubmit()">
             <div class="form-row">
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first-name">
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last-name">
-                <label for="middle-name">Middle Name</label>
-                <input type="text" id="middle-name" name="middle-name">
+                <div>
+                    <label for="first-name">First Name *</label>
+                    <input type="text" id="first-name" formControlName="first_name">
+                    @if(firstNameControl.invalid && firstNameControl.touched) {
+                        <div class="inc">
+                        @if(firstNameControl.errors?.['required']) {
+                            <div>First name is required</div>
+                        }
+                        @if(firstNameControl.errors?.['containsNumbers']) {
+                            <div>First name should not contain numbers</div>
+                        }
+                        </div>
+                    }
+                    <label for="last-name">Last Name *</label>
+                    <input type="text" id="last-name" formControlName="last_name">
+                    @if(lastNameControl.invalid && lastNameControl.touched) {
+                        <div class="inc">
+                        @if(lastNameControl.errors?.['required']) {
+                            <div>Last name is required</div>
+                        }
+                        @if(lastNameControl.errors?.['containsNumbers']) {
+                            <div>Last name should not contain numbers</div>
+                        }
+                        </div>
+                    }
+                    <label for="middle-name">Middle Name *</label>
+                    <input type="text" id="middle-name" formControlName="middle_name">
+                    @if(middleNameControl.invalid && middleNameControl.touched) {
+                        <div class="inc">
+                            @if(middleNameControl.errors?.['required']){
+                                <div>Middle name is required</div>
+                            }
+                            @if(middleNameControl.errors?.['containsNumbers']){
+                                <div>Middle name should not conain numbers</div>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
             <div class="form-row">
-                <label for="age">Age</label>
-                <input type="number" id="age" name="age">
-                <label for="height">Height (ft.)</label>
-                <input type="number" id="height" name="height">
-                <label for="weight">Weight (kg)</label>
-                <input type="number" id="weight" name="weight">
-                <label for="gender">Gender</label>
-                <input type="text" id="gender" name="gender">
-                <label for="hs-average">HS General Average</label>
-                <input type="text" id="hs-average" name="hs-average">
-                <label for="civil-status">Civil Status</label>
-                <input type="text" id="civil-status" name="civil-status">
-                <label for="religion">Religion</label>
-                <input type="text" id="religion" name="religion">
+                <div>
+                    <label for="age">Age</label>
+                    <input type="number" id="age" formControlName="age">
+                    @if(ageControl.invalid && ageControl.touched) {
+                        <div class="inc">
+                            @if(ageControl.errors?.['required']){
+                                <div>Age is required</div>
+                            }
+                        </div>
+                    }
+                    <label for="height">Height (ft.)</label>
+                    <input type="number" id="height" formControlName="height">
+                    @if(heightControl.invalid && heightControl.touched) {
+                        <div class="inc">
+                            @if(heightControl.errors?.['required']){
+                                <div>Height is required</div>
+                            }
+                        </div>
+                    }
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" formControlName="weight">
+                    @if(weightControl.invalid && weightControl.touched) {
+                        <div class="inc">
+                            @if(weightControl.errors?.['required']){
+                                <div>Weight is required</div>
+                            }
+                        </div>
+                    }
+                    <label for="gender">Gender</label>
+                    <input type="text" id="gender" formControlName="gender">
+                    @if(genderControl.invalid && genderControl.touched) {
+                        <div class="inc">
+                            @if(genderControl.errors?.['required']){
+                                <div>Gender is required</div>
+                            }
+                        </div>
+                    }
+                    <label for="hs-average">HS General Average</label>
+                    <input type="text" id="hs-average" formControlName="hs_average">
+                    @if(hsAverageControl.invalid && hsAverageControl.touched) {
+                        <div class="inc">
+                            @if(hsAverageControl.errors?.['required']){
+                                <div>Highschool average is required</div>
+                            }
+                        </div>
+                    }
+                    <label for="civil-status">Civil Status</label>
+                    <input type="text" id="civil-status" formControlName="civil_status">
+                    @if(civilStatusControl.invalid && civilStatusControl.touched) {
+                        <div class="inc">
+                            @if(civilStatusControl.errors?.['required']){
+                                <div>Civil Status is required</div>
+                            }
+                        </div>
+                    }
+                    <label for="religion">Religion</label>
+                    <input type="text" id="religion" formControlName="religion">
+                    @if(religionControl.invalid && religionControl.touched) {
+                        <div class="inc">
+                            @if(religionControl.errors?.['required']){
+                                <div>Religion is required</div>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
             <div class="form-row">
-                <label for="course">Course</label>
-                <input type="text" id="course" name="course">
-                <label for="year-section">Year/Section</label>
-                <input type="text" id="year-section" name="year-section">
-                <label for="telephone">Telephone/Mobile Number</label>
-                <input type="text" id="telephone" name="telephone">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email">
+                <div>
+                    <label for="course">Course</label>
+                    <input type="text" id="course" formControlName="course">
+                    @if(courseControl.invalid && courseControl.touched) {
+                        <div class="inc">
+                            @if(courseControl.errors?.['required']){
+                                <div>Course is required</div>
+                            }
+                        </div>
+                    }
+                    <label for="year-section">Year/Section</label>
+                    <input type="text" id="year-section" formControlName="year_section">
+                    @if(yearSectionControl.invalid && yearSectionControl.touched) {
+                        <div class="inc">
+                            @if(yearSectionControl.errors?.['required']){
+                                <div>Year and Section is required</div>
+                            }
+                        </div>
+                    }
+                    <label for="telephone">Telephone/Mobile Number</label>
+                    <input type="text" id="telephone" formControlName="telephone">
+                    @if(telephoneControl.invalid && telephoneControl.touched) {
+                        <div class="inc">
+                            @if(telephoneControl.errors?.['required']){
+                                <div>Telephone/Mobile number is required</div>
+                            }
+                        </div>
+                    }
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" formControlName="email">
+                    @if(emailControl.invalid && emailControl.touched) {
+                        <div class="inc">
+                        @if(emailControl.errors?.['required']) {
+                            <div>Email is Required.</div>
+                        }
+                        @if(emailControl.errors?.['email']) {
+                            <div>Invalid Email format.</div>
+                        }
+                        </div>
+                    }
+                </div>
             </div>
             <div class="form-row">
-                <label for="date-of-birth">Date of Birth</label>
-                <input type="date" id="date-of-birth" name="date-of-birth">
-                <label for="place-of-birth">Place of Birth</label>
-                <input type="text" id="place-of-birth" name="place-of-birth">
+                <div>
+                    <label for="date-of-birth">Date of Birth</label>
+                    <input type="date" id="date-of-birth" formControlName="birthday">
+                    @if(bdayControl.invalid && bdayControl.touched) {
+                        <div class="inc">
+                            @if(bdayControl.errors?.['required']){
+                                <div>Birthday is required</div>
+                            }
+                        </div>
+                    }
+                    <label for="place-of-birth">Place of Birth</label>
+                    <input type="text" id="place-of-birth" formControlName="place_of_birth">
+                    @if(placeOfBirthControl.invalid && placeOfBirthControl.touched) {
+                        <div class="inc">
+                            @if(placeOfBirthControl.errors?.['required']){
+                                <div>Place of birth is required</div>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
             <div class="form-row">
-                <label for="residential-address">Residential Address</label>
-                <input type="text" id="residential-address" name="residential-address">
+                <div>
+                    <label for="residential-address">Residential Address</label>
+                    <input type="text" id="residential-address" formControlName="residential_address">
+                    @if(redidentialAddressControl.invalid && redidentialAddressControl.touched) {
+                        <div class="inc">
+                            @if(redidentialAddressControl.errors?.['required']){
+                                <div>Residential address is required</div>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
             <div class="form-row">
-                <label for="provincial-address">Provincial Address</label>
-                <input type="text" id="provincial-address" name="provincial-address">
+                <div>
+                    <label for="provincial-address">Provincial Address</label>
+                    <input type="text" id="provincial-address" formControlName="provincial_address">
+                    @if(provincialAddressControl.invalid && provincialAddressControl.touched) {
+                        <div class="inc">
+                            @if(provincialAddressControl.errors?.['required']){
+                                <div>Provincial address is required</div>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
             <div class="form-row">
                 <button type="submit">Submit</button>
