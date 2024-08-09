@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-record',
-  templateUrl: './create-record.component.html',
-  styleUrls: ['./create-record.component.css']
+  selector: 'app-individual-inventory-record-form',
+  templateUrl: './individual-inventory-record-form.component.html',
+  styleUrls: ['./individual-inventory-record-form.component.css']
 })
-export class CreateRecordComponent implements OnInit {
+export class IndividualInventoryRecordFormComponent implements OnInit {
+
   inventoryForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.inventoryForm = this.fb.group({
@@ -66,9 +66,5 @@ export class CreateRecordComponent implements OnInit {
     } else {
       console.log('Form not valid');
     }
-  }
-
-  navigateTo(route: string): void {
-    this.router.navigate([route]);
   }
 }
