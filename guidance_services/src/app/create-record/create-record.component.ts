@@ -15,8 +15,8 @@ export class CreateRecordComponent implements OnInit {
   ngOnInit(): void {
     this.inventoryForm = this.fb.group({
       // Personal Information
-      lastName: ['', Validators.required],
-      firstName: ['', Validators.required],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
       middleName: ['', Validators.required],
       civilStatus: ['', Validators.required],
       religion: ['', Validators.required],
@@ -24,7 +24,7 @@ export class CreateRecordComponent implements OnInit {
       course: ['', Validators.required],
       dob: ['', Validators.required],
       placeOfBirth: ['', Validators.required],
-      mobileNo: ['', Validators.required],
+      mobileNo: ['', [Validators.required, Validators.pattern(/^[0-9]{10,11}$/)]], // Assumes a 10-11 digit phone number
       address: ['', Validators.required],
       emergencyContact: ['', Validators.required],
 
@@ -35,10 +35,10 @@ export class CreateRecordComponent implements OnInit {
 
       // Family Background
       fatherName: ['', Validators.required],
-      fatherAge: ['', Validators.required],
+      fatherAge: ['', [Validators.required, Validators.min(18), Validators.max(120)]], // Age should be realistic
       fatherOccupation: ['', Validators.required],
       motherName: ['', Validators.required],
-      motherAge: ['', Validators.required],
+      motherAge: ['', [Validators.required, Validators.min(18), Validators.max(120)]],
       motherOccupation: ['', Validators.required],
 
       // Health
@@ -65,10 +65,20 @@ export class CreateRecordComponent implements OnInit {
       // Add form submission logic here
     } else {
       console.log('Form not valid');
+      this.markFormGroupTouched(this.inventoryForm); // Mark all fields as touched to show validation errors
     }
   }
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
+  }
+
+  private markFormGroupTouched(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach((key) => {
+      const control = formGroup.get(key);
+      if (control) {
+        control.markAsTouched();
+      }
+    });
   }
 }

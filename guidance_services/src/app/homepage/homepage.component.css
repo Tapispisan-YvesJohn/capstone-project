@@ -33,9 +33,9 @@
 
 .sidebar {
     background-color: #800000;
-    width: 300px;
+    width: 350px; /* Sidebar width */
     height: calc(100vh - 80px);
-    padding: 10px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -53,10 +53,12 @@
 .sidebar ul li a {
     text-decoration: none;
     color: #000000;
-    padding: 10px;
+    padding: 20px;
     display: block;
     border-radius: 5px;
     background-color: #f2eb20;
+    text-align: center;
+    font-size: 18px;
 }
 
 .sidebar ul li a:hover {
@@ -72,10 +74,12 @@
 .profile a {
     text-decoration: none;
     color: #fff;
-    padding: 10px;
+    padding: 15px;
     display: block;
     border-radius: 5px;
     background-color: #333;
+    text-align: center;
+    font-size: 18px;
 }
 
 .profile a:hover {
@@ -85,21 +89,27 @@
 .content {
     flex-grow: 1;
     padding: 20px;
+    margin-left: 0; /* Removed margin to align directly with the sidebar */
+    max-width: calc(100% - 350px); /* Occupy remaining space after the sidebar */
+    display: flex;
+    flex-direction: column;
 }
 
 .student-list {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    width: 100%;
 }
 
 .student-card {
     display: flex;
     align-items: center;
     background-color: #fff;
-    margin-bottom: 10px;
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .student-image {
@@ -125,7 +135,7 @@
 .view-btn,
 .edit-btn,
 .delete-btn {
-    padding: 5px 10px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;

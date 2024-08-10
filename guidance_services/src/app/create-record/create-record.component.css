@@ -21,12 +21,7 @@
     flex-grow: 1;
 }
 
-.header-text h1 {
-    margin: 0;
-    color: #800000;
-}
-
-.header-text p {
+.header-text h1, .header-text p {
     margin: 0;
     color: #800000;
 }
@@ -38,12 +33,12 @@
 
 .sidebar {
     background-color: #800000;
-    width: 300px;
+    width: 350px; /* Increased width */
     height: calc(100vh - 100px); /* Adjust height based on header */
-    padding: 10px;
+    padding: 20px; /* Increased padding */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between the list and profile */
     position: fixed; /* Fix the sidebar in place */
     top: 100px; /* Align with header height */
     left: 0;
@@ -54,6 +49,7 @@
 .sidebar ul {
     list-style: none;
     padding: 0;
+    flex-grow: 1; /* Allow the list to grow and push the profile to the bottom */
 }
 
 .sidebar ul li {
@@ -63,10 +59,12 @@
 .sidebar ul li a {
     text-decoration: none;
     color: #000000;
-    padding: 10px;
+    padding: 20px; /* Increased padding for larger buttons */
     display: block;
     border-radius: 5px;
     background-color: #f2eb20;
+    text-align: center; /* Center the text inside the buttons */
+    font-size: 18px; /* Increased font size */
 }
 
 .sidebar ul li a:hover {
@@ -82,10 +80,12 @@
 .profile a {
     text-decoration: none;
     color: #fff;
-    padding: 10px;
+    padding: 15px; /* Increased padding for larger profile button */
     display: block;
     border-radius: 5px;
     background-color: #333;
+    text-align: center; /* Center the text inside the profile button */
+    font-size: 18px; /* Increased font size */
 }
 
 .profile a:hover {
@@ -95,8 +95,8 @@
 .content {
     flex-grow: 1;
     padding: 20px;
-    margin-left: 320px; /* Margin to push the content next to the sidebar */
-    max-width: calc(100% - 320px); /* Occupy remaining space after the sidebar */
+    margin-left: 370px; /* Margin to push the content next to the sidebar */
+    max-width: calc(100% - 370px); /* Occupy remaining space after the sidebar */
 }
 
 h2 {
@@ -108,29 +108,30 @@ form {
     padding: 20px;
     border-radius: 10px;
     width: 100%;
-    max-width: 100%; 
-    margin: auto; 
+    margin: auto;
+}
+
+.form-section {
+    margin-bottom: 30px;
 }
 
 .form-row {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 15px;
+    gap: 10px;
 }
 
 .form-row label {
-    flex: 1;
     min-width: 150px;
-    margin-right: 10px;
 }
 
 .form-row input,
 .form-row select {
-    flex: 2;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    flex-grow: 1;
 }
 
 button {

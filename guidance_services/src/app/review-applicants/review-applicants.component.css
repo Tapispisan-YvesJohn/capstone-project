@@ -33,9 +33,9 @@
 
 .sidebar {
     background-color: #800000;
-    width: 300px;
+    width: 350px; /* Increased width */
     height: calc(100vh - 80px);
-    padding: 10px;
+    padding: 20px; /* Increased padding */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -53,10 +53,12 @@
 .sidebar ul li a {
     text-decoration: none;
     color: #000000;
-    padding: 10px;
+    padding: 20px; /* Increased padding for larger buttons */
     display: block;
     border-radius: 5px;
     background-color: #f2eb20;
+    text-align: center; /* Center the text inside the buttons */
+    font-size: 18px; /* Increased font size */
 }
 
 .sidebar ul li a:hover {
@@ -72,10 +74,12 @@
 .profile a {
     text-decoration: none;
     color: #fff;
-    padding: 10px;
+    padding: 15px; /* Increased padding for larger profile button */
     display: block;
     border-radius: 5px;
     background-color: #333;
+    text-align: center; /* Center the text inside the profile button */
+    font-size: 18px; /* Increased font size */
 }
 
 .profile a:hover {

@@ -24,186 +24,223 @@
         <h2>Create Record</h2>
         <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
             <!-- Personal Information Section -->
-            <h3 class="text-xl font-semibold">Personal Information</h3>
-        
-            <div class="grid grid-cols-3 gap-4">
-                <div>
+            <div class="form-section">
+                <h3 class="section-title">Personal Information</h3>
+                <div class="form-row">
                     <label for="lastName">Last Name</label>
-                    <input id="lastName" formControlName="lastName" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="lastName" formControlName="lastName" />
+                    <div *ngIf="inventoryForm.get('lastName').touched && inventoryForm.get('lastName').invalid" class="error">
+                        Last Name is required.
+                    </div>
                     <label for="firstName">First Name</label>
-                    <input id="firstName" formControlName="firstName" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="firstName" formControlName="firstName" />
+                    <div *ngIf="inventoryForm.get('firstName').touched && inventoryForm.get('firstName').invalid" class="error">
+                        First Name is required.
+                    </div>
                     <label for="middleName">Middle Name</label>
-                    <input id="middleName" formControlName="middleName" class="input input-bordered w-full" />
+                    <input id="middleName" formControlName="middleName" />
+                    <div *ngIf="inventoryForm.get('middleName').touched && inventoryForm.get('middleName').invalid" class="error">
+                        Middle Name is required.
+                    </div>
                 </div>
-            </div>
-        
-            <div class="grid grid-cols-3 gap-4">
-                <div>
+
+                <div class="form-row">
                     <label for="civilStatus">Civil Status</label>
-                    <input id="civilStatus" formControlName="civilStatus" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="civilStatus" formControlName="civilStatus" />
+                    <div *ngIf="inventoryForm.get('civilStatus').touched && inventoryForm.get('civilStatus').invalid" class="error">
+                        Civil Status is required.
+                    </div>
                     <label for="religion">Religion</label>
-                    <input id="religion" formControlName="religion" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="religion" formControlName="religion" />
+                    <div *ngIf="inventoryForm.get('religion').touched && inventoryForm.get('religion').invalid" class="error">
+                        Religion is required.
+                    </div>
                     <label for="email">Email</label>
-                    <input id="email" formControlName="email" class="input input-bordered w-full" />
+                    <input id="email" formControlName="email" />
+                    <div *ngIf="inventoryForm.get('email').touched && inventoryForm.get('email').invalid" class="error">
+                        A valid Email is required.
+                    </div>
                 </div>
-            </div>
-        
-            <div class="grid grid-cols-3 gap-4">
-                <div>
+
+                <div class="form-row">
                     <label for="course">Course</label>
-                    <input id="course" formControlName="course" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="course" formControlName="course" />
+                    <div *ngIf="inventoryForm.get('course').touched && inventoryForm.get('course').invalid" class="error">
+                        Course is required.
+                    </div>
                     <label for="dob">Date of Birth</label>
-                    <input id="dob" type="date" formControlName="dob" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="dob" type="date" formControlName="dob" />
+                    <div *ngIf="inventoryForm.get('dob').touched && inventoryForm.get('dob').invalid" class="error">
+                        Date of Birth is required.
+                    </div>
                     <label for="placeOfBirth">Place of Birth</label>
-                    <input id="placeOfBirth" formControlName="placeOfBirth" class="input input-bordered w-full" />
+                    <input id="placeOfBirth" formControlName="placeOfBirth" />
+                    <div *ngIf="inventoryForm.get('placeOfBirth').touched && inventoryForm.get('placeOfBirth').invalid" class="error">
+                        Place of Birth is required.
+                    </div>
                 </div>
-            </div>
-        
-            <div class="grid grid-cols-3 gap-4">
-                <div>
+
+                <div class="form-row">
                     <label for="mobileNo">Mobile No.</label>
-                    <input id="mobileNo" formControlName="mobileNo" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="mobileNo" formControlName="mobileNo" />
+                    <div *ngIf="inventoryForm.get('mobileNo').touched && inventoryForm.get('mobileNo').invalid" class="error">
+                        A valid Mobile No. is required (10-11 digits).
+                    </div>
                     <label for="address">Address</label>
-                    <input id="address" formControlName="address" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="address" formControlName="address" />
+                    <div *ngIf="inventoryForm.get('address').touched && inventoryForm.get('address').invalid" class="error">
+                        Address is required.
+                    </div>
                     <label for="emergencyContact">Emergency Contact Name</label>
-                    <input id="emergencyContact" formControlName="emergencyContact" class="input input-bordered w-full" />
+                    <input id="emergencyContact" formControlName="emergencyContact" />
+                    <div *ngIf="inventoryForm.get('emergencyContact').touched && inventoryForm.get('emergencyContact').invalid" class="error">
+                        Emergency Contact Name is required.
+                    </div>
                 </div>
             </div>
-        
+
             <!-- Educational Background Section -->
-            <h3 class="text-xl font-semibold mt-6">Educational Background</h3>
-        
-            <div class="grid grid-cols-3 gap-4">
-                <div>
+            <div class="form-section">
+                <h3 class="section-title">Educational Background</h3>
+                <div class="form-row">
                     <label for="elementarySchool">Elementary School</label>
-                    <input id="elementarySchool" formControlName="elementarySchool" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="elementarySchool" formControlName="elementarySchool" />
+                    <div *ngIf="inventoryForm.get('elementarySchool').touched && inventoryForm.get('elementarySchool').invalid" class="error">
+                        Elementary School is required.
+                    </div>
                     <label for="juniorHighSchool">Junior High School</label>
-                    <input id="juniorHighSchool" formControlName="juniorHighSchool" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="juniorHighSchool" formControlName="juniorHighSchool" />
+                    <div *ngIf="inventoryForm.get('juniorHighSchool').touched && inventoryForm.get('juniorHighSchool').invalid" class="error">
+                        Junior High School is required.
+                    </div>
                     <label for="seniorHighSchool">Senior High School</label>
-                    <input id="seniorHighSchool" formControlName="seniorHighSchool" class="input input-bordered w-full" />
+                    <input id="seniorHighSchool" formControlName="seniorHighSchool" />
+                    <div *ngIf="inventoryForm.get('seniorHighSchool').touched && inventoryForm.get('seniorHighSchool').invalid" class="error">
+                        Senior High School is required.
+                    </div>
                 </div>
             </div>
-        
+
             <!-- Family Background Section -->
-            <h3 class="text-xl font-semibold mt-6">Family Background</h3>
-        
-            <div class="grid grid-cols-3 gap-4">
-                <div>
+            <div class="form-section">
+                <h3 class="section-title">Family Background</h3>
+                <div class="form-row">
                     <label for="fatherName">Father's Name</label>
-                    <input id="fatherName" formControlName="fatherName" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="fatherName" formControlName="fatherName" />
+                    <div *ngIf="inventoryForm.get('fatherName').touched && inventoryForm.get('fatherName').invalid" class="error">
+                        Father's Name is required.
+                    </div>
                     <label for="fatherAge">Father's Age</label>
-                    <input id="fatherAge" formControlName="fatherAge" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="fatherAge" formControlName="fatherAge" />
+                    <div *ngIf="inventoryForm.get('fatherAge').touched && inventoryForm.get('fatherAge').invalid" class="error">
+                        Father's Age is required and must be between 18 and 120.
+                    </div>
                     <label for="fatherOccupation">Father's Occupation</label>
-                    <input id="fatherOccupation" formControlName="fatherOccupation" class="input input-bordered w-full" />
+                    <input id="fatherOccupation" formControlName="fatherOccupation" />
+                    <div *ngIf="inventoryForm.get('fatherOccupation').touched && inventoryForm.get('fatherOccupation').invalid" class="error">
+                        Father's Occupation is required.
+                    </div>
                 </div>
-            </div>
-        
-            <div class="grid grid-cols-3 gap-4">
-                <div>
+
+                <div class="form-row">
                     <label for="motherName">Mother's Name</label>
-                    <input id="motherName" formControlName="motherName" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="motherName" formControlName="motherName" />
+                    <div *ngIf="inventoryForm.get('motherName').touched && inventoryForm.get('motherName').invalid" class="error">
+                        Mother's Name is required.
+                    </div>
                     <label for="motherAge">Mother's Age</label>
-                    <input id="motherAge" formControlName="motherAge" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="motherAge" formControlName="motherAge" />
+                    <div *ngIf="inventoryForm.get('motherAge').touched && inventoryForm.get('motherAge').invalid" class="error">
+                        Mother's Age is required and must be between 18 and 120.
+                    </div>
                     <label for="motherOccupation">Mother's Occupation</label>
-                    <input id="motherOccupation" formControlName="motherOccupation" class="input input-bordered w-full" />
+                    <input id="motherOccupation" formControlName="motherOccupation" />
+                    <div *ngIf="inventoryForm.get('motherOccupation').touched && inventoryForm.get('motherOccupation').invalid" class="error">
+                        Mother's Occupation is required.
+                    </div>
                 </div>
             </div>
-        
+
             <!-- Health Section -->
-            <h3 class="text-xl font-semibold mt-6">Health</h3>
-        
-            <div class="grid grid-cols-3 gap-4">
-                <div>
+            <div class="form-section">
+                <h3 class="section-title">Health</h3>
+                <div class="form-row">
                     <label for="vision">Vision</label>
-                    <select id="vision" formControlName="vision" class="input input-bordered w-full">
+                    <select id="vision" formControlName="vision">
                         <option value="No Problem">No Problem</option>
                         <option value="Problem">Problem</option>
                     </select>
-                </div>
-                <div>
+                    <div *ngIf="inventoryForm.get('vision').touched && inventoryForm.get('vision').invalid" class="error">
+                        Vision status is required.
+                    </div>
                     <label for="hearing">Hearing</label>
-                    <select id="hearing" formControlName="hearing" class="input input-bordered w-full">
+                    <select id="hearing" formControlName="hearing">
                         <option value="No Problem">No Problem</option>
                         <option value="Problem">Problem</option>
                     </select>
-                </div>
-                <div>
+                    <div *ngIf="inventoryForm.get('hearing').touched && inventoryForm.get('hearing').invalid" class="error">
+                        Hearing status is required.
+                    </div>
                     <label for="generalHealth">General Health</label>
-                    <select id="generalHealth" formControlName="generalHealth" class="input input-bordered w-full">
+                    <select id="generalHealth" formControlName="generalHealth">
                         <option value="No Problem">No Problem</option>
                         <option value="Problem">Problem</option>
                     </select>
+                    <div *ngIf="inventoryForm.get('generalHealth').touched && inventoryForm.get('generalHealth').invalid" class="error">
+                        General Health status is required.
+                    </div>
                 </div>
             </div>
-        
+
             <!-- Test Results Section -->
-            <h3 class="text-xl font-semibold mt-6">Test Results</h3>
-        
-            <div class="grid grid-cols-4 gap-4">
-                <div>
+            <div class="form-section">
+                <h3 class="section-title">Test Results</h3>
+                <div class="form-row">
                     <label for="testDate">Date</label>
-                    <input id="testDate" type="date" formControlName="testDate" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="testDate" type="date" formControlName="testDate" />
+                    <div *ngIf="inventoryForm.get('testDate').touched && inventoryForm.get('testDate').invalid" class="error">
+                        Test Date is required.
+                    </div>
                     <label for="testAdministered">Test Administered</label>
-                    <input id="testAdministered" formControlName="testAdministered" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="testAdministered" formControlName="testAdministered" />
+                    <div *ngIf="inventoryForm.get('testAdministered').touched && inventoryForm.get('testAdministered').invalid" class="error">
+                        Test Administered is required.
+                    </div>
                     <label for="testResults">Test Results (RS)</label>
-                    <input id="testResults" formControlName="testResults" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="testResults" formControlName="testResults" />
+                    <div *ngIf="inventoryForm.get('testResults').touched && inventoryForm.get('testResults').invalid" class="error">
+                        Test Results are required.
+                    </div>
                     <label for="testDescription">Description</label>
-                    <input id="testDescription" formControlName="testDescription" class="input input-bordered w-full" />
+                    <input id="testDescription" formControlName="testDescription" />
+                    <div *ngIf="inventoryForm.get('testDescription').touched && inventoryForm.get('testDescription').invalid" class="error">
+                        Description is required.
+                    </div>
                 </div>
             </div>
-        
+
             <!-- Significant Notes Section -->
-            <h3 class="text-xl font-semibold mt-6">Significant Notes (For Guidance Counselors Only)</h3>
-        
-            <div class="grid grid-cols-3 gap-4">
-                <div>
+            <div class="form-section">
+                <h3 class="section-title">Significant Notes (For Guidance Counselors Only)</h3>
+                <div class="form-row">
                     <label for="incidentDate">Date</label>
-                    <input id="incidentDate" type="date" formControlName="incidentDate" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="incidentDate" type="date" formControlName="incidentDate" />
+                    <div *ngIf="inventoryForm.get('incidentDate').touched && inventoryForm.get('incidentDate').invalid" class="error">
+                        Incident Date is required.
+                    </div>
                     <label for="incident">Incident</label>
-                    <input id="incident" formControlName="incident" class="input input-bordered w-full" />
-                </div>
-                <div>
+                    <input id="incident" formControlName="incident" />
+                    <div *ngIf="inventoryForm.get('incident').touched && inventoryForm.get('incident').invalid" class="error">
+                        Incident is required.
+                    </div>
                     <label for="remarks">Remarks</label>
-                    <input id="remarks" formControlName="remarks" class="input input-bordered w-full" />
+                    <input id="remarks" formControlName="remarks" />
+                    <div *ngIf="inventoryForm.get('remarks').touched && inventoryForm.get('remarks').invalid" class="error">
+                        Remarks are required.
+                    </div>
                 </div>
             </div>
-        
+
             <!-- Submission Button -->
             <div class="mt-4">
                 <button class="btn btn-primary" type="submit">Submit</button>
