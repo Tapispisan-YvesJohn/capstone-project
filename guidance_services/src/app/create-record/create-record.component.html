@@ -30,12 +30,12 @@
                     <label for="lastName">Last Name</label>
                     <input id="lastName" formControlName="lastName" />
                     <div *ngIf="inventoryForm.get('lastName').touched && inventoryForm.get('lastName').invalid" class="error">
-                        Last Name is required and must be at least 2 characters.
+                        Last Name is required.
                     </div>
                     <label for="firstName">First Name</label>
                     <input id="firstName" formControlName="firstName" />
                     <div *ngIf="inventoryForm.get('firstName').touched && inventoryForm.get('firstName').invalid" class="error">
-                        First Name is required and must be at least 2 characters.
+                        First Name is required.
                     </div>
                     <label for="middleName">Middle Name</label>
                     <input id="middleName" formControlName="middleName" />
