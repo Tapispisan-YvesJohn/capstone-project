@@ -21,12 +21,7 @@
     flex-grow: 1;
 }
 
-.header-text h1 {
-    margin: 0;
-    color: #800000;
-}
-
-.header-text p {
+.header-text h1, .header-text p {
     margin: 0;
     color: #800000;
 }
@@ -43,7 +38,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between the list and profile */
     position: fixed; /* Fix the sidebar in place */
     top: 100px; /* Align with header height */
     left: 0;
@@ -54,6 +49,7 @@
 .sidebar ul {
     list-style: none;
     padding: 0;
+    flex-grow: 1; /* Allow the list to grow and push the profile to the bottom */
 }
 
 .sidebar ul li {
@@ -108,29 +104,30 @@ form {
     padding: 20px;
     border-radius: 10px;
     width: 100%;
-    max-width: 100%; 
-    margin: auto; 
+    margin: auto;
+}
+
+.form-section {
+    margin-bottom: 30px;
 }
 
 .form-row {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 15px;
+    gap: 10px;
 }
 
 .form-row label {
-    flex: 1;
     min-width: 150px;
-    margin-right: 10px;
 }
 
 .form-row input,
 .form-row select {
-    flex: 2;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    flex-grow: 1;
 }
 
 button {
