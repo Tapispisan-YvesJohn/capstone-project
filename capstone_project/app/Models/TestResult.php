@@ -11,9 +11,10 @@ class TestResult extends Model
 
     protected $fillable = [
         'student_record_id', 
-        'date',
-        'incident',
-        'remarks',
+        'test_date',
+        'test_administered',
+        'test_results',
+        'test_description',
     ];
 
     public function studentRecord()

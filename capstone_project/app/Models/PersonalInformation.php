@@ -9,20 +9,21 @@ class PersonalInformation extends Model
 {
     use HasFactory;
 
+    // PersonalInformation.php
     protected $fillable = [
-        'student_record_id', 
-        'first_name', 
-        'last_name', 
+        'last_name',
+        'first_name',
         'middle_name',
-        'civil_status', 
-        'religion', 
-        'email', 
-        'course', 
-        'dob', 
+        'civil_status',
+        'religion',
+        'email',
+        'course',
+        'dob',
         'place_of_birth',
-        'mobile_no', 
-        'address', 
-        'emergency_contact'
+        'mobile_no',
+        'address',
+        'emergency_contact',
+        'student_record_id'
     ];
 
     public function studentRecord()

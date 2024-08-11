@@ -11,10 +11,10 @@ class CreateTestResultsTable extends Migration
         Schema::create('test_results', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_record_id')->constrained('student_records')->onDelete('cascade');
-            $table->date('date');
+            $table->date('test_date');
             $table->string('test_administered');
-            $table->string('test_results_rs')->nullable();
-            $table->text('description')->nullable();
+            $table->string('test_results');
+            $table->text('test_description');
             $table->timestamps();
         });
     }

@@ -10,11 +10,10 @@ class SignificantNote extends Model
     use HasFactory;
 
     protected $fillable = [
-        'student_record_id', 
-        'date',
-        'test_administered',
-        'test_results_rs',
-        'description',
+        'student_record_id',
+        'date', 
+        'incident',
+        'remarks'
     ];
 
     public function studentRecord()
