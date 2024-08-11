@@ -17,6 +17,7 @@ import { ReviewApplicantsComponent } from './review-applicants/review-applicants
 import { ApplicationStatusComponent } from './application-status/application-status.component';
 import { HistoryComponent } from './history/history.component';
 import { IndividualInventoryRecordFormComponent } from './individual-inventory-record-form/individual-inventory-record-form.component';
+import { ViewRecordComponent } from './view-record/view-record.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { IndividualInventoryRecordFormComponent } from './individual-inventory-r
     ReviewApplicantsComponent,
     ApplicationStatusComponent,
     HistoryComponent,
-    IndividualInventoryRecordFormComponent
+    IndividualInventoryRecordFormComponent,
+    ViewRecordComponent
   ],
   imports: [
     BrowserModule,
