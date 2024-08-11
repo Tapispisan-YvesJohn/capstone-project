@@ -14,4 +14,18 @@ export class RecordsService {
   createRecord(recordData: any): Observable<any> {
     return this.http.post(this.apiUrl, recordData);
   }
+
+  getRecords(): Observable<any> {
+  return this.http.get(this.apiUrl);
+  }
+
+  deleteRecord(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  getRecordById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+  
+  
 }

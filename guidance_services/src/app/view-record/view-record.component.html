@@ -1,0 +1,47 @@
+<div class="content" *ngIf="student">
+    <h2>Student Record</h2>
+    
+    <h3>Personal Information</h3>
+    <p>Last Name: {{ student.personal_information.last_name }}</p>
+    <p>First Name: {{ student.personal_information.first_name }}</p>
+    <p>Middle Name: {{ student.personal_information.middle_name }}</p>
+    <p>Civil Status: {{ student.personal_information.civil_status }}</p>
+    <p>Religion: {{ student.personal_information.religion }}</p>
+    <p>Email: {{ student.personal_information.email }}</p>
+    <p>Course: {{ student.personal_information.course }}</p>
+    <p>Date of Birth: {{ student.personal_information.dob }}</p>
+    <p>Place of Birth: {{ student.personal_information.place_of_birth }}</p>
+    <p>Mobile No: {{ student.personal_information.mobile_no }}</p>
+    <p>Address: {{ student.personal_information.address }}</p>
+    <p>Emergency Contact: {{ student.personal_information.emergency_contact }}</p>
+    
+    <h3>Educational Background</h3>
+    <p>Elementary School: {{ student.educational_background.elementary_school }}</p>
+    <p>Junior High School: {{ student.educational_background.junior_high_school }}</p>
+    <p>Senior High School: {{ student.educational_background.senior_high_school }}</p>
+    
+    <h3>Family Background</h3>
+    <p>Father's Name: {{ student.family_background.father_name }}</p>
+    <p>Father's Age: {{ student.family_background.father_age }}</p>
+    <p>Father's Occupation: {{ student.family_background.father_occupation }}</p>
+    <p>Mother's Name: {{ student.family_background.mother_name }}</p>
+    <p>Mother's Age: {{ student.family_background.mother_age }}</p>
+    <p>Mother's Occupation: {{ student.family_background.mother_occupation }}</p>
+    
+    <h3>Health Record</h3>
+    <p>Vision: {{ student.health_record.vision }}</p>
+    <p>Hearing: {{ student.health_record.hearing }}</p>
+    <p>General Health: {{ student.health_record.general_health }}</p>
+    
+    <h3>Test Results</h3>
+    <p>Test Date: {{ student.test_results.test_date }}</p>
+    <p>Test Administered: {{ student.test_results.test_administered }}</p>
+    <p>Test Results: {{ student.test_results.test_results }}</p>
+    <p>Description: {{ student.test_results.test_description }}</p>
+    
+    <h3>Significant Notes</h3>
+    <p>Date: {{ student.significant_notes.date }}</p>
+    <p>Incident: {{ student.significant_notes.incident }}</p>
+    <p>Remarks: {{ student.significant_notes.remarks }}</p>
+  </div>
+  

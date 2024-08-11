@@ -143,4 +143,54 @@ class StudentRecordController extends Controller
             ], 500);
         }
     }
+
+    public function index()
+{
+    // Fetch all student records with their associated personal information
+    $studentRecords = StudentRecord::with('personalInformation')->get();
+
+    return response()->json($studentRecords);
+}
+
+public function destroy($id)
+{
+    try {
+        $studentRecord = StudentRecord::findOrFail($id);
+
+        // Delete associated records
+        $studentRecord->personalInformation()->delete();
+        $studentRecord->educationalBackground()->delete();
+        $studentRecord->familyBackground()->delete();
+        $studentRecord->healthRecord()->delete();
+        $studentRecord->testResults()->delete();
+        $studentRecord->significantNotes()->delete();
+
+        // Delete the student record itself
+        $studentRecord->delete();
+
+        return response()->json(['message' => 'Record deleted successfully'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Error deleting record: ' . $e->getMessage()], 500);
+    }
+}
+
+public function show($id)
+{
+    try {
+        $studentRecord = StudentRecord::with([
+            'personalInformation',
+            'educationalBackground',
+            'familyBackground',
+            'healthRecord',
+            'testResults',
+            'significantNotes'
+        ])->findOrFail($id);
+
+        return response()->json($studentRecord);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Record not found'], 404);
+    }
+}
+
+
 }

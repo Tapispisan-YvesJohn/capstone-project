@@ -31,10 +31,10 @@
                     <p>{{ student.course }}</p>
                 </div>
                 <div class="student-actions">
-                    <button class="view-btn">View</button>
+                    <button class="view-btn" (click)="viewRecord(student)">View</button>
                     <button class="edit-btn">Edit</button>
-                    <button class="delete-btn">Delete</button>
-                </div>
+                    <button class="delete-btn" (click)="deleteRecord(student.id)">Delete</button>
+                </div>                  
             </div>
         </div>
     </div>

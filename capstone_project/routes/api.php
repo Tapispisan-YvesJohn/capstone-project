@@ -8,3 +8,9 @@ use App\Http\Controllers\StudentRecordController;
 Route::post('/login', [LoginController::class, 'login'])->name('api.login');
 
 Route::post('/records', [StudentRecordController::class, 'store']);
+
+Route::get('/records', [StudentRecordController::class, 'index']);
+
+Route::delete('/records/{id}', [StudentRecordController::class, 'destroy']);
+
+Route::get('/records/{id}', [StudentRecordController::class, 'show']);
