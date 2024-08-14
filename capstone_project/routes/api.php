@@ -14,3 +14,6 @@ Route::get('/records', [StudentRecordController::class, 'index']);
 Route::delete('/records/{id}', [StudentRecordController::class, 'destroy']);
 
 Route::get('/records/{id}', [StudentRecordController::class, 'show']);
+
+Route::get('/deleted-records', [StudentRecordController::class, 'getDeletedRecords']);
+

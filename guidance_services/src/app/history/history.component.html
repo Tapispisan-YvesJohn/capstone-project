@@ -22,7 +22,7 @@
 
     <div class="content">
         <h2>History</h2>
-        <div class="history-list">
+        <div class="history-list" *ngIf="students.length > 0">
             <div class="history-card" *ngFor="let student of students">
                 <img src="../../assets/images/placeholder.png" alt="Student Image" class="student-image">
                 <div class="student-info">
@@ -36,5 +36,7 @@
                 </div>
             </div>
         </div>
+        <p *ngIf="students.length === 0">No records have been deleted yet.</p>
     </div>
 </div>
+

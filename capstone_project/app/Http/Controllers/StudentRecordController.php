@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\StudentRecord;
 use App\Models\PersonalInformation;
 use App\Models\EducationalBackground;
@@ -157,6 +158,16 @@ public function destroy($id)
     try {
         $studentRecord = StudentRecord::findOrFail($id);
 
+        // Store deleted record information in a separate table or a log
+        $deletedRecord = [
+            'student_record_id' => $studentRecord->id,
+            'personal_information' => $studentRecord->personalInformation,
+            'deleted_at' => now(),
+        ];
+
+        // Insert the deleted record into a `deleted_records` table or similar
+        DB::table('deleted_records')->insert($deletedRecord);
+
         // Delete associated records
         $studentRecord->personalInformation()->delete();
         $studentRecord->educationalBackground()->delete();
@@ -172,6 +183,12 @@ public function destroy($id)
     } catch (\Exception $e) {
         return response()->json(['message' => 'Error deleting record: ' . $e->getMessage()], 500);
     }
+}
+
+public function getDeletedRecords()
+{
+    $deletedRecords = DB::table('deleted_records')->get();
+    return response()->json($deletedRecords);
 }
 
 public function show($id)
@@ -191,6 +208,4 @@ public function show($id)
         return response()->json(['message' => 'Record not found'], 404);
     }
 }
-
-
 }

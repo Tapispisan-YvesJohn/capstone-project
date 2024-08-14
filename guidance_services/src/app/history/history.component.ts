@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { RecordsService } from '../services/records.service';
 
 @Component({
   selector: 'app-history',
@@ -7,13 +8,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent {
-  students = [
-    { name: 'Batumbakal, George', id: '2021-00166-TG-0', course: 'BSIT' },
-    { name: 'Dimagiba, Arnold', id: '2021-00177-TG-0', course: 'BSIT' },
-    { name: 'Tinambakan, James', id: '2021-00196-TG-0', course: 'BSIT' }
-  ];
+  students: any[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private recordsService: RecordsService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.fetchDeletedRecords(); // Fetch deleted records when the component is initialized
+  }
+
+  fetchDeletedRecords(): void {
+    this.recordsService.getDeletedRecords().subscribe({
+      next: (records) => {
+        this.students = records.map((record: any) => {
+          const personalInfo = JSON.parse(record.personal_information);
+
+          return {
+            id: record.student_record_id,
+            name: `${personalInfo.first_name} ${personalInfo.last_name}`,
+            course: personalInfo.course,
+          };
+        });
+      },
+      error: (error) => {
+        console.error('Error fetching deleted records', error);
+      }
+    });
+  }
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
