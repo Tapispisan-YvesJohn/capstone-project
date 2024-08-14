@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage: string | null = null;
   isLoading = false;
+  data: any;
+  token: any;
 
   constructor(
     private fb: FormBuilder,
@@ -26,25 +28,23 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
-    this.errorMessage = null; 
-    if (this.loginForm.valid) {
-      this.isLoading = true; 
-      const { email, password } = this.loginForm.value;
-      this.authService.login(email, password).subscribe(
-        response => {
-          this.isLoading = false;
-          console.log("User Logged In");
-          this.router.navigate(['/homepage']); // Redirect to homepage
-        },
-        error => {
-          this.isLoading = false;
-          this.errorMessage = error.error.message || 'Login failed';
-          console.error('Login failed', error);
-        }
-      );
+  onSubmit() {
+    if (!this.loginForm.valid) {
+      return;
     }
+    this.authService.login(this.loginForm.value).subscribe(res => {
+      this.data = res;
+      if (this.data.status === 1) {
+        this.token = this.data.data.token; 
+        localStorage.setItem('token', this.token);
+        this.router.navigate(['/homepage']);
+        console.log("Log in Success");
+      } else if (this.data.status === 0 ){
+        console.log("Failed to log in");
+      }
+    })
   }
+
   get emailControl() {
     return this.loginForm.get('email');
   }

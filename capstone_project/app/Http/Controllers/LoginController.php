@@ -10,33 +10,39 @@ use App\Models\User;
 class LoginController extends Controller {
     public function login(Request $request) {
         $credentials = $request->only('email', 'password');
-
+    
         try {
-            if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json([
-                    'status' => 0,
-                    'code' => 401,
-                    'data' => null,
-                    'message' => 'Email or password is incorrect'
-                ]);
-            }
+          if (!JWTAuth::attempt($credentials)) {
+            $response['status'] = 0;
+            $response['code'] = 401;
+            $response['data'] = null;
+            $response['message'] = 'Email or password is incorrect';
+    
+            return response()->json($response);
+          }
         } catch (JWTException $e) {
-            return response()->json([
-                'status' => 0,
-                'code' => 500,
-                'data' => null,
-                'message' => 'Could not create token'
-            ]);
+          $response['data'] = null;
+          $response['code'] = 500;
+          $response['message'] = 'Could not create token';
+    
+          return response()->json($response);
         }
+    
+        $user = auth()->user();
 
-        return response()->json([
-            'status' => 1,
-            'code' => 200,
-            'data' => [
-                'token' => $token,
-                'user' => $user,
-            ],
-            'message' => 'Login successful'
-        ]);
-    }
+        $user->last_active_at = now();
+    
+        $data['token'] = auth()->claims([
+          'user_id' => $user->id,
+          'email' => $user->email
+        ])->attempt($credentials);
+    
+        $response['data'] = $data;
+        $response['status'] = 1;
+        $response['code'] = 200;
+        $response['message'] = 'Login successful';
+    
+        return response()->json($response);
+      }
+    
 }

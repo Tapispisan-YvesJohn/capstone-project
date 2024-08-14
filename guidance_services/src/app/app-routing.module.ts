@@ -9,22 +9,23 @@ import { ReviewApplicantsComponent } from './review-applicants/review-applicants
 import { ApplicationStatusComponent } from './application-status/application-status.component';
 import { HistoryComponent } from './history/history.component';
 import { ViewRecordComponent } from './view-record/view-record.component';
+import { AuthGuard } from './login/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin-rbac', component: AdminRbacComponent },
-  { path: 'homepage', component: HomepageComponent },
-  { path: 'create-record', component: CreateRecordComponent },
-  { path: 'review-applicants', component: ReviewApplicantsComponent },
-  { path: 'application-status', component: ApplicationStatusComponent },
-  { path: 'history', component: HistoryComponent },
-  { path: 'view-record/:id', component: ViewRecordComponent }
+  { path: 'admin-rbac', component: AdminRbacComponent, canActivate:[AuthGuard]  },
+  { path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]  },
+  { path: 'create-record', component: CreateRecordComponent, canActivate:[AuthGuard]  },
+  { path: 'review-applicants', component: ReviewApplicantsComponent, canActivate:[AuthGuard]  },
+  { path: 'application-status', component: ApplicationStatusComponent, canActivate:[AuthGuard]  },
+  { path: 'history', component: HistoryComponent, canActivate:[AuthGuard]  },
+  { path: 'view-record/:id', component: ViewRecordComponent, canActivate:[AuthGuard]  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }
