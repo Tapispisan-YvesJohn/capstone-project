@@ -29,4 +29,19 @@ class CheckToken {
             return Redirect::to('/login');
         }
     }
+
+    // public function handle(Request $request, Closure $next): Response
+    // {
+    //     try {
+    //         $user = JWTAuth::parseToken()->authenticate();
+    //     } catch (\Exception $e) {
+    //         return response()->json([
+    //             'status' => 0,
+    //             'code' => 401,
+    //             'message' => 'Unauthorized access'
+    //         ], 401);
+    //     }
+
+    //     return $next($request);
+    // }
 }
