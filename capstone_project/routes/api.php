@@ -17,3 +17,5 @@ Route::get('/records/{id}', [StudentRecordController::class, 'show']);
 
 Route::get('/deleted-records', [StudentRecordController::class, 'getDeletedRecords']);
 
+Route::post('/records/retrieve/{id}', [StudentRecordController::class, 'retrieveDeletedRecord']);
+Route::delete('/records/permanently-delete/{id}', [StudentRecordController::class, 'deletePermanently']);

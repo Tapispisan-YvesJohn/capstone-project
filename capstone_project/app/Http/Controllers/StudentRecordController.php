@@ -185,6 +185,50 @@ public function destroy($id)
     }
 }
 
+public function retrieveDeletedRecord($id)
+{
+    try {
+        $deletedRecord = DB::table('deleted_records')->where('student_record_id', $id)->first();
+
+        if (!$deletedRecord) {
+            return response()->json(['message' => 'Record not found'], 404);
+        }
+
+        // Convert the personal information and other data back to arrays
+        $personalInfo = json_decode($deletedRecord->personal_information, true);
+
+        // Restore the student record and related data
+        $studentRecord = StudentRecord::create([]);
+        $studentRecord->personalInformation()->create($personalInfo);
+        // Optionally, restore other associated data here
+
+        // Remove the record from the deleted_records table
+        DB::table('deleted_records')->where('student_record_id', $id)->delete();
+
+        return response()->json(['message' => 'Record retrieved successfully'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Error retrieving record: ' . $e->getMessage()], 500);
+    }
+}
+
+public function deletePermanently($id)
+{
+    try {
+        $deletedRecord = DB::table('deleted_records')->where('student_record_id', $id)->first();
+
+        if (!$deletedRecord) {
+            return response()->json(['message' => 'Record not found'], 404);
+        }
+
+        // Permanently delete the record from the deleted_records table
+        DB::table('deleted_records')->where('student_record_id', $id)->delete();
+
+        return response()->json(['message' => 'Record permanently deleted'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Error deleting record: ' . $e->getMessage()], 500);
+    }
+}
+
 public function getDeletedRecords()
 {
     $deletedRecords = DB::table('deleted_records')->get();

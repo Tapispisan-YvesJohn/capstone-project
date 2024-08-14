@@ -31,12 +31,12 @@
                     <p>{{ student.course }}</p>
                 </div>
                 <div class="student-actions">
-                    <button class="retrieve-btn">Retrieve</button>
-                    <button class="delete-btn">Delete</button>
+                    <button class="view-btn" (click)="viewRecord(student)">View</button>
+                    <button class="retrieve-btn" (click)="retrieveRecord(student.id)">Retrieve</button>
+                    <button class="delete-btn" (click)="deletePermanently(student.id)">Delete</button>
                 </div>
             </div>
         </div>
         <p *ngIf="students.length === 0">No records have been deleted yet.</p>
     </div>
 </div>
-

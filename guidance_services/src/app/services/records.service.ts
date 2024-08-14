@@ -30,4 +30,12 @@ export class RecordsService {
   getDeletedRecords(): Observable<any> {
     return this.http.get('http://127.0.0.1:8000/api/deleted-records');
   }
+
+  retrieveRecord(id: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/retrieve/${id}`, {});
+  }
+
+  deletePermanently(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/permanently-delete/${id}`);
+  }
 }
