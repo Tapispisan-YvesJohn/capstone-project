@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';  // Import MatSnackBar
 import { RecordsService } from '../services/records.service';  // Adjust the path as needed
 
 @Component({
@@ -11,59 +12,71 @@ import { RecordsService } from '../services/records.service';  // Adjust the pat
 export class CreateRecordComponent implements OnInit {
   inventoryForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private recordsService: RecordsService) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private recordsService: RecordsService,
+    private snackBar: MatSnackBar  // Inject MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.inventoryForm = this.fb.group({
-        lastName: ['', [Validators.required, Validators.minLength(2)]],
-        firstName: ['', [Validators.required, Validators.minLength(2)]],
-        middleName: ['', Validators.required],
-        civilStatus: ['', Validators.required],
-        religion: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        course: ['', Validators.required],
-        dob: ['', Validators.required],
-        placeOfBirth: ['', Validators.required],
-        mobileNo: ['', [Validators.required, Validators.pattern(/^[0-9]{10,11}$/)]],
-        address: ['', Validators.required],
-        emergencyContact: ['', Validators.required],
-  
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
+      middleName: ['', Validators.required],
+      civilStatus: ['', Validators.required],
+      religion: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      course: ['', Validators.required],
+      dob: ['', Validators.required],
+      placeOfBirth: ['', Validators.required],
+      mobileNo: ['', [Validators.required, Validators.pattern(/^[0-9]{10,11}$/)]],
+      address: ['', Validators.required],
+      emergencyContact: ['', Validators.required],
+
       // Educational Background
-        elementarySchool: ['', Validators.required],
-        juniorHighSchool: ['', Validators.required],
-        seniorHighSchool: ['', Validators.required],
-  
+      elementarySchool: ['', Validators.required],
+      juniorHighSchool: ['', Validators.required],
+      seniorHighSchool: ['', Validators.required],
+
       // Family Background
-        fatherName: ['', Validators.required],
-        fatherAge: ['', [Validators.required, Validators.min(18), Validators.max(120)]],
-        fatherOccupation: ['', Validators.required],
-        motherName: ['', Validators.required],
-        motherAge: ['', [Validators.required, Validators.min(18), Validators.max(120)]],
-        motherOccupation: ['', Validators.required],
-  
+      fatherName: ['', Validators.required],
+      fatherAge: ['', [Validators.required, Validators.min(18), Validators.max(120)]],
+      fatherOccupation: ['', Validators.required],
+      motherName: ['', Validators.required],
+      motherAge: ['', [Validators.required, Validators.min(18), Validators.max(120)]],
+      motherOccupation: ['', Validators.required],
+
       // Health
-        vision: ['', Validators.required],
-        hearing: ['', Validators.required],
-        generalHealth: ['', Validators.required],
-  
+      vision: ['', Validators.required],
+      hearing: ['', Validators.required],
+      generalHealth: ['', Validators.required],
+
       // Test Results
-        testDate: ['', Validators.required],
-        testAdministered: ['', Validators.required],
-        testResults: ['', Validators.required],
-        testDescription: ['', Validators.required],
-  
+      testDate: ['', Validators.required],
+      testAdministered: ['', Validators.required],
+      testResults: ['', Validators.required],
+      testDescription: ['', Validators.required],
+
       // Significant Notes
-        incidentDate: ['', Validators.required],
-        incident: ['', Validators.required],
-        remarks: ['', Validators.required],
+      incidentDate: ['', Validators.required],
+      incident: ['', Validators.required],
+      remarks: ['', Validators.required],
     });
-  }  
+  }
 
   onSubmit(): void {
     if (this.inventoryForm.valid) {
       this.recordsService.createRecord(this.inventoryForm.value).subscribe({
         next: (response) => {
           console.log('Form Submitted successfully', response);
+          this.snackBar.open('Record created successfully!', 'Close', {
+            duration: 3000, // Duration the snackbar will be visible
+            verticalPosition: 'top', // Position the snackbar at the top
+            horizontalPosition: 'right', // Position the snackbar to the right
+            panelClass: ['snackbar-success'] // Custom class for styling (optional)
+          });
+          this.inventoryForm.reset(); // Optionally reset the form after submission
         },
         error: (error) => {
           console.error('Error submitting form', error);
