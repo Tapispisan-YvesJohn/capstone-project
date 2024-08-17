@@ -18,6 +18,9 @@ import { ApplicationStatusComponent } from './application-status/application-sta
 import { HistoryComponent } from './history/history.component';
 import { IndividualInventoryRecordFormComponent } from './individual-inventory-record-form/individual-inventory-record-form.component';
 import { ViewRecordComponent } from './view-record/view-record.component';
+import { StudentDashboardComponent } from './Student_Module/student-dashboard/student-dashboard.component';
+import { StudentPdsComponent } from './Student_Module/student-pds/student-pds.component';
+import { StudentAppointmentSchedulingComponent } from './Student_Module/student-appointment-scheduling/student-appointment-scheduling.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { ViewRecordComponent } from './view-record/view-record.component';
     ApplicationStatusComponent,
     HistoryComponent,
     IndividualInventoryRecordFormComponent,
-    ViewRecordComponent
+    ViewRecordComponent,
+    StudentDashboardComponent,
+    StudentPdsComponent,
+    StudentAppointmentSchedulingComponent
   ],
   imports: [
     BrowserModule,
