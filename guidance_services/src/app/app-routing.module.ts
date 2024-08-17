@@ -9,7 +9,10 @@ import { ReviewApplicantsComponent } from './review-applicants/review-applicants
 import { ApplicationStatusComponent } from './application-status/application-status.component';
 import { HistoryComponent } from './history/history.component';
 import { ViewRecordComponent } from './view-record/view-record.component';
+import { StudentDashboardComponent } from './Student_Module/student-dashboard/student-dashboard.component';
 import { AuthGuard } from './login/auth.guard';
+import { StudentPdsComponent } from './Student_Module/student-pds/student-pds.component';
+import { StudentAppointmentSchedulingComponent } from './Student_Module/student-appointment-scheduling/student-appointment-scheduling.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -21,6 +24,9 @@ const routes: Routes = [
   { path: 'review-applicants', component: ReviewApplicantsComponent, canActivate:[AuthGuard]  },
   { path: 'application-status', component: ApplicationStatusComponent, canActivate:[AuthGuard]  },
   { path: 'history', component: HistoryComponent, canActivate:[AuthGuard]  },
+  { path: 'student-dashboard', component: StudentDashboardComponent },
+  { path: 'student-pds', component: StudentPdsComponent },
+  { path: 'student-appointment-scheduling', component: StudentAppointmentSchedulingComponent },
   { path: 'view-record/:id', component: ViewRecordComponent, canActivate:[AuthGuard]  }
 ];
 
