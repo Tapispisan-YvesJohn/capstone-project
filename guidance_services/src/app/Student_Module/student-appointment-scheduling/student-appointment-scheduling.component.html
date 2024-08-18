@@ -1,0 +1,25 @@
+<div class="appointment-container">
+    <div class="header">
+        <h1>Schedule an Appointment</h1>
+        <p>Select a date and time for your appointment with the guidance counselor.</p>
+    </div>
+
+    <div class="calendar">
+        <label for="appointmentDate">Select a Date:</label>
+        <input id="appointmentDate" type="date" formControlName="appointmentDate" (change)="onDateChange($event)" [min]="minDate"/>
+    </div>
+
+    <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+        <div class="form-section">
+            <label for="appointmentTime">Select a Time:</label>
+            <input id="appointmentTime" type="time" formControlName="appointmentTime" required/>
+        </div>
+
+        <div class="form-section">
+            <label for="reason">Reason for Appointment:</label>
+            <textarea id="reason" formControlName="reason" rows="4" required></textarea>
+        </div>
+
+        <button class="btn-submit" type="submit" [disabled]="appointmentForm.invalid">Schedule Appointment</button>
+    </form>
+</div>
