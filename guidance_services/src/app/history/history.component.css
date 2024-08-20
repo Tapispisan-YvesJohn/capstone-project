@@ -126,12 +126,18 @@
     gap: 10px;
 }
 
+.view-btn,
 .retrieve-btn,
 .delete-btn {
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.view-btn {
+    background-color: #007bff;
+    color: #fff;
 }
 
 .retrieve-btn {
