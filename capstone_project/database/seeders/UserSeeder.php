@@ -20,7 +20,15 @@ class UserSeeder extends Seeder
              'password'=>Hash::make('password'), 
              'account_status_id'=>'2',
              'is_verified'=>1,
-             'email_auth_token'=>'']
+             'email_auth_token'=>'',
+             'role_id'=>'2'],
+            ['id'=>'2', 
+             'email'=>'student@gmail.com', 
+             'password'=>Hash::make('password'), 
+             'account_status_id'=>'2',
+             'is_verified'=>1,
+             'email_auth_token'=>'',
+             'role_id'=>'1']
         ]);
     }
 }

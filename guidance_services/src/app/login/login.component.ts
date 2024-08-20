@@ -3,6 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
+export interface DecodedToken {
+  user_id: number;
+  email: string;
+  role: string;
+}
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,15 +42,29 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe(res => {
       this.data = res;
       if (this.data.status === 1) {
-        this.token = this.data.data.token; 
+        this.token = this.data.data.token;
         localStorage.setItem('token', this.token);
-        this.router.navigate(['/homepage']);
+  
+        // Decode the token to get the role
+        const decodedToken = this.authService.decodeToken(this.token);
+        const role = decodedToken.role;
+  
+        // Redirect based on the user's role
+        if (role === 'officer') {
+          this.router.navigate(['/officer-dashboard']);
+        } else if (role === 'student') {
+          this.router.navigate(['/student-dashboard']);
+        } else {
+          this.router.navigate(['/homepage']);
+        }
+        
         console.log("Log in Success");
-      } else if (this.data.status === 0 ){
+      } else {
         console.log("Failed to log in");
       }
-    })
+    });
   }
+  
 
   get emailControl() {
     return this.loginForm.get('email');
