@@ -71,4 +71,8 @@ class User extends Authenticatable implements JWTSubject {
     public function generateVerificationToken() {
         return JWTAuth::fromUser($this);
     }
+
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
 }

@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'review-applicants', component: ReviewApplicantsComponent, canActivate:[AuthGuard]  },
   { path: 'application-status', component: ApplicationStatusComponent, canActivate:[AuthGuard]  },
   { path: 'history', component: HistoryComponent, canActivate:[AuthGuard]  },
-  { path: 'student-dashboard', component: StudentDashboardComponent },
+  { path: 'student-dashboard', component: StudentDashboardComponent, canActivate:[AuthGuard] },
   { path: 'student-pds', component: StudentPdsComponent },
   { path: 'student-appointment-scheduling', component: StudentAppointmentSchedulingComponent },
   { path: 'view-record/:id', component: ViewRecordComponent, canActivate:[AuthGuard]  }

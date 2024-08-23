@@ -6,6 +6,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
 
 class LoginController extends Controller {
     public function login(Request $request) {
@@ -34,7 +35,8 @@ class LoginController extends Controller {
     
         $data['token'] = auth()->claims([
           'user_id' => $user->id,
-          'email' => $user->email
+          'email' => $user->email,
+          'role' => $user->role->role_name,
         ])->attempt($credentials);
     
         $response['data'] = $data;
