@@ -22,10 +22,18 @@
     </div>
 
     <div class="content">
-        <div class="application-status-box">
-            <h3>Start Application</h3>
-            <button class="application-btn">Start Application</button>
-            <button class="application-btn">End Application</button>
+        <h2>List of Appointments</h2>
+        <div class="appointment-list">
+            <div class="appointment-card" *ngFor="let appointment of appointments">
+                <img src="../../assets/images/placeholder.png" alt="Appointment Image" class="appointment-image">
+                <div class="appointment-info">
+                    <h3>{{ appointment.name }}</h3>
+                    <p>{{ appointment.date }}</p>
+                    <p>{{ appointment.time }}</p>
+                </div>
+                <button class="view-btn" (click)="viewAppointment(appointment)">View</button>
+                <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancel</button>
+            </div>
         </div>
     </div>
 </div>

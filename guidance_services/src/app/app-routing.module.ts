@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminRbacComponent } from './access-control/admin-rbac/admin-rbac.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CreateRecordComponent } from './create-record/create-record.component';
+import { ReviewAppointmentsComponent } from './review-appointments/review-appointments.component';
 import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
 import { ApplicationStatusComponent } from './application-status/application-status.component';
 import { HistoryComponent } from './history/history.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]  },
   { path: 'create-record', component: CreateRecordComponent, canActivate:[AuthGuard]  },
   { path: 'review-applicants', component: ReviewApplicantsComponent, canActivate:[AuthGuard]  },
+  { path: 'review-appointments', component: ReviewAppointmentsComponent },
   { path: 'application-status', component: ApplicationStatusComponent, canActivate:[AuthGuard]  },
   { path: 'history', component: HistoryComponent, canActivate:[AuthGuard]  },
   { path: 'student-dashboard', component: StudentDashboardComponent, canActivate:[AuthGuard] },
