@@ -51,11 +51,11 @@ export class LoginComponent implements OnInit {
   
         // Redirect based on the user's role
         if (role === 'officer') {
-          this.router.navigate(['/officer-dashboard']);
+          this.router.navigate(['/homepage']);
         } else if (role === 'student') {
           this.router.navigate(['/student-dashboard']);
         } else {
-          this.router.navigate(['/homepage']);
+          console.log("Error Signing You In");
         }
         
         console.log("Log in Success");

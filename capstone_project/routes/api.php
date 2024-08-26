@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentRecordController;
+use App\Http\Controllers\AppointmentController;
 
 Route::post('/login', [LoginController::class, 'login'])->name('api.login');
 
@@ -18,4 +19,8 @@ Route::get('/records/{id}', [StudentRecordController::class, 'show']);
 Route::get('/deleted-records', [StudentRecordController::class, 'getDeletedRecords']);
 
 Route::post('/records/retrieve/{id}', [StudentRecordController::class, 'retrieveDeletedRecord']);
+
 Route::delete('/records/permanently-delete/{id}', [StudentRecordController::class, 'deletePermanently']);
+
+Route::get('/appointments', [AppointmentController::class, 'index']);
+Route::post('/appointments', [AppointmentController::class, 'store']);
