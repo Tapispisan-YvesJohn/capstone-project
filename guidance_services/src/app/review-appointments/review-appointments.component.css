@@ -1,0 +1,131 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 80px;
+    margin-right: 20px;
+}
+
+.header-text {
+    flex-grow: 1;
+}
+
+.header-text h1, .header-text p {
+    margin: 0;
+    color: #800000;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    background-color: #800000;
+    width: 350px;
+    height: calc(100vh - 80px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #000000;
+    padding: 20px;
+    display: block;
+    border-radius: 5px;
+    background-color: #f2eb20;
+    text-align: center;
+    font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #fbf861;
+}
+
+.profile {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.profile a {
+    text-decoration: none;
+    color: #fff;
+    padding: 15px;
+    display: block;
+    border-radius: 5px;
+    background-color: #333;
+    text-align: center;
+    font-size: 18px;
+}
+
+.profile a:hover {
+    background-color: #555;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.appointment-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.appointment-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.appointment-info {
+    flex-grow: 1;
+}
+
+.view-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: #fff;
+    cursor: pointer;
+}
