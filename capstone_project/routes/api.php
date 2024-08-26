@@ -22,5 +22,8 @@ Route::post('/records/retrieve/{id}', [StudentRecordController::class, 'retrieve
 
 Route::delete('/records/permanently-delete/{id}', [StudentRecordController::class, 'deletePermanently']);
 
-Route::get('/appointments', [AppointmentController::class, 'index']);
-Route::post('/appointments', [AppointmentController::class, 'store']);
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('/appointments', [AppointmentController::class, 'index']);
+    Route::post('/appointments', [AppointmentController::class, 'store']);
+    Route::delete('/appointments/{id}', [AppointmentController::class, 'destroy']);
+});
