@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppointmentsService } from '../../services/appointments.service';
 
 @Component({
   selector: 'app-student-appointment-scheduling',
@@ -10,15 +11,18 @@ export class StudentAppointmentSchedulingComponent implements OnInit {
   appointmentForm: FormGroup;
   minDate: string;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,  
+    private appointmentService: AppointmentsService
+  ) {}
 
   ngOnInit(): void {
     const today = new Date();
     this.minDate = this.formatDate(today);
 
     this.appointmentForm = this.fb.group({
-      appointmentDate: ['', Validators.required],
-      appointmentTime: ['', Validators.required],
+      appointment_date: ['', Validators.required],
+      appointment_time: ['', Validators.required],
       reason: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
@@ -40,8 +44,12 @@ export class StudentAppointmentSchedulingComponent implements OnInit {
 
   onSubmit(): void {
     if (this.appointmentForm.valid) {
-      console.log('Appointment Scheduled:', this.appointmentForm.value);
-
+      this.appointmentService.scheduleAppointment(this.appointmentForm.value)
+        .subscribe(response => {
+          console.log('Appointment scheduled:', response);
+        }, error => {
+          console.error('Error scheduling appointment:', error);
+        });
     } else {
       console.log('Form is invalid');
     }

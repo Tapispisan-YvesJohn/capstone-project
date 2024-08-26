@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppointmentsService } from '../services/appointments.service';
 
 @Component({
   selector: 'app-review-appointments',
@@ -7,25 +8,43 @@ import { Router } from '@angular/router';
   styleUrls: ['./review-appointments.component.css']
 })
 export class ReviewAppointmentsComponent implements OnInit {
+  appointments: any[] = [];
 
-  appointments = [
-    { name: 'John Doe', date: '2024-09-01', time: '10:00 AM', id: 1 },
-    { name: 'Jane Smith', date: '2024-09-02', time: '11:00 AM', id: 2 },
-    // Add more appointment data as needed
-  ];
+  constructor (
+    private appointmentsService: AppointmentsService,
+    private router: Router,
+  ) {}
 
-  constructor(private router: Router) {}
+  ngOnInit(): void {
+    this.fetchAppointments();
+  }
 
-  ngOnInit(): void {}
+  fetchAppointments(): void {
+    this.appointmentsService.getAppointments().subscribe(
+      (data: any[]) => {
+        this.appointments = data;
+        console.log('Appointments fetched:', this.appointments);
+      },
+      (error) => {
+        console.error('Error fetching appointments:', error);
+      }
+    );
+  }
 
   viewAppointment(appointment: any) {
-    // Handle view appointment logic
     console.log('Viewing appointment:', appointment);
   }
 
   cancelAppointment(id: number) {
-    // Handle cancel appointment logic
-    console.log('Cancelling appointment with ID:', id);
+    this.appointmentsService.cancelAppointment(id).subscribe(
+      (response) => {
+        console.log('Appointment cancelled:', response);
+        this.appointments = this.appointments.filter(a => a.id !== id);
+      },
+      (error) => {
+        console.error('Error cancelling appointment:', error);
+      }
+    );
   }
 
   navigateTo(route: string) {

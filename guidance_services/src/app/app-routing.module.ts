@@ -23,12 +23,12 @@ const routes: Routes = [
   { path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]  },
   { path: 'create-record', component: CreateRecordComponent, canActivate:[AuthGuard]  },
   { path: 'review-applicants', component: ReviewApplicantsComponent, canActivate:[AuthGuard]  },
-  { path: 'review-appointments', component: ReviewAppointmentsComponent },
+  { path: 'review-appointments', component: ReviewAppointmentsComponent, canActivate:[AuthGuard] },
   { path: 'application-status', component: ApplicationStatusComponent, canActivate:[AuthGuard]  },
   { path: 'history', component: HistoryComponent, canActivate:[AuthGuard]  },
   { path: 'student-dashboard', component: StudentDashboardComponent, canActivate:[AuthGuard] },
-  { path: 'student-pds', component: StudentPdsComponent },
-  { path: 'student-appointment-scheduling', component: StudentAppointmentSchedulingComponent },
+  { path: 'student-pds', component: StudentPdsComponent, canActivate:[AuthGuard] },
+  { path: 'student-appointment-scheduling', component: StudentAppointmentSchedulingComponent, canActivate:[AuthGuard] },
   { path: 'view-record/:id', component: ViewRecordComponent, canActivate:[AuthGuard]  }
 ];
 

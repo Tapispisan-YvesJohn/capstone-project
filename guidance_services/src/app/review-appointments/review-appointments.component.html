@@ -28,8 +28,9 @@
                 <img src="../../assets/images/placeholder.png" alt="Appointment Image" class="appointment-image">
                 <div class="appointment-info">
                     <h3>{{ appointment.name }}</h3>
-                    <p>{{ appointment.date }}</p>
-                    <p>{{ appointment.time }}</p>
+                    <p>{{ appointment.appointment_date }}</p>
+                    <p>{{ appointment.appointment_time }}</p>
+                    <p> {{ appointment.reason }}</p>
                 </div>
                 <button class="view-btn" (click)="viewAppointment(appointment)">View</button>
                 <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancel</button>
