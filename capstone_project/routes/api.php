@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentRecordController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\RBACController;
 
 Route::post('/login', [LoginController::class, 'login'])->name('api.login');
 
@@ -26,4 +27,9 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('/appointments', [AppointmentController::class, 'index']);
     Route::post('/appointments', [AppointmentController::class, 'store']);
     Route::delete('/appointments/{id}', [AppointmentController::class, 'destroy']);
+});
+
+Route::middleware(['auth:api'])->group(function () {
+    Route::post('/roles', [RBACController::class, 'storeRole']);
+    Route::post('/assign-role/{userId}', [RBACController::class, 'assignRole']);
 });
