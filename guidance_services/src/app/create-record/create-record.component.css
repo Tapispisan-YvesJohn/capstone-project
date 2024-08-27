@@ -33,23 +33,23 @@
 
 .sidebar {
     background-color: #800000;
-    width: 350px; /* Increased width */
-    height: calc(100vh - 100px); /* Adjust height based on header */
-    padding: 20px; /* Increased padding */
+    width: 350px;
+    height: calc(100vh - 100px); 
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Space between the list and profile */
-    position: fixed; /* Fix the sidebar in place */
-    top: 100px; /* Align with header height */
+    justify-content: space-between; 
+    position: fixed; 
+    top: 100px;
     left: 0;
     z-index: 999;
-    overflow-y: auto; /* Enable scrolling within the sidebar */
+    overflow-y: auto; 
 }
 
 .sidebar ul {
     list-style: none;
     padding: 0;
-    flex-grow: 1; /* Allow the list to grow and push the profile to the bottom */
+    flex-grow: 1; 
 }
 
 .sidebar ul li {
@@ -59,12 +59,12 @@
 .sidebar ul li a {
     text-decoration: none;
     color: #000000;
-    padding: 20px; /* Increased padding for larger buttons */
+    padding: 20px;
     display: block;
     border-radius: 5px;
     background-color: #f2eb20;
-    text-align: center; /* Center the text inside the buttons */
-    font-size: 18px; /* Increased font size */
+    text-align: center; 
+    font-size: 18px; 
 }
 
 .sidebar ul li a:hover {
@@ -80,12 +80,12 @@
 .profile a {
     text-decoration: none;
     color: #fff;
-    padding: 15px; /* Increased padding for larger profile button */
+    padding: 15px; 
     display: block;
     border-radius: 5px;
     background-color: #333;
-    text-align: center; /* Center the text inside the profile button */
-    font-size: 18px; /* Increased font size */
+    text-align: center;
+    font-size: 18px; 
 }
 
 .profile a:hover {
@@ -95,8 +95,9 @@
 .content {
     flex-grow: 1;
     padding: 20px;
-    margin-left: 370px; /* Margin to push the content next to the sidebar */
-    max-width: calc(100% - 370px); /* Occupy remaining space after the sidebar */
+    margin-left: 450px; 
+    margin-right: 100px;
+    max-width: calc(100% - 400px); 
 }
 
 h2 {
@@ -104,7 +105,7 @@ h2 {
 }
 
 form {
-    background-color: #e0e0e0;
+    background-color: #f9f9f9; 
     padding: 20px;
     border-radius: 10px;
     width: 100%;
@@ -148,6 +149,6 @@ button:hover {
 }
 
 .snackbar-success {
-    background-color: #4caf50; /* Green background */
-    color: white; /* White text color */
+    background-color: #4caf50;
+    color: white; 
 }

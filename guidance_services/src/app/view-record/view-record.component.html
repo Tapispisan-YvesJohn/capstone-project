@@ -1,47 +1,185 @@
-<div class="content" *ngIf="student">
-    <h2>Student Record</h2>
-    
-    <h3>Personal Information</h3>
-    <p>Last Name: {{ student.personal_information.last_name }}</p>
-    <p>First Name: {{ student.personal_information.first_name }}</p>
-    <p>Middle Name: {{ student.personal_information.middle_name }}</p>
-    <p>Civil Status: {{ student.personal_information.civil_status }}</p>
-    <p>Religion: {{ student.personal_information.religion }}</p>
-    <p>Email: {{ student.personal_information.email }}</p>
-    <p>Course: {{ student.personal_information.course }}</p>
-    <p>Date of Birth: {{ student.personal_information.dob }}</p>
-    <p>Place of Birth: {{ student.personal_information.place_of_birth }}</p>
-    <p>Mobile No: {{ student.personal_information.mobile_no }}</p>
-    <p>Address: {{ student.personal_information.address }}</p>
-    <p>Emergency Contact: {{ student.personal_information.emergency_contact }}</p>
-    
-    <h3>Educational Background</h3>
-    <p>Elementary School: {{ student.educational_background.elementary_school }}</p>
-    <p>Junior High School: {{ student.educational_background.junior_high_school }}</p>
-    <p>Senior High School: {{ student.educational_background.senior_high_school }}</p>
-    
-    <h3>Family Background</h3>
-    <p>Father's Name: {{ student.family_background.father_name }}</p>
-    <p>Father's Age: {{ student.family_background.father_age }}</p>
-    <p>Father's Occupation: {{ student.family_background.father_occupation }}</p>
-    <p>Mother's Name: {{ student.family_background.mother_name }}</p>
-    <p>Mother's Age: {{ student.family_background.mother_age }}</p>
-    <p>Mother's Occupation: {{ student.family_background.mother_occupation }}</p>
-    
-    <h3>Health Record</h3>
-    <p>Vision: {{ student.health_record.vision }}</p>
-    <p>Hearing: {{ student.health_record.hearing }}</p>
-    <p>General Health: {{ student.health_record.general_health }}</p>
-    
-    <h3>Test Results</h3>
-    <p>Test Date: {{ student.test_results.test_date }}</p>
-    <p>Test Administered: {{ student.test_results.test_administered }}</p>
-    <p>Test Results: {{ student.test_results.test_results }}</p>
-    <p>Description: {{ student.test_results.test_description }}</p>
-    
-    <h3>Significant Notes</h3>
-    <p>Date: {{ student.significant_notes.date }}</p>
-    <p>Incident: {{ student.significant_notes.incident }}</p>
-    <p>Remarks: {{ student.significant_notes.remarks }}</p>
+<div class="header">
+  <img src="../../assets/images/pup-logo.png" alt="PUP Logo" class="logo">
+  <div class="header-text">
+      <h1>Polytechnic University of the Philippines</h1>
+      <p>Guidance Information System</p>
   </div>
-  
+</div>
+
+<div class="container">
+  <div class="content">
+      <h2>Student Record</h2>
+      
+      <form class="student-record-form">
+          <div class="section">
+              <h3>Personal Information</h3>
+              <div class="form-grid">
+                  <div>
+                      <label>Last Name</label>
+                      <p>{{ student.personal_information.last_name }}</p>
+                  </div>
+                  <div>
+                      <label>First Name</label>
+                      <p>{{ student.personal_information.first_name }}</p>
+                  </div>
+                  <div>
+                      <label>Middle Name</label>
+                      <p>{{ student.personal_information.middle_name }}</p>
+                  </div>
+                  <div>
+                      <label>Civil Status</label>
+                      <p>{{ student.personal_information.civil_status }}</p>
+                  </div>
+                  <div>
+                      <label>Religion</label>
+                      <p>{{ student.personal_information.religion }}</p>
+                  </div>
+                  <div>
+                      <label>Email</label>
+                      <p>{{ student.personal_information.email }}</p>
+                  </div>
+                  <div>
+                      <label>Course</label>
+                      <p>{{ student.personal_information.course }}</p>
+                  </div>
+                  <div>
+                      <label>Date of Birth</label>
+                      <p>{{ student.personal_information.dob }}</p>
+                  </div>
+                  <div>
+                      <label>Place of Birth</label>
+                      <p>{{ student.personal_information.place_of_birth }}</p>
+                  </div>
+                  <div>
+                      <label>Mobile No</label>
+                      <p>{{ student.personal_information.mobile_no }}</p>
+                  </div>
+                  <div>
+                      <label>Address</label>
+                      <p>{{ student.personal_information.address }}</p>
+                  </div>
+                  <div>
+                      <label>Emergency Contact Name</label>
+                      <p>{{ student.personal_information.emergency_contact }}</p>
+                  </div>
+              </div>
+          </div>
+          
+          <hr>
+          
+          <div class="section">
+              <h3>Educational Background</h3>
+              <div class="form-grid">
+                  <div>
+                      <label>Elementary School</label>
+                      <p>{{ student.educational_background.elementary_school }}</p>
+                  </div>
+                  <div>
+                      <label>Junior High School</label>
+                      <p>{{ student.educational_background.junior_high_school }}</p>
+                  </div>
+                  <div>
+                      <label>Senior High School</label>
+                      <p>{{ student.educational_background.senior_high_school }}</p>
+                  </div>
+              </div>
+          </div>
+          
+          <hr>
+          
+          <div class="section">
+              <h3>Family Background</h3>
+              <div class="form-grid">
+                  <div>
+                      <label>Father's Name</label>
+                      <p>{{ student.family_background.father_name }}</p>
+                  </div>
+                  <div>
+                      <label>Father's Age</label>
+                      <p>{{ student.family_background.father_age }}</p>
+                  </div>
+                  <div>
+                      <label>Father's Occupation</label>
+                      <p>{{ student.family_background.father_occupation }}</p>
+                  </div>
+                  <div>
+                      <label>Mother's Name</label>
+                      <p>{{ student.family_background.mother_name }}</p>
+                  </div>
+                  <div>
+                      <label>Mother's Age</label>
+                      <p>{{ student.family_background.mother_age }}</p>
+                  </div>
+                  <div>
+                      <label>Mother's Occupation</label>
+                      <p>{{ student.family_background.mother_occupation }}</p>
+                  </div>
+              </div>
+          </div>
+          
+          <hr>
+          
+          <div class="section">
+              <h3>Health Record</h3>
+              <div class="form-grid">
+                  <div>
+                      <label>Vision</label>
+                      <p>{{ student.health_record.vision }}</p>
+                  </div>
+                  <div>
+                      <label>Hearing</label>
+                      <p>{{ student.health_record.hearing }}</p>
+                  </div>
+                  <div>
+                      <label>General Health</label>
+                      <p>{{ student.health_record.general_health }}</p>
+                  </div>
+              </div>
+          </div>
+          
+          <hr>
+          
+          <div class="section">
+              <h3>Test Results</h3>
+              <div class="form-grid">
+                  <div>
+                      <label>Date</label>
+                      <p>{{ student.test_results.test_date }}</p>
+                  </div>
+                  <div>
+                      <label>Test Administered</label>
+                      <p>{{ student.test_results.test_administered }}</p>
+                  </div>
+                  <div>
+                      <label>Test Results (RS)</label>
+                      <p>{{ student.test_results.test_results }}</p>
+                  </div>
+                  <div>
+                      <label>Description</label>
+                      <p>{{ student.test_results.test_description }}</p>
+                  </div>
+              </div>
+          </div>
+          
+          <hr>
+          
+          <div class="section">
+              <h3>Significant Notes (For Guidance Counselors Only)</h3>
+              <div class="form-grid">
+                  <div>
+                      <label>Date</label>
+                      <p>{{ student.significant_notes.date }}</p>
+                  </div>
+                  <div>
+                      <label>Incident</label>
+                      <p>{{ student.significant_notes.incident }}</p>
+                  </div>
+                  <div>
+                      <label>Remarks</label>
+                      <p>{{ student.significant_notes.remarks }}</p>
+                  </div>
+              </div>
+          </div>
+      </form>
+  </div>
+</div>
