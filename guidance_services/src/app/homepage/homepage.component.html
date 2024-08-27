@@ -22,13 +22,12 @@
     </div>
 
     <div class="content">
-        <h2>List of Students</h2>
+        <h1>List of Students</h1>
         <div class="student-list">
             <div class="student-card" *ngFor="let student of students">
                 <img src="../../assets/images/placeholder.png" alt="Student Image" class="student-image">
                 <div class="student-info">
-                    <h3>{{ student.name }}</h3>
-                    <p>{{ student.id }}</p>
+                    <h2>{{ student.name }}</h2>
                     <p>{{ student.course }}</p>
                 </div>
                 <div class="student-actions">
