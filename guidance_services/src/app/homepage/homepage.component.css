@@ -89,11 +89,33 @@
 .content {
     flex-grow: 1;
     padding: 20px;
-    margin-left: 0; /* Removed margin to align directly with the sidebar */
-    max-width: calc(100% - 350px); /* Occupy remaining space after the sidebar */
+    margin-left: 0; 
+    max-width: calc(100% - 350px); 
     display: flex;
     flex-direction: column;
 }
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-record-btn {
+    padding: 5px 10px; 
+    background-color: #800000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-record-btn:hover {
+    background-color: #a00000;
+}
+
 
 .student-list {
     display: flex;

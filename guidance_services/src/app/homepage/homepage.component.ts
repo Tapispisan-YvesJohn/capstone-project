@@ -43,7 +43,7 @@ export class HomepageComponent implements OnInit {
       }
     });
   }
-  
+
   deleteRecord(id: number): void {
     if (confirm('Are you sure you want to delete this record?')) {
       this.recordsService.deleteRecord(id).subscribe({
@@ -58,11 +58,15 @@ export class HomepageComponent implements OnInit {
       });
     }
   }
-  
+
   viewRecord(student: any): void {
     this.router.navigate(['/view-record', student.id]);
   }
-  
+
+  editRecord(student: any): void {
+    this.router.navigate(['/view-record', student.id], { queryParams: { edit: true } });
+  }
+
   navigateTo(route: string): void {
     this.router.navigate([route]);
   }
