@@ -25,6 +25,10 @@ export class ViewRecordComponent implements OnInit {
       this.editMode = params['edit'] === 'true';
     });
 
+    this.loadStudentRecord(id);
+  }
+
+  loadStudentRecord(id: number): void {
     this.recordsService.getRecordById(id).subscribe({
       next: (record) => {
         this.student = record;
@@ -87,9 +91,9 @@ export class ViewRecordComponent implements OnInit {
     if (this.recordForm.valid) {
       const updatedData = this.recordForm.value;
       this.recordsService.updateRecord(this.student.id, updatedData).subscribe({
-        next: (updatedRecord) => {
-          this.student = updatedRecord; // Update student with the latest data
-          this.editMode = false;
+        next: () => {
+          this.loadStudentRecord(this.student.id); // Reload the student record after saving changes
+          this.editMode = false; // Exit edit mode
           console.log('Record updated successfully');
         },
         error: (error) => {

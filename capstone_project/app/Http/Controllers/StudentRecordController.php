@@ -355,9 +355,17 @@ public function update(Request $request, $id)
             'remarks' => $validatedData['remarks'],
         ]);
 
-        return response()->json(['message' => 'Record updated successfully'], 200);
+        return response()->json($studentRecord->load([
+            'personalInformation',
+            'educationalBackground',
+            'familyBackground',
+            'healthRecord',
+            'testResults',
+            'significantNotes'
+        ]), 200);
     } catch (\Exception $e) {
         return response()->json(['message' => 'Error updating record: ' . $e->getMessage()], 500);
     }
 }
+
 }
