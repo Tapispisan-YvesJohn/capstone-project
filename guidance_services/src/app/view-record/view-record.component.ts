@@ -87,9 +87,10 @@ export class ViewRecordComponent implements OnInit {
     if (this.recordForm.valid) {
       const updatedData = this.recordForm.value;
       this.recordsService.updateRecord(this.student.id, updatedData).subscribe({
-        next: () => {
+        next: (updatedRecord) => {
+          this.student = updatedRecord; // Update student with the latest data
+          this.editMode = false;
           console.log('Record updated successfully');
-          this.editMode = false; // Exit edit mode
         },
         error: (error) => {
           console.error('Error updating record', error);
@@ -98,5 +99,9 @@ export class ViewRecordComponent implements OnInit {
     } else {
       console.log('Form is not valid');
     }
+  }
+
+  toggleEditMode(): void {
+    this.editMode = !this.editMode;
   }
 }

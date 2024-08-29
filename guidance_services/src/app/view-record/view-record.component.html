@@ -4,12 +4,12 @@
         <h1>Polytechnic University of the Philippines</h1>
         <p>Guidance Information System</p>
     </div>
-  </div>
-  
-  <div class="container">
+</div>
+
+<div class="container">
     <div class="content">
         <h2>Student Record</h2>
-        
+
         <form class="student-record-form" [formGroup]="recordForm">
             <div class="section">
                 <h3>Personal Information</h3>
@@ -211,11 +211,14 @@
                     </div>
                 </div>
             </div>
-  
+
+            <div *ngIf="!editMode">
+                <button type="button" (click)="toggleEditMode()">Edit</button>
+            </div>
+
             <div *ngIf="editMode" class="section">
                 <button type="button" (click)="saveChanges()">Save Changes</button>
             </div>
         </form>
     </div>
-  </div>
-   
+</div>

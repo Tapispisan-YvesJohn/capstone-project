@@ -33,7 +33,7 @@
 
 .sidebar {
     background-color: #800000;
-    width: 350px; /* Sidebar width */
+    width: 350px; 
     height: calc(100vh - 80px);
     padding: 20px;
     display: flex;
@@ -116,7 +116,6 @@
     background-color: #a00000;
 }
 
-
 .student-list {
     display: flex;
     flex-direction: column;
@@ -155,7 +154,6 @@
 }
 
 .view-btn,
-.edit-btn,
 .delete-btn {
     padding: 10px 20px;
     border: none;
@@ -165,11 +163,6 @@
 
 .view-btn {
     background-color: #007bff;
-    color: #fff;
-}
-
-.edit-btn {
-    background-color: #6c757d;
     color: #fff;
 }
 

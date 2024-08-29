@@ -29,11 +29,10 @@ export class HomepageComponent implements OnInit {
               course: personalInfo.course,
             };
           } else {
-            // Handle the case where personal_information is null
             return {
               id: record.id,
-              name: 'Unknown', // Default name if personal information is missing
-              course: 'Unknown', // Default course if personal information is missing
+              name: 'Unknown', 
+              course: 'Unknown', 
             };
           }
         });
@@ -48,7 +47,6 @@ export class HomepageComponent implements OnInit {
     if (confirm('Are you sure you want to delete this record?')) {
       this.recordsService.deleteRecord(id).subscribe({
         next: () => {
-          // Remove the deleted record from the students array
           this.students = this.students.filter(student => student.id !== id);
           console.log('Record deleted successfully');
         },
@@ -61,10 +59,6 @@ export class HomepageComponent implements OnInit {
 
   viewRecord(student: any): void {
     this.router.navigate(['/view-record', student.id]);
-  }
-
-  editRecord(student: any): void {
-    this.router.navigate(['/view-record', student.id], { queryParams: { edit: true } });
   }
 
   navigateTo(route: string): void {
