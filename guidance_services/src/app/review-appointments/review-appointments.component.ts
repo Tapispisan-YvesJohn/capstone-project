@@ -7,10 +7,11 @@ import { AppointmentsService } from '../services/appointments.service';
   templateUrl: './review-appointments.component.html',
   styleUrls: ['./review-appointments.component.css']
 })
-export class ReviewAppointmentsComponent implements OnInit {
+export class AppointmentsComponent implements OnInit {
   appointments: any[] = [];
+  currentView: string = 'review';
 
-  constructor (
+  constructor(
     private appointmentsService: AppointmentsService,
     private router: Router,
   ) {}
@@ -33,6 +34,7 @@ export class ReviewAppointmentsComponent implements OnInit {
 
   viewAppointment(appointment: any) {
     console.log('Viewing appointment:', appointment);
+    // You can add more logic here for what happens when an appointment is viewed
   }
 
   cancelAppointment(id: number) {
@@ -47,7 +49,41 @@ export class ReviewAppointmentsComponent implements OnInit {
     );
   }
 
+  acceptAppointment(id: number) {
+    this.appointmentsService.acceptAppointment(id).subscribe(
+      (response) => {
+        console.log('Appointment accepted:', response);
+        this.updateAppointmentStatus(id, true);
+      },
+      (error) => {
+        console.error('Error accepting appointment:', error);
+      }
+    );
+  }
+
+  updateAppointmentStatus(id: number, accepted: boolean): void {
+    this.appointments = this.appointments.map(a => a.id === id ? { ...a, accepted } : a);
+  }
+
   navigateTo(route: string) {
     this.router.navigate([route]);
+  }
+
+  viewSchedule(): void {
+    this.currentView = 'schedule';
+    console.log('View Schedule selected');
+  }
+
+  reviewAppointments(): void {
+    this.currentView = 'review';
+    console.log('Review Appointments selected');
+  }
+
+  filteredAppointments(): any[] {
+    if (this.currentView === 'review') {
+      return this.appointments.filter(a => !a.accepted); // Show only non-accepted appointments
+    } else {
+      return this.appointments.filter(a => a.accepted);  // Show only accepted appointments
+    }
   }
 }

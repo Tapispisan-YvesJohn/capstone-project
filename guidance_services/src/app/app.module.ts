@@ -21,7 +21,7 @@ import { ViewRecordComponent } from './view-record/view-record.component';
 import { StudentDashboardComponent } from './Student_Module/student-dashboard/student-dashboard.component';
 import { StudentPdsComponent } from './Student_Module/student-pds/student-pds.component';
 import { StudentAppointmentSchedulingComponent } from './Student_Module/student-appointment-scheduling/student-appointment-scheduling.component';
-import { ReviewAppointmentsComponent } from './review-appointments/review-appointments.component';
+import { AppointmentsComponent } from './review-appointments/review-appointments.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { ReviewAppointmentsComponent } from './review-appointments/review-appoin
     StudentDashboardComponent,
     StudentPdsComponent,
     StudentAppointmentSchedulingComponent,
-    ReviewAppointmentsComponent
+    AppointmentsComponent
   ],
   imports: [
     BrowserModule,

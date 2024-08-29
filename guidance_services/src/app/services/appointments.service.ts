@@ -22,6 +22,11 @@ export class AppointmentsService {
     return this.http.post(this.apiUrl, appointmentData, { headers });
   }
 
+  acceptAppointment(id: number): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${this.apiUrl}/${id}/accept`, {}, { headers });
+  }
+
   getAppointments(): Observable<any[]> {
     const headers = this.getAuthHeaders();
     return this.http.get<any[]>(this.apiUrl, { headers });

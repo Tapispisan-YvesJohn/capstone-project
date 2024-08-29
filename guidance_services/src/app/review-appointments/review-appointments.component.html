@@ -12,7 +12,7 @@
             <li><a (click)="navigateTo('homepage')">Student Records</a></li>
             <li><a (click)="navigateTo('create-record')">Add Records</a></li>
             <li><a (click)="navigateTo('review-applicants')">Review Applicants</a></li>
-            <li><a (click)="navigateTo('review-appointments')">Review Appointments</a></li> 
+            <li><a (click)="navigateTo('appointments')">Appointments</a></li>
             <li><a (click)="navigateTo('application-status')">Application Status</a></li>
             <li><a (click)="navigateTo('history')">History</a></li>
         </ul>
@@ -22,19 +22,29 @@
     </div>
 
     <div class="content">
-        <h2>List of Appointments</h2>
+        <h2>Appointments</h2>
+        <div class="dropdown">
+            <button class="dropbtn">Select Option</button>
+            <div class="dropdown-content">
+                <a (click)="viewSchedule()">View Schedule</a>
+                <a (click)="reviewAppointments()">Review Appointment</a>
+            </div>
+        </div>
+        
         <div class="appointment-list">
-            <div class="appointment-card" *ngFor="let appointment of appointments">
+            <div class="appointment-card" *ngFor="let appointment of filteredAppointments()">
                 <img src="../../assets/images/placeholder.png" alt="Appointment Image" class="appointment-image">
                 <div class="appointment-info">
                     <h3>{{ appointment.name }}</h3>
                     <p>{{ appointment.appointment_date }}</p>
                     <p>{{ appointment.appointment_time }}</p>
-                    <p> {{ appointment.reason }}</p>
+                    <p>{{ appointment.reason }}</p>
+                    <p *ngIf="currentView === 'schedule' && appointment.accepted" class="accepted-label">Accepted</p>
                 </div>
-                <button class="view-btn" (click)="viewAppointment(appointment)">View</button>
+                <button *ngIf="currentView === 'schedule'" class="view-btn" (click)="viewAppointment(appointment)">View</button>
+                <button *ngIf="currentView === 'review'" class="accept-btn" (click)="acceptAppointment(appointment.id)">Accept</button>
                 <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancel</button>
             </div>
         </div>
-    </div>
+    </div>    
 </div>
