@@ -89,7 +89,8 @@
 .content {
     flex-grow: 1;
     padding: 20px;
-    margin-left: 0; 
+    margin-left: 50px; 
+    margin-right: 100px;
     max-width: calc(100% - 350px); 
     display: flex;
     flex-direction: column;
@@ -108,7 +109,8 @@
 }
 
 .add-record-btn,
-.history-btn {
+.history-btn,
+.applicant-btn {
     padding: 10px 20px;
     background-color: #800000;
     color: white;
@@ -119,7 +121,8 @@
 }
 
 .add-record-btn:hover,
-.history-btn:hover {
+.history-btn:hover,
+.applicant-btn:hover {
     background-color: #a00000;
 }
 

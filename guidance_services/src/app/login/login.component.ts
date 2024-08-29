@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
   
         // Redirect based on the user's role
         if (role === 'officer') {
-          this.router.navigate(['/homepage']);
+          this.router.navigate(['/student-record']);
         } else if (role === 'student') {
           this.router.navigate(['/student-dashboard']);
         } else {

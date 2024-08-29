@@ -9,8 +9,7 @@
 <div class="container">
     <div class="sidebar">
         <ul>
-            <li><a (click)="navigateTo('homepage')">Student Records</a></li>
-            <li><a (click)="navigateTo('review-applicants')">Review Applicants</a></li>
+            <li><a (click)="navigateTo('student-record')">Student Records</a></li>
             <li><a (click)="navigateTo('appointments')">Appointments</a></li> 
             <li><a (click)="navigateTo('application-status')">Application Status</a></li>
         </ul>
@@ -23,6 +22,7 @@
         <div class="content-header">
             <h1>List of Students</h1>
             <div class="button-group">
+                <button class="applicant-btn" (click)="navigateTo('review-applicants')">Review Applicants</button>
                 <button class="add-record-btn" (click)="navigateTo('create-record')">Add Record</button>
                 <button class="history-btn" (click)="navigateTo('history')">History</button>
             </div>
