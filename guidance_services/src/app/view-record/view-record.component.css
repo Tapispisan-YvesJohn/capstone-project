@@ -87,4 +87,21 @@ hr {
     margin: 20px 0;
 }
 
-    
+.edit-btn, 
+.save-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.save-btn {
+    background-color: #007bff;
+    color: #fff;
+}
+
