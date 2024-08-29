@@ -89,7 +89,8 @@
 .content {
     flex-grow: 1;
     padding: 20px;
-    margin-left: 0; 
+    margin-left: 50px; 
+    margin-right: 100px;
     max-width: calc(100% - 350px); 
     display: flex;
     flex-direction: column;
@@ -102,7 +103,14 @@
     margin-bottom: 20px;
 }
 
-.add-record-btn {
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.add-record-btn,
+.history-btn,
+.applicant-btn {
     padding: 10px 20px;
     background-color: #800000;
     color: white;
@@ -112,7 +120,9 @@
     font-size: 14px;
 }
 
-.add-record-btn:hover {
+.add-record-btn:hover,
+.history-btn:hover,
+.applicant-btn:hover {
     background-color: #a00000;
 }
 

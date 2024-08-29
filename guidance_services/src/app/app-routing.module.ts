@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin-rbac', component: AdminRbacComponent, canActivate:[AuthGuard]  },
-  { path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]  },
+  { path: 'student-record', component: HomepageComponent, canActivate:[AuthGuard]  },
   { path: 'create-record', component: CreateRecordComponent, canActivate:[AuthGuard]  },
   { path: 'review-applicants', component: ReviewApplicantsComponent, canActivate:[AuthGuard]  },
   { path: 'appointments', component: AppointmentsComponent, canActivate:[AuthGuard] },
