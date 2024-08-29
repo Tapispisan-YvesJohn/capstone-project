@@ -129,7 +129,7 @@
 .view-btn,
 .retrieve-btn,
 .delete-btn {
-    padding: 5px 10px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
