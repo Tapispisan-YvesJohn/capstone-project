@@ -31,10 +31,22 @@ export class AdminRbacComponent implements OnInit {
     });
   }
 
+  addRole() {
+    const roleName = this.adminForm.get('newRole').value;
+    if (roleName) {
+      const newRole = {
+        id: this.roles.length + 1,
+        name: roleName,
+        permissions: []
+      };
+      this.roles.push(newRole);
+      this.adminForm.get('newRole').reset();
+    }
+  }
+
   onSubmit() {
     if (this.adminForm.valid) {
-      console.log(this.adminForm.value);
-      // Handle form submission, e.g., send data to the backend
+      
     } else {
       console.log('Form is invalid');
       this.logValidationErrors();
@@ -50,19 +62,6 @@ export class AdminRbacComponent implements OnInit {
         });
       }
     });
-  }
-
-  addRole() {
-    const roleName = this.adminForm.get('newRole').value;
-    if (roleName) {
-      const newRole = {
-        id: this.roles.length + 1,
-        name: roleName,
-        permissions: []
-      };
-      this.roles.push(newRole);
-      this.adminForm.get('newRole').reset();
-    }
   }
 
   get usernameControl() {

@@ -9,7 +9,10 @@ class Role extends Model
 {
     use HasFactory;
 
-    public function role() {
-        return $this->belongsTo(Students::class, 'role_id', 'id');
+    protected $fillable = ['name'];
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'role_permission');
     }
 }
