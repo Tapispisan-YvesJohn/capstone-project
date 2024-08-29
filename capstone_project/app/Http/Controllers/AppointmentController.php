@@ -44,4 +44,18 @@ class AppointmentController extends Controller
             return response()->json(['message' => 'Appointment not found'], 404);
         }
     }
+
+    public function accept($id)
+    {
+        $appointment = Appointment::find($id);
+        if ($appointment) {
+            $appointment->accepted = true;
+            $appointment->save();
+
+            return response()->json(['message' => 'Appointment accepted successfully']);
+        } else {
+            return response()->json(['message' => 'Appointment not found'], 404);
+        }
+    }
+
 }

@@ -14,6 +14,7 @@ class CreateAppointmentsTable extends Migration
             $table->date('appointment_date');
             $table->time('appointment_time');
             $table->text('reason');
+            $table->boolean('accepted')->default(false);
             $table->timestamps();
     
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

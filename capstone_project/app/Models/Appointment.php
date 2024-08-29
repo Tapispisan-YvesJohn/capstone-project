@@ -10,7 +10,8 @@ class Appointment extends Model
         'user_id',
         'appointment_date', 
         'appointment_time', 
-        'reason'
+        'reason',
+        'accepted' 
     ];
 
     public function user()
