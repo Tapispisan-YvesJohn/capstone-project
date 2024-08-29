@@ -1,7 +1,7 @@
 <div class="header">
     <img src="../../assets/images/pup-logo.png" alt="PUP Logo" class="logo">
     <div class="header-text">
-        <h1>Polytechnic University of the Philippines</h1>
+        <h1>Polytechnic University of the Philippines - Taguig</h1>
         <p>Guidance Information System</p>
     </div>
 </div>
@@ -10,7 +10,6 @@
     <div class="sidebar">
         <ul>
             <li><a (click)="navigateTo('homepage')">Student Records</a></li>
-            <li><a (click)="navigateTo('create-record')">Add Records</a></li>
             <li><a (click)="navigateTo('review-applicants')">Review Applicants</a></li>
             <li><a (click)="navigateTo('appointments')">Appointments</a></li> 
             <li><a (click)="navigateTo('application-status')">Application Status</a></li>
@@ -22,7 +21,11 @@
     </div>
 
     <div class="content">
-        <h1>List of Students</h1>
+        <div class="content-header">
+            <h1>List of Students</h1>
+            <button class="add-record-btn" (click)="navigateTo('create-record')">Add Record</button>
+        </div>
+
         <div class="student-list">
             <div class="student-card" *ngFor="let student of students">
                 <img src="../../assets/images/placeholder.png" alt="Student Image" class="student-image">
@@ -32,7 +35,6 @@
                 </div>
                 <div class="student-actions">
                     <button class="view-btn" (click)="viewRecord(student)">View</button>
-                    <button class="edit-btn">Edit</button>
                     <button class="delete-btn" (click)="deleteRecord(student.id)">Delete</button>
                 </div>                  
             </div>

@@ -16,7 +16,7 @@ export class RecordsService {
   }
 
   getRecords(): Observable<any> {
-  return this.http.get(this.apiUrl);
+    return this.http.get(this.apiUrl);
   }
 
   deleteRecord(id: number): Observable<any> {
@@ -25,6 +25,10 @@ export class RecordsService {
 
   getRecordById(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
+  updateRecord(id: number, recordData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, recordData);
   }
 
   getDeletedRecords(): Observable<any> {

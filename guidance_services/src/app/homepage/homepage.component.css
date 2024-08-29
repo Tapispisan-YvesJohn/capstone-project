@@ -33,7 +33,7 @@
 
 .sidebar {
     background-color: #800000;
-    width: 350px; /* Sidebar width */
+    width: 350px; 
     height: calc(100vh - 80px);
     padding: 20px;
     display: flex;
@@ -89,10 +89,31 @@
 .content {
     flex-grow: 1;
     padding: 20px;
-    margin-left: 0; /* Removed margin to align directly with the sidebar */
-    max-width: calc(100% - 350px); /* Occupy remaining space after the sidebar */
+    margin-left: 0; 
+    max-width: calc(100% - 350px); 
     display: flex;
     flex-direction: column;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-record-btn {
+    padding: 10px 20px;
+    background-color: #800000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-record-btn:hover {
+    background-color: #a00000;
 }
 
 .student-list {
@@ -133,7 +154,6 @@
 }
 
 .view-btn,
-.edit-btn,
 .delete-btn {
     padding: 10px 20px;
     border: none;
@@ -143,11 +163,6 @@
 
 .view-btn {
     background-color: #007bff;
-    color: #fff;
-}
-
-.edit-btn {
-    background-color: #6c757d;
     color: #fff;
 }
 
