@@ -9,6 +9,12 @@ import { RecordsService } from '../services/records.service';
 })
 export class HomepageComponent implements OnInit {
   students: any[] = [];
+  filteredStudents: any[] = [];
+  selectedCourse: string = '';
+  courses: string[] = [
+    'BSECE', 'BSME', 'BSA', 'BSBA', 'BSAM', 'BSIT', 'BSENTREP', 'BSED - Mathematics', 'BSED - English',
+    'BSPSYCH', 'BSOA', 'DICT', 'DOMT'
+  ];
 
   constructor(private router: Router, private recordsService: RecordsService) { }
 
@@ -23,7 +29,6 @@ export class HomepageComponent implements OnInit {
           const personalInfo = record.personal_information;
 
           if (personalInfo) {
-            // Format the name as "Last Name, First Name Middle Initial."
             const middleInitial = personalInfo.middle_name ? `${personalInfo.middle_name.charAt(0)}.` : '';
             const formattedName = `${personalInfo.last_name}, ${personalInfo.first_name} ${middleInitial}`;
 
@@ -43,12 +48,15 @@ export class HomepageComponent implements OnInit {
           }
         });
 
-        // Sort the students alphabetically by their last name (already extracted in `formattedName`).
+        // Sort the students alphabetically by their last name
         this.students.sort((a, b) => {
           const lastNameA = a.name.split(',')[0].toLowerCase();
           const lastNameB = b.name.split(',')[0].toLowerCase();
           return lastNameA.localeCompare(lastNameB);
         });
+
+        // Initially display all students
+        this.filteredStudents = [...this.students];
       },
       error: (error) => {
         console.error('Error fetching records', error);
@@ -61,6 +69,7 @@ export class HomepageComponent implements OnInit {
       this.recordsService.deleteRecord(id).subscribe({
         next: () => {
           this.students = this.students.filter(student => student.id !== id);
+          this.filteredStudents = this.filteredStudents.filter(student => student.id !== id);
           console.log('Record deleted successfully');
         },
         error: (error) => {
@@ -76,5 +85,14 @@ export class HomepageComponent implements OnInit {
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
+  }
+
+  // Filter students based on selected course
+  filterByCourse(): void {
+    if (this.selectedCourse) {
+      this.filteredStudents = this.students.filter(student => student.course === this.selectedCourse);
+    } else {
+      this.filteredStudents = [...this.students]; // If no course selected, show all students
+    }
   }
 }

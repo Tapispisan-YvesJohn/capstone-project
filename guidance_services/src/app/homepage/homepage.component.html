@@ -28,6 +28,15 @@
             </div>
         </div>
 
+        <!-- Course Filter Dropdown -->
+        <div class="course-filter">
+            <label for="course">Filter by Course:</label>
+            <select id="course" [(ngModel)]="selectedCourse" (change)="filterByCourse()">
+                <option value="">All Courses</option>
+                <option *ngFor="let course of courses">{{ course }}</option>
+            </select>
+        </div>
+
         <table class="student-table">
             <thead>
                 <tr>
@@ -38,7 +47,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let student of students">
+                <tr *ngFor="let student of filteredStudents">
                     <td>{{ student.course }}</td>
                     <td>{{ student.name }}</td>
                     <td>{{ student.email }}</td>

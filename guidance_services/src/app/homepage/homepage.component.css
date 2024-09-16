@@ -131,6 +131,34 @@
     background-color: #a00000;
 }
 
+.course-filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.course-filter label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+}
+
+.course-filter select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.course-filter select:focus {
+    border-color: #800000;
+    outline: none;
+}
+
 .student-table {
     width: 100%;
     border-collapse: collapse;
