@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';  // Import MatSnackBar
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RecordsService } from '../services/records.service';  // Adjust the path as needed
 
 @Component({
@@ -11,12 +11,13 @@ import { RecordsService } from '../services/records.service';  // Adjust the pat
 })
 export class CreateRecordComponent implements OnInit {
   inventoryForm: FormGroup;
+  formErrorMessage: string = '';  // Error message for form submission failure
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private recordsService: RecordsService,
-    private snackBar: MatSnackBar  // Inject MatSnackBar
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -71,25 +72,35 @@ export class CreateRecordComponent implements OnInit {
         next: (response) => {
           console.log('Form Submitted successfully', response);
           this.snackBar.open('Record created successfully!', 'Close', {
-            duration: 3000, // Duration the snackbar will be visible
-            verticalPosition: 'top', // Position the snackbar at the top
-            horizontalPosition: 'right', // Position the snackbar to the right
-            panelClass: ['snackbar-success'] // Custom class for styling (optional)
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            panelClass: ['snackbar-success']
           });
-          this.inventoryForm.reset(); // Optionally reset the form after submission
+          this.inventoryForm.reset();
+          this.formErrorMessage = ''; // Clear any previous error messages
         },
         error: (error) => {
           console.error('Error submitting form', error);
+          this.formErrorMessage = 'An error occurred while creating the record. Please check the form and try again.'; // Set error message
+          this.snackBar.open('Error creating record. Please try again.', 'Close', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            panelClass: ['snackbar-error']
+          });
         }
       });
     } else {
       console.log('Form not valid');
+      this.formErrorMessage = 'Please fill out all required fields correctly before submitting.';
       this.markFormGroupTouched(this.inventoryForm);
     }
   }
 
-  navigateTo(route: string): void {
-    this.router.navigate([route]);
+  // Back button logic
+  navigateBack(): void {
+    this.router.navigate(['/student-record']);  // Adjust the route as needed, e.g., to homepage or student-record
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {
