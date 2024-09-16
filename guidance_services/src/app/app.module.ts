@@ -22,6 +22,7 @@ import { StudentDashboardComponent } from './Student_Module/student-dashboard/st
 import { StudentPdsComponent } from './Student_Module/student-pds/student-pds.component';
 import { StudentAppointmentSchedulingComponent } from './Student_Module/student-appointment-scheduling/student-appointment-scheduling.component';
 import { AppointmentsComponent } from './review-appointments/review-appointments.component';
+import { StudentViewScheduleComponent } from './Student_Module/student-view-schedule/student-view-schedule.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { AppointmentsComponent } from './review-appointments/review-appointments
     StudentDashboardComponent,
     StudentPdsComponent,
     StudentAppointmentSchedulingComponent,
-    AppointmentsComponent
+    AppointmentsComponent,
+    StudentAppointmentSchedulingComponent,
+    StudentViewScheduleComponent
   ],
   imports: [
     BrowserModule,
