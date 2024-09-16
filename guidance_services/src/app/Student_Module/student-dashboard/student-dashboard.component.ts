@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./student-dashboard.component.css']
 })
 export class StudentDashboardComponent {
-
   constructor(private router: Router) {}
 
   navigateTo(route: string): void {

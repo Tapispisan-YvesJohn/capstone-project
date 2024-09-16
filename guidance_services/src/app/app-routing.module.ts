@@ -14,6 +14,7 @@ import { StudentDashboardComponent } from './Student_Module/student-dashboard/st
 import { AuthGuard } from './login/auth.guard';
 import { StudentPdsComponent } from './Student_Module/student-pds/student-pds.component';
 import { StudentAppointmentSchedulingComponent } from './Student_Module/student-appointment-scheduling/student-appointment-scheduling.component';
+import { StudentViewScheduleComponent } from './Student_Module/student-view-schedule/student-view-schedule.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -28,6 +29,8 @@ const routes: Routes = [
   { path: 'history', component: HistoryComponent, canActivate:[AuthGuard]  },
   { path: 'student-dashboard', component: StudentDashboardComponent, canActivate:[AuthGuard] },
   { path: 'student-pds', component: StudentPdsComponent, canActivate:[AuthGuard] },
+  { path: 'student-dashboard', component: StudentDashboardComponent },
+  { path: 'view-schedule', component: StudentViewScheduleComponent, canActivate:[AuthGuard] },
   { path: 'student-appointment-scheduling', component: StudentAppointmentSchedulingComponent, canActivate:[AuthGuard] },
   { path: 'view-record/:id', component: ViewRecordComponent, canActivate:[AuthGuard]  }
 ];

@@ -81,9 +81,9 @@ export class AppointmentsComponent implements OnInit {
 
   filteredAppointments(): any[] {
     if (this.currentView === 'review') {
-      return this.appointments.filter(a => !a.accepted); // Show only non-accepted appointments
+      return this.appointments.filter(a => !a.accepted); 
     } else {
-      return this.appointments.filter(a => a.accepted);  // Show only accepted appointments
+      return this.appointments.filter(a => a.accepted);  
     }
   }
 }
