@@ -32,7 +32,9 @@
 }
 
 .sidebar {
-    background-color: #800000;
+    background: linear-gradient(rgba(128, 0, 0, 0.85), rgba(128, 0, 0, 0.85)), 
+                url('../../assets/images/campus.png') no-repeat center center;
+    background-size: cover;
     width: 350px;
     height: calc(100vh - 80px);
     padding: 20px;
@@ -57,7 +59,7 @@
     padding: 15px 20px; 
     display: block;
     border-radius: 8px; 
-    background-color: #800000;
+    background-color: rgba(128, 0, 0, 0.85); 
     font-size: 18px;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -68,7 +70,7 @@
     background-color: #f8f817; 
     color: #800000; 
     transform: scale(1.05); 
-}
+}   
 
 .profile {
     text-align: center;
