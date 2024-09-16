@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { RecordsService } from '../services/records.service';  // Adjust the path as needed
+import { RecordsService } from '../services/records.service';  
 
 @Component({
   selector: 'app-create-record',
@@ -11,7 +11,7 @@ import { RecordsService } from '../services/records.service';  // Adjust the pat
 })
 export class CreateRecordComponent implements OnInit {
   inventoryForm: FormGroup;
-  formErrorMessage: string = '';  // Error message for form submission failure
+  formErrorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -78,11 +78,11 @@ export class CreateRecordComponent implements OnInit {
             panelClass: ['snackbar-success']
           });
           this.inventoryForm.reset();
-          this.formErrorMessage = ''; // Clear any previous error messages
+          this.formErrorMessage = ''; 
         },
         error: (error) => {
           console.error('Error submitting form', error);
-          this.formErrorMessage = 'An error occurred while creating the record. Please check the form and try again.'; // Set error message
+          this.formErrorMessage = 'An error occurred while creating the record. Please check the form and try again.'; 
           this.snackBar.open('Error creating record. Please try again.', 'Close', {
             duration: 3000,
             verticalPosition: 'top',
@@ -98,9 +98,8 @@ export class CreateRecordComponent implements OnInit {
     }
   }
 
-  // Back button logic
   navigateBack(): void {
-    this.router.navigate(['/student-record']);  // Adjust the route as needed, e.g., to homepage or student-record
+    this.router.navigate(['/student-record']); 
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {

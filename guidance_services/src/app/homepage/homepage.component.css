@@ -179,6 +179,7 @@
     background-color: #800000;
     color: white;
     font-weight: bold;
+    text-align: center;
 }
 
 .student-table td {
@@ -187,6 +188,7 @@
 
 .actions {
     display: flex;
+    justify-content: center;
     gap: 10px;
 }
 

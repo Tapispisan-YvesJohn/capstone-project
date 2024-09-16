@@ -87,7 +87,6 @@ export class HomepageComponent implements OnInit {
     this.router.navigate([route]);
   }
 
-  // Filter students based on selected course
   filterByCourse(): void {
     if (this.selectedCourse) {
       this.filteredStudents = this.students.filter(student => student.course === this.selectedCourse);
