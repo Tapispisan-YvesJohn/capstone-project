@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecordsService } from '../services/records.service';
 
@@ -7,10 +7,10 @@ import { RecordsService } from '../services/records.service';
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css']
 })
-export class HistoryComponent {
+export class HistoryComponent implements OnInit {
   students: any[] = [];
 
-  constructor(private recordsService: RecordsService, private router: Router) {}
+  constructor(private recordsService: RecordsService, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchDeletedRecords(); // Fetch deleted records when the component is initialized
@@ -21,10 +21,16 @@ export class HistoryComponent {
       next: (records) => {
         this.students = records.map((record: any) => {
           const personalInfo = JSON.parse(record.personal_information);
+          
+          // Format the name as Last Name, First Name M.I.
+          const middleInitial = personalInfo.middle_name ? ` ${personalInfo.middle_name.charAt(0)}.` : '';
+          const formattedName = `${personalInfo.last_name}, ${personalInfo.first_name}${middleInitial}`;
+          
           return {
             id: record.student_record_id,
-            name: `${personalInfo.first_name} ${personalInfo.last_name}`,
+            name: formattedName,
             course: personalInfo.course,
+            email: personalInfo.email
           };
         });
       },
@@ -32,10 +38,6 @@ export class HistoryComponent {
         console.error('Error fetching deleted records', error);
       }
     });
-  }
-
-  viewRecord(student: any): void {
-    this.router.navigate(['/view-record', student.id]);
   }
 
   retrieveRecord(id: number): void {

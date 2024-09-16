@@ -32,7 +32,7 @@
 }
 
 .sidebar {
-    background: linear-gradient(rgba(128, 0, 0, 0.85), rgba(128, 0, 0, 0.85)), 
+    background: linear-gradient(rgba(128, 0, 0, 0.85), rgba(128, 0, 0, 0.85)),
                 url('../../assets/images/campus.png') no-repeat center center;
     background-size: cover;
     width: 350px;
@@ -70,7 +70,7 @@
     background-color: #f8f817; 
     color: #800000; 
     transform: scale(1.05); 
-}   
+}
 
 .profile {
     text-align: center;
@@ -96,63 +96,63 @@
 .content {
     flex-grow: 1;
     padding: 20px;
-}
-
-.history-list {
+    margin-left: 50px; 
+    margin-right: 50px;
+    max-width: calc(100% - 350px); 
     display: flex;
     flex-direction: column;
 }
 
-.history-card {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.student-image {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    margin-right: 20px;
+.student-table th,
+.student-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
 }
 
-.student-info {
-    flex-grow: 1;
+.student-table th {
+    background-color: #800000;
+    color: white;
+    font-weight: bold;
+    text-align: center;
 }
 
-.student-info h3 {
-    margin: 0;
+.student-table td {
+    background-color: #f9f9f9;
 }
 
-.student-actions {
+.actions {
     display: flex;
+    justify-content: center;
     gap: 10px;
 }
 
-.view-btn,
-.retrieve-btn,
-.delete-btn {
-    padding: 10px 20px;
+.retrieve-btn {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
-.view-btn {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.retrieve-btn {
-    background-color: #007bff;
-    color: #fff;
-}
-
 .delete-btn {
+    padding: 5px 10px;
     background-color: #dc3545;
     color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.retrieve-btn:hover,
+.delete-btn:hover {
+    opacity: 0.9;
 }
