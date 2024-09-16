@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RecordsService } from '../services/records.service'; 
+import { RecordsService } from '../services/records.service';
 
 @Component({
   selector: 'app-homepage',
@@ -23,9 +23,13 @@ export class HomepageComponent implements OnInit {
           const personalInfo = record.personal_information;
 
           if (personalInfo) {
+            // Format the name as "Last Name, First Name Middle Initial."
+            const middleInitial = personalInfo.middle_name ? `${personalInfo.middle_name.charAt(0)}.` : '';
+            const formattedName = `${personalInfo.last_name}, ${personalInfo.first_name} ${middleInitial}`;
+
             return {
               id: record.id,
-              name: `${personalInfo.first_name} ${personalInfo.last_name}`,
+              name: formattedName,
               email: personalInfo.email,
               course: personalInfo.course,
             };
@@ -37,6 +41,13 @@ export class HomepageComponent implements OnInit {
               course: 'Unknown',
             };
           }
+        });
+
+        // Sort the students alphabetically by their last name (already extracted in `formattedName`).
+        this.students.sort((a, b) => {
+          const lastNameA = a.name.split(',')[0].toLowerCase();
+          const lastNameB = b.name.split(',')[0].toLowerCase();
+          return lastNameA.localeCompare(lastNameB);
         });
       },
       error: (error) => {
