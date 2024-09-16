@@ -131,57 +131,54 @@
     background-color: #a00000;
 }
 
-.student-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.student-table {
     width: 100%;
-}
-
-.student-card {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
+    border-collapse: collapse;
+    margin-top: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
 }
 
-.student-image {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    margin-right: 20px;
+.student-table th,
+.student-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
 }
 
-.student-info {
-    flex-grow: 1;
+.student-table th {
+    background-color: #800000;
+    color: white;
+    font-weight: bold;
 }
 
-.student-info h3 {
-    margin: 0;
+.student-table td {
+    background-color: #f9f9f9;
 }
 
-.student-actions {
+.actions {
     display: flex;
     gap: 10px;
-}
-
-.view-btn,
-.delete-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .view-btn {
+    padding: 5px 10px;
     background-color: #007bff;
     color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 .delete-btn {
+    padding: 5px 10px;
     background-color: #dc3545;
     color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.view-btn:hover,
+.delete-btn:hover {
+    opacity: 0.9;
 }

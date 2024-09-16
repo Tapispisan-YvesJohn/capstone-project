@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RecordsService } from '../services/records.service'; // Adjust the path as needed
+import { RecordsService } from '../services/records.service'; 
 
 @Component({
   selector: 'app-homepage',
@@ -8,12 +8,12 @@ import { RecordsService } from '../services/records.service'; // Adjust the path
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  students: any[] = []; // Initialize an empty array to store student records
+  students: any[] = [];
 
   constructor(private router: Router, private recordsService: RecordsService) { }
 
   ngOnInit(): void {
-    this.fetchStudentRecords(); // Fetch records when the component is initialized
+    this.fetchStudentRecords();
   }
 
   fetchStudentRecords(): void {
@@ -21,18 +21,20 @@ export class HomepageComponent implements OnInit {
       next: (records) => {
         this.students = records.map((record: any) => {
           const personalInfo = record.personal_information;
-  
+
           if (personalInfo) {
             return {
               id: record.id,
               name: `${personalInfo.first_name} ${personalInfo.last_name}`,
+              email: personalInfo.email,
               course: personalInfo.course,
             };
           } else {
             return {
               id: record.id,
-              name: 'Unknown', 
-              course: 'Unknown', 
+              name: 'Unknown',
+              email: 'Unknown',
+              course: 'Unknown',
             };
           }
         });
