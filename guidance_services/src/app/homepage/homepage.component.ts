@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RecordsService } from '../services/records.service'; // Adjust the path as needed
+import { RecordsService } from '../services/records.service';
 
 @Component({
   selector: 'app-homepage',
@@ -8,12 +8,18 @@ import { RecordsService } from '../services/records.service'; // Adjust the path
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  students: any[] = []; // Initialize an empty array to store student records
+  students: any[] = [];
+  filteredStudents: any[] = [];
+  selectedCourse: string = '';
+  courses: string[] = [
+    'BSECE', 'BSME', 'BSA', 'BSBA', 'BSAM', 'BSIT', 'BSENTREP', 'BSED - Mathematics', 'BSED - English',
+    'BSPSYCH', 'BSOA', 'DICT', 'DOMT'
+  ];
 
   constructor(private router: Router, private recordsService: RecordsService) { }
 
   ngOnInit(): void {
-    this.fetchStudentRecords(); // Fetch records when the component is initialized
+    this.fetchStudentRecords();
   }
 
   fetchStudentRecords(): void {
@@ -21,21 +27,36 @@ export class HomepageComponent implements OnInit {
       next: (records) => {
         this.students = records.map((record: any) => {
           const personalInfo = record.personal_information;
-  
+
           if (personalInfo) {
+            const middleInitial = personalInfo.middle_name ? `${personalInfo.middle_name.charAt(0)}.` : '';
+            const formattedName = `${personalInfo.last_name}, ${personalInfo.first_name} ${middleInitial}`;
+
             return {
               id: record.id,
-              name: `${personalInfo.first_name} ${personalInfo.last_name}`,
+              name: formattedName,
+              email: personalInfo.email,
               course: personalInfo.course,
             };
           } else {
             return {
               id: record.id,
-              name: 'Unknown', 
-              course: 'Unknown', 
+              name: 'Unknown',
+              email: 'Unknown',
+              course: 'Unknown',
             };
           }
         });
+
+        // Sort the students alphabetically by their last name
+        this.students.sort((a, b) => {
+          const lastNameA = a.name.split(',')[0].toLowerCase();
+          const lastNameB = b.name.split(',')[0].toLowerCase();
+          return lastNameA.localeCompare(lastNameB);
+        });
+
+        // Initially display all students
+        this.filteredStudents = [...this.students];
       },
       error: (error) => {
         console.error('Error fetching records', error);
@@ -48,6 +69,7 @@ export class HomepageComponent implements OnInit {
       this.recordsService.deleteRecord(id).subscribe({
         next: () => {
           this.students = this.students.filter(student => student.id !== id);
+          this.filteredStudents = this.filteredStudents.filter(student => student.id !== id);
           console.log('Record deleted successfully');
         },
         error: (error) => {
@@ -63,5 +85,13 @@ export class HomepageComponent implements OnInit {
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
+  }
+
+  filterByCourse(): void {
+    if (this.selectedCourse) {
+      this.filteredStudents = this.students.filter(student => student.course === this.selectedCourse);
+    } else {
+      this.filteredStudents = [...this.students]; // If no course selected, show all students
+    }
   }
 }

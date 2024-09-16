@@ -28,18 +28,34 @@
             </div>
         </div>
 
-        <div class="student-list">
-            <div class="student-card" *ngFor="let student of students">
-                <img src="../../assets/images/placeholder.png" alt="Student Image" class="student-image">
-                <div class="student-info">
-                    <h2>{{ student.name }}</h2>
-                    <p>{{ student.course }}</p>
-                </div>
-                <div class="student-actions">
-                    <button class="view-btn" (click)="viewRecord(student)">View</button>
-                    <button class="delete-btn" (click)="deleteRecord(student.id)">Delete</button>
-                </div>                  
-            </div>
+        <div class="course-filter">
+            <label for="course">Filter by Course:</label>
+            <select id="course" [(ngModel)]="selectedCourse" (change)="filterByCourse()">
+                <option value="">All Courses</option>
+                <option *ngFor="let course of courses">{{ course }}</option>
+            </select>
         </div>
+
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of filteredStudents">
+                    <td>{{ student.course }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td class="actions">
+                        <button class="view-btn" (click)="viewRecord(student)">View</button>
+                        <button class="delete-btn" (click)="deleteRecord(student.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

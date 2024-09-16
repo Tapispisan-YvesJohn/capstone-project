@@ -228,9 +228,15 @@
                 </div>
             </div>
 
+             <!-- Form Error Message -->
+             <div *ngIf="formErrorMessage" class="form-error-message">
+                {{ formErrorMessage }}
+            </div>
+
             <!-- Submission Button -->
             <div class="mt-4">
                 <button class="btn btn-primary" type="submit">Submit</button>
+                <button type="button" class="btn btn-secondary" (click)="navigateBack()">Back</button>
             </div>
         </form>
     </div>

@@ -28,7 +28,7 @@
 
 .container {
     display: flex;
-    margin-top: 100px; 
+    margin-top: 150px; 
 }
 
 .content {
@@ -74,8 +74,24 @@ form {
     flex-grow: 1;
 }
 
+.form-error-message {
+    color: red;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.form-section {
+    margin-bottom: 30px;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+}
+
 button {
     padding: 10px 20px;
+    margin: 5px;
     background-color: #800000;
     color: white;
     border: none;
@@ -87,7 +103,20 @@ button:hover {
     background-color: #a00000;
 }
 
+button.btn-secondary {
+    background-color: #800000;
+}
+
+button.btn-secondary:hover {
+    background-color: #a00000;
+}
+
 .snackbar-success {
     background-color: #4caf50;
-    color: white; 
+    color: white;
+}
+
+.snackbar-error {
+    background-color: #f44336;
+    color: white;
 }
