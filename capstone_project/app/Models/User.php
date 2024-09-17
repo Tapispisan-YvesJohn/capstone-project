@@ -60,4 +60,10 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Appointment::class);
     }
+
+    public function userInfo()
+    {
+        return $this->hasOne(UserInfo::class);
+    }
+
 }

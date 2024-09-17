@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecordsService } from '../services/records.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-history',
@@ -9,11 +10,26 @@ import { RecordsService } from '../services/records.service';
 })
 export class HistoryComponent implements OnInit {
   students: any[] = [];
+  userInfo: any = {};
 
-  constructor(private recordsService: RecordsService, private router: Router) { }
+  constructor(private recordsService: RecordsService, private router: Router, 
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
     this.fetchDeletedRecords(); // Fetch deleted records when the component is initialized
+    
+    const token = localStorage.getItem('token'); // Assuming token is stored in local storage
+    if (token) {
+      this.authService.getUserInfo(token).subscribe(
+        (data) => {
+          this.userInfo = data;
+        },
+        (error) => {
+          console.error('Error retrieving user info:', error);
+        }
+      );
+    }
   }
 
   fetchDeletedRecords(): void {

@@ -9,7 +9,6 @@ export interface DecodedToken {
   role: string;
 }
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

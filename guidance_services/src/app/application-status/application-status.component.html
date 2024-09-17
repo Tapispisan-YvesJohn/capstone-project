@@ -14,8 +14,14 @@
             <li><a (click)="navigateTo('application-status')">Inventory Record Application</a></li>
         </ul>
         <div class="profile">
-            <a (click)="navigateTo('profile')">PROFILE</a>
+            <div class="profile-pic">
+              <img src="../../assets/images/profile-placeholder.png" alt="Profile Picture">
+            </div>
+            <div class="profile-info">
+              <p>{{ userInfo.last_name }}, {{ userInfo.first_name }}</p>
+            </div>
         </div>
+        
     </div>
 
     <div class="content">

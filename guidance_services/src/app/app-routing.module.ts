@@ -17,8 +17,8 @@ import { StudentAppointmentSchedulingComponent } from './Student_Module/student-
 import { StudentViewScheduleComponent } from './Student_Module/student-view-schedule/student-view-schedule.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/landing', pathMatch: 'full' },
-  { path: 'landing', component: LandingComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  // { path: 'landing', component: LandingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin-rbac', component: AdminRbacComponent, canActivate:[AuthGuard]  },
   { path: 'student-record', component: HomepageComponent, canActivate:[AuthGuard]  },

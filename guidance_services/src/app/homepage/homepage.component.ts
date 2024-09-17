@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecordsService } from '../services/records.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-homepage',
@@ -9,6 +10,7 @@ import { RecordsService } from '../services/records.service';
 })
 export class HomepageComponent implements OnInit {
   students: any[] = [];
+  userInfo: any = {};
   filteredStudents: any[] = [];
   selectedCourse: string = '';
   courses: string[] = [
@@ -16,10 +18,24 @@ export class HomepageComponent implements OnInit {
     'BSPSYCH', 'BSOA', 'DICT', 'DOMT'
   ];
 
-  constructor(private router: Router, private recordsService: RecordsService) { }
+  constructor(private router: Router, private recordsService: RecordsService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.fetchStudentRecords();
+
+    const token = localStorage.getItem('token'); // Assuming token is stored in local storage
+    if (token) {
+      this.authService.getUserInfo(token).subscribe(
+        (data) => {
+          this.userInfo = data;
+        },
+        (error) => {
+          console.error('Error retrieving user info:', error);
+        }
+      );
+    }
   }
 
   fetchStudentRecords(): void {

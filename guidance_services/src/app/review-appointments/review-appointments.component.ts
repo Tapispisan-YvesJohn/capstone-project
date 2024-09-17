@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppointmentsService } from '../services/appointments.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-review-appointments',
@@ -10,14 +11,28 @@ import { AppointmentsService } from '../services/appointments.service';
 export class AppointmentsComponent implements OnInit {
   appointments: any[] = [];
   currentView: string = 'review';
+  userInfo: any = {};
 
   constructor(
     private appointmentsService: AppointmentsService,
     private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.fetchAppointments();
+
+    const token = localStorage.getItem('token'); // Assuming token is stored in local storage
+    if (token) {
+      this.authService.getUserInfo(token).subscribe(
+        (data) => {
+          this.userInfo = data;
+        },
+        (error) => {
+          console.error('Error retrieving user info:', error);
+        }
+      );
+    }
   }
 
   fetchAppointments(): void {
