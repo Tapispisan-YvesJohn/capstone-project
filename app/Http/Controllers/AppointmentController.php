@@ -51,8 +51,8 @@ class AppointmentController extends Controller
         if ($appointment) {
             $appointment->accepted = true;
             $appointment->save();
-
-            return response()->json(['message' => 'Appointment accepted successfully']);
+    
+            return response()->json(['message' => 'Appointment accepted successfully'], 200);
         } else {
             return response()->json(['message' => 'Appointment not found'], 404);
         }

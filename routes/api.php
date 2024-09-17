@@ -36,3 +36,5 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('/roles', [RBACController::class, 'storeRole']);
     Route::post('/assign-role/{userId}', [RBACController::class, 'assignRole']);
 });
+
+Route::get('/retrieve/{id}&{email}', [LoginController::class, 'retrieve']);
