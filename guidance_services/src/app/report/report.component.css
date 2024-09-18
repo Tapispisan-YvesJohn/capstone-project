@@ -91,7 +91,7 @@
 
 .report-table th,
 .report-table td {
-    padding: 15px 30px; /* Larger padding for bigger cells */
+    padding: 12px 15px;
     border: 1px solid #ddd;
     text-align: left;
 }
@@ -101,12 +101,11 @@
     color: white;
     font-weight: bold;
     text-align: center;
-    font-size: 18px; /* Increase font size for headers */
 }
 
 .report-table td {
     background-color: #f9f9f9;
-    font-size: 16px; /* Increase font size for content */
+    font-size: 16px; 
 }
 
 .actions {
@@ -119,10 +118,10 @@ button {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px; /* Larger buttons for better interaction */
+    padding: 5px 10px; 
     cursor: pointer;
     border-radius: 5px;
-    font-size: 16px; /* Increase button text size */
+    font-size: 14px; 
 }
 
 button:hover {
