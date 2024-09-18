@@ -1,37 +1,88 @@
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .input-bordered {
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    border-radius: 4px;
-  }
-  
-  .btn-primary {
-    background-color: #4CAF50;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .btn-primary:hover {
-    background-color: #45a049;
-  }
-  
-  .grid {
-    display: grid;
-    gap: 1rem;
-  }
-  
-  .grid-cols-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .grid-cols-4 {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  
+.form-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+h1, h2, h3, h4 {
+  margin: 5px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  margin-right: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.checkbox-group label {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.reasons, .personal-information, .educational-background, .home-family-background, .health, .test-results, .significant-notes {
+  margin-bottom: 30px;
+}
+
+h2, h3 {
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.btn-primary {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}

@@ -20,51 +20,57 @@ export class IndividualInventoryRecordFormComponent implements OnInit {
       middleName: ['', Validators.required],
       civilStatus: ['', Validators.required],
       religion: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      average: ['', Validators.required],
       course: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       dob: ['', Validators.required],
       placeOfBirth: ['', Validators.required],
       mobileNo: ['', Validators.required],
-      address: ['', Validators.required],
-      emergencyContact: ['', Validators.required],
+      height: ['', Validators.required],
+      weight: ['', Validators.required],
+      gender: ['', Validators.required],
+      provincialAddress: ['', Validators.required],
+      cityAddress: ['', Validators.required],
 
       // Educational Background
       elementarySchool: ['', Validators.required],
-      juniorHighSchool: ['', Validators.required],
-      seniorHighSchool: ['', Validators.required],
+      elementaryLocation: ['', Validators.required],
+      elementaryType: ['', Validators.required],
+      elementaryYear: ['', Validators.required],
+      elementaryAwards: [''],
+      juniorSchool: ['', Validators.required],
+      juniorLocation: ['', Validators.required],
+      juniorType: ['', Validators.required],
+      juniorYear: ['', Validators.required],
+      juniorAwards: [''],
+      seniorSchool: ['', Validators.required],
+      seniorLocation: ['', Validators.required],
+      seniorType: ['', Validators.required],
+      seniorYear: ['', Validators.required],
+      seniorAwards: [''],
 
-      // Family Background
-      fatherName: ['', Validators.required],
-      fatherAge: ['', Validators.required],
-      fatherOccupation: ['', Validators.required],
-      motherName: ['', Validators.required],
-      motherAge: ['', Validators.required],
-      motherOccupation: ['', Validators.required],
-
-      // Health
-      vision: ['', Validators.required],
-      hearing: ['', Validators.required],
-      generalHealth: ['', Validators.required],
-
-      // Test Results
-      testDate: ['', Validators.required],
-      testAdministered: ['', Validators.required],
-      testResults: ['', Validators.required],
-      testDescription: ['', Validators.required],
-
-      // Significant Notes
-      incidentDate: ['', Validators.required],
-      incident: ['', Validators.required],
-      remarks: ['', Validators.required],
+      // Reasons for Enrollment
+      lowerTuition: [false],
+      safety: [false],
+      space: [false],
+      nearness: [false],
+      transportation: [false],
+      qualityEducation: [false],
+      adequateFacilities: [false],
+      pupEmployee: [false],
+      facultyRelations: [false],
+      scholarship: [false],
+      others: [false],
+      otherReasons: ['']
     });
   }
 
   onSubmit(): void {
     if (this.inventoryForm.valid) {
       console.log('Form Submitted', this.inventoryForm.value);
-      // Add form submission logic here
+      // Handle form submission here
     } else {
-      console.log('Form not valid');
+      console.log('Form is invalid');
     }
   }
 }

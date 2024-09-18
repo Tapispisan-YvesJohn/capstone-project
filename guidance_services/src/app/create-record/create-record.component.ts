@@ -22,6 +22,7 @@ export class CreateRecordComponent implements OnInit {
 
   ngOnInit(): void {
     this.inventoryForm = this.fb.group({
+      
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       middleName: ['', Validators.required],
@@ -35,10 +36,36 @@ export class CreateRecordComponent implements OnInit {
       address: ['', Validators.required],
       emergencyContact: ['', Validators.required],
 
+      // Reasons for Enrollment
+      lowerTuition: [false],
+      safety: [false],
+      space: [false],
+      nearness: [false],
+      transportation: [false],
+      qualityEducation: [false],
+      adequateFacilities: [false],
+      pupEmployee: [false],
+      facultyRelations: [false],
+      scholarship: [false],
+      others: [false],
+      otherReasons: [''],
+      
       // Educational Background
       elementarySchool: ['', Validators.required],
-      juniorHighSchool: ['', Validators.required],
-      seniorHighSchool: ['', Validators.required],
+      elementaryLocation: ['', Validators.required],
+      elementaryType: ['', Validators.required],
+      elementaryYear: ['', Validators.required],
+      elementaryAwards: [''],
+      juniorSchool: ['', Validators.required],
+      juniorLocation: ['', Validators.required],
+      juniorType: ['', Validators.required],
+      juniorYear: ['', Validators.required],
+      juniorAwards: [''],
+      seniorSchool: ['', Validators.required],
+      seniorLocation: ['', Validators.required],
+      seniorType: ['', Validators.required],
+      seniorYear: ['', Validators.required],
+      seniorAwards: [''],
 
       // Family Background
       fatherName: ['', Validators.required],
@@ -47,22 +74,6 @@ export class CreateRecordComponent implements OnInit {
       motherName: ['', Validators.required],
       motherAge: ['', [Validators.required, Validators.min(18), Validators.max(120)]],
       motherOccupation: ['', Validators.required],
-
-      // Health
-      vision: ['', Validators.required],
-      hearing: ['', Validators.required],
-      generalHealth: ['', Validators.required],
-
-      // Test Results
-      testDate: ['', Validators.required],
-      testAdministered: ['', Validators.required],
-      testResults: ['', Validators.required],
-      testDescription: ['', Validators.required],
-
-      // Significant Notes
-      incidentDate: ['', Validators.required],
-      incident: ['', Validators.required],
-      remarks: ['', Validators.required],
     });
   }
 

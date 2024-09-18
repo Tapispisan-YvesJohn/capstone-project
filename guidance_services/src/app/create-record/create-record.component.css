@@ -26,90 +26,99 @@
     color: #800000;
 }
 
-.container {
-    display: flex;
+.header + .form-container {
     margin-top: 150px; 
 }
 
-.content {
-    flex-grow: 1;
+.form-container {
+    max-width: 1200px;
+    margin: 40px auto; 
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
     padding: 20px;
-    margin-left: 200px; 
-    margin-right: 100px;
-    max-width: calc(100% - 400px); 
-}
-
-h2 {
-    margin-top: 0;
-}
-
-form {
-    background-color: #f9f9f9; 
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%;
-    margin: auto;
-}
-
-.form-section {
-    margin-bottom: 30px;
-}
-
-.form-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.form-row label {
-    min-width: 150px;
-}
-
-.form-row input,
-.form-row select {
-    padding: 10px;
-    margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    flex-grow: 1;
+    border-radius: 10px;
+    background-color: #fafafa;
 }
-
-.form-error-message {
-    color: red;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.form-section {
+  
+  .form-header {
+    text-align: center;
+    margin-top: 50px;
     margin-bottom: 30px;
-}
-
-.button-row {
-    display: flex;
-    gap: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 5px;
+  }
+  
+  .logo {
+    width: 80px;
+    margin-bottom: 10px;
+  }
+  
+  h1, h2, h3, h4 {
+    margin: 5px 0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  input[type="checkbox"], input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .checkbox-group label {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .reasons, .personal-information, .educational-background, .home-family-background, .health, .test-results, .significant-notes {
+    margin-bottom: 30px;
+  }
+  
+  h2, h3 {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .btn-primary {
     background-color: #800000;
     color: white;
+    padding: 0.5rem 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #a00000;
-}
-
-button.btn-secondary {
-    background-color: #800000;
-}
-
-button.btn-secondary:hover {
-    background-color: #a00000;
-}
+  }
+  
+  .btn-primary:hover {
+    background-color:#a00000;
+  }
 
 .snackbar-success {
     background-color: #4caf50;
