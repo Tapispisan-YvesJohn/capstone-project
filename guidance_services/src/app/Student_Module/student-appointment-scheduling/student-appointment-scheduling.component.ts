@@ -9,9 +9,8 @@ import { AppointmentsService } from '../../services/appointments.service';
 })
 export class StudentAppointmentSchedulingComponent implements OnInit {
   appointmentForm: FormGroup;
-  minDate: string;
-  
-  // Define time slots in 24-hour format for morning (AM) and afternoon (PM)
+  minDate: Date; // Update to use Date type
+
   morningTimes: { display: string, value: string }[] = [
     { display: "8:00 AM - 9:00 AM", value: "08:00" },
     { display: "9:00 AM - 10:00 AM", value: "09:00" },
@@ -33,37 +32,34 @@ export class StudentAppointmentSchedulingComponent implements OnInit {
 
   ngOnInit(): void {
     const today = new Date();
-    this.minDate = this.formatDate(today);
+    this.minDate = today; // Set minDate to today's date
 
-    // Initialize the appointment form
+    // Initialize the form
     this.appointmentForm = this.fb.group({
-      appointment_date: ['', Validators.required],
-      appointment_time: ['', Validators.required],
+      appointment_date: [null, Validators.required], // Date field
+      appointment_time: ['', Validators.required], // Time field
       reason: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
 
-  // Handle changes to the selected date
-  onDateChange(event: any): void {
-    const selectedDate = new Date(event.target.value);
-    const today = new Date();
-    if (selectedDate < today) {
-      this.appointmentForm.controls['appointment_date'].setErrors({ pastDate: true });
-    }
-  }
-
-  // Format the date to yyyy-mm-dd
+  // Format the date as YYYY-MM-DD before submitting the form
   formatDate(date: Date): string {
     const year = date.getFullYear();
-    const month = ('0' + (date.getMonth() + 1)).slice(-2);
-    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2); // Add leading 0 to month if necessary
+    const day = ('0' + date.getDate()).slice(-2); // Add leading 0 to day if necessary
     return `${year}-${month}-${day}`;
   }
 
-  // Handle form submission
   onSubmit(): void {
     if (this.appointmentForm.valid) {
-      this.appointmentService.scheduleAppointment(this.appointmentForm.value)
+      // Format the appointment date before sending to the backend
+      const formattedDate = this.formatDate(new Date(this.appointmentForm.value.appointment_date));
+      const appointmentData = {
+        ...this.appointmentForm.value,
+        appointment_date: formattedDate
+      };
+
+      this.appointmentService.scheduleAppointment(appointmentData)
         .subscribe(response => {
           console.log('Appointment scheduled:', response);
         }, error => {

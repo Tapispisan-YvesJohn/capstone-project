@@ -16,8 +16,12 @@
         <div class="form-section">
             <label for="appointmentDate">Date</label>
             <div class="calendar-container">
-                <label for="appointmentDate">Select a Date:</label>
-                <input id="appointmentDate" type="date" formControlName="appointment_date" (change)="onDateChange($event)" [min]="minDate" />
+                <mat-form-field appearance="fill">
+                  <mat-label>Select a Date</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="appointment_date">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker [startAt]="minDate"></mat-datepicker>
+                </mat-form-field>
             </div>
         </div>
     

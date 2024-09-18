@@ -3,13 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'; 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Angular Material Modules
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { AccessControlModule } from './access-control/access-control.module';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { CreateRecordComponent } from './create-record/create-record.component';
@@ -50,10 +56,16 @@ import { StudentViewScheduleComponent } from './Student_Module/student-view-sche
     RouterModule,
     AccessControlModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, 
+    MatDatepickerModule,     
+    MatNativeDateModule,     
+    MatFormFieldModule,    
+    MatInputModule           
   ],
   providers: [
-    provideAnimationsAsync()
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   bootstrap: [AppComponent]
 })
