@@ -10,6 +10,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,7 @@ import { StudentPdsComponent } from './Student_Module/student-pds/student-pds.co
 import { StudentAppointmentSchedulingComponent } from './Student_Module/student-appointment-scheduling/student-appointment-scheduling.component';
 import { AppointmentsComponent } from './review-appointments/review-appointments.component';
 import { StudentViewScheduleComponent } from './Student_Module/student-view-schedule/student-view-schedule.component';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { StudentViewScheduleComponent } from './Student_Module/student-view-sche
     StudentAppointmentSchedulingComponent,
     AppointmentsComponent,
     StudentAppointmentSchedulingComponent,
-    StudentViewScheduleComponent
+    StudentViewScheduleComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import { StudentViewScheduleComponent } from './Student_Module/student-view-sche
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule, 
+    MatSnackBarModule,
     MatDatepickerModule,     
     MatNativeDateModule,     
     MatFormFieldModule,    

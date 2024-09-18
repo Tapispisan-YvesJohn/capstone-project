@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar'; // Import Snackbar
 import { AppointmentsService } from '../../services/appointments.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class StudentAppointmentSchedulingComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,  
-    private appointmentService: AppointmentsService
+    private appointmentService: AppointmentsService,
+    private snackBar: MatSnackBar  // Inject MatSnackBar service
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +52,16 @@ export class StudentAppointmentSchedulingComponent implements OnInit {
     return `${year}-${month}-${day}`;
   }
 
+  // Function to show Snackbar notifications
+  openSnackBar(message: string, action: string, className: string): void {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+      panelClass: [className],
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
+  }
+
   onSubmit(): void {
     if (this.appointmentForm.valid) {
       // Format the appointment date before sending to the backend
@@ -61,8 +73,12 @@ export class StudentAppointmentSchedulingComponent implements OnInit {
 
       this.appointmentService.scheduleAppointment(appointmentData)
         .subscribe(response => {
-          console.log('Appointment scheduled:', response);
+          // On success, show success snackbar and reset the form
+          this.openSnackBar('Appointment scheduled successfully!', 'Close', 'success-snackbar');
+          this.appointmentForm.reset();  // Clear the form fields
         }, error => {
+          // On error, show error snackbar
+          this.openSnackBar('Error scheduling appointment.', 'Close', 'error-snackbar');
           console.error('Error scheduling appointment:', error);
         });
     } else {

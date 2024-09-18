@@ -9,6 +9,7 @@ import { AppointmentsComponent } from './review-appointments/review-appointments
 import { ReviewApplicantsComponent } from './review-applicants/review-applicants.component';
 import { ApplicationStatusComponent } from './application-status/application-status.component';
 import { HistoryComponent } from './history/history.component';
+import { ReportComponent } from './report/report.component';
 import { ViewRecordComponent } from './view-record/view-record.component';
 import { StudentDashboardComponent } from './Student_Module/student-dashboard/student-dashboard.component';
 import { AuthGuard } from './login/auth.guard';
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'create-record', component: CreateRecordComponent, canActivate:[AuthGuard]  },
   { path: 'review-applicants', component: ReviewApplicantsComponent, canActivate:[AuthGuard]  },
   { path: 'appointments', component: AppointmentsComponent, canActivate:[AuthGuard] },
-  { path: 'application-status', component: ApplicationStatusComponent, canActivate:[AuthGuard]  },
+  { path: 'report', component: ReportComponent },
+  { path: 'application-status', component: ApplicationStatusComponent, canActivate:[AuthGuard] },
   { path: 'history', component: HistoryComponent, canActivate:[AuthGuard]  },
   { path: 'student-dashboard', component: StudentDashboardComponent, canActivate:[AuthGuard] },
   { path: 'student-pds', component: StudentPdsComponent, canActivate:[AuthGuard] },
