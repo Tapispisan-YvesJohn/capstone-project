@@ -1,192 +1,325 @@
-<div class="container mx-auto p-4">
-    <h2 class="text-2xl font-bold mb-4">Individual Inventory Record Form</h2>
-    
-    <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
-      <!-- Personal Information Section -->
-      <h3 class="text-xl font-semibold">Personal Information</h3>
-  
-      <div class="grid grid-cols-3 gap-4">
-        <div>
-          <label for="lastName">Last Name</label>
-          <input id="lastName" formControlName="lastName" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="firstName">First Name</label>
-          <input id="firstName" formControlName="firstName" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="middleName">Middle Name</label>
-          <input id="middleName" formControlName="middleName" class="input input-bordered w-full" />
-        </div>
-      </div>
-  
-      <div class="grid grid-cols-3 gap-4">
-        <div>
-          <label for="civilStatus">Civil Status</label>
-          <input id="civilStatus" formControlName="civilStatus" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="religion">Religion</label>
-          <input id="religion" formControlName="religion" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input id="email" formControlName="email" class="input input-bordered w-full" />
-        </div>
-      </div>
-  
-      <div class="grid grid-cols-3 gap-4">
-        <div>
-          <label for="course">Course</label>
-          <input id="course" formControlName="course" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="dob">Date of Birth</label>
-          <input id="dob" type="date" formControlName="dob" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="placeOfBirth">Place of Birth</label>
-          <input id="placeOfBirth" formControlName="placeOfBirth" class="input input-bordered w-full" />
-        </div>
-      </div>
-  
-      <div class="grid grid-cols-3 gap-4">
-        <div>
-          <label for="mobileNo">Mobile No.</label>
-          <input id="mobileNo" formControlName="mobileNo" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="address">Address</label>
-          <input id="address" formControlName="address" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="emergencyContact">Emergency Contact Name</label>
-          <input id="emergencyContact" formControlName="emergencyContact" class="input input-bordered w-full" />
-        </div>
-      </div>
-  
-      <!-- Educational Background Section -->
-      <h3 class="text-xl font-semibold mt-6">Educational Background</h3>
-  
-      <div class="grid grid-cols-3 gap-4">
-        <div>
-          <label for="elementarySchool">Elementary School</label>
-          <input id="elementarySchool" formControlName="elementarySchool" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="juniorHighSchool">Junior High School</label>
-          <input id="juniorHighSchool" formControlName="juniorHighSchool" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="seniorHighSchool">Senior High School</label>
-          <input id="seniorHighSchool" formControlName="seniorHighSchool" class="input input-bordered w-full" />
-        </div>
-      </div>
-  
-      <!-- Family Background Section -->
-      <h3 class="text-xl font-semibold mt-6">Family Background</h3>
-  
-      <div class="grid grid-cols-3 gap-4">
-        <div>
-          <label for="fatherName">Father's Name</label>
-          <input id="fatherName" formControlName="fatherName" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="fatherAge">Father's Age</label>
-          <input id="fatherAge" formControlName="fatherAge" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="fatherOccupation">Father's Occupation</label>
-          <input id="fatherOccupation" formControlName="fatherOccupation" class="input input-bordered w-full" />
-        </div>
-      </div>
-  
-      <div class="grid grid-cols-3 gap-4">
-        <div>
-          <label for="motherName">Mother's Name</label>
-          <input id="motherName" formControlName="motherName" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="motherAge">Mother's Age</label>
-          <input id="motherAge" formControlName="motherAge" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="motherOccupation">Mother's Occupation</label>
-          <input id="motherOccupation" formControlName="motherOccupation" class="input input-bordered w-full" />
-        </div>
-      </div>
-  
-      <!-- Health Section -->
-      <h3 class="text-xl font-semibold mt-6">Health</h3>
-  
-      <div class="grid grid-cols-3 gap-4">
-        <div>
-          <label for="vision">Vision</label>
-          <select id="vision" formControlName="vision" class="input input-bordered w-full">
-            <option value="No Problem">No Problem</option>
-            <option value="Problem">Problem</option>
-          </select>
-        </div>
-        <div>
-          <label for="hearing">Hearing</label>
-          <select id="hearing" formControlName="hearing" class="input input-bordered w-full">
-            <option value="No Problem">No Problem</option>
-            <option value="Problem">Problem</option>
-          </select>
-        </div>
-        <div>
-          <label for="generalHealth">General Health</label>
-          <select id="generalHealth" formControlName="generalHealth" class="input input-bordered w-full">
-            <option value="No Problem">No Problem</option>
-            <option value="Problem">Problem</option>
-          </select>
-        </div>
-      </div>
-  
-      <!-- Test Results Section -->
-      <h3 class="text-xl font-semibold mt-6">Test Results</h3>
-  
-      <div class="grid grid-cols-4 gap-4">
-        <div>
-          <label for="testDate">Date</label>
-          <input id="testDate" type="date" formControlName="testDate" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="testAdministered">Test Administered</label>
-          <input id="testAdministered" formControlName="testAdministered" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="testResults">Test Results (RS)</label>
-          <input id="testResults" formControlName="testResults" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="testDescription">Description</label>
-          <input id="testDescription" formControlName="testDescription" class="input input-bordered w-full" />
-        </div>
-      </div>
-  
-      <!-- Significant Notes Section -->
-      <h3 class="text-xl font-semibold mt-6">Significant Notes (For Guidance Counselors Only)</h3>
-  
-      <div class="grid grid-cols-3 gap-4">
-        <div>
-          <label for="incidentDate">Date</label>
-          <input id="incidentDate" type="date" formControlName="incidentDate" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="incident">Incident</label>
-          <input id="incident" formControlName="incident" class="input input-bordered w-full" />
-        </div>
-        <div>
-          <label for="remarks">Remarks</label>
-          <input id="remarks" formControlName="remarks" class="input input-bordered w-full" />
-        </div>
-      </div>
-  
-      <!-- Submission Button -->
-      <div class="mt-4">
-        <button class="btn btn-primary" type="submit">Submit</button>
-      </div>
-    </form>
-  </div>
-  
+<div class="form-container">
+  <header class="form-header">
+    <img src="logo.png" alt="PUP Logo" class="logo">
+    <h4>INDIVIDUAL INVENTORY RECORD FORM</h4>
+  </header>
+
+<form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
+  <section class="reasons">
+    <h2>Your reason/s for enrolling in this University:</h2>
+    <div class="checkbox-group">
+      <label><input type="checkbox" formControlName="reasons" value="lowerTuition"> Lower tuition fee</label>
+      <label><input type="checkbox" formControlName="reasons" value="safety"> Safety of the place</label>
+      <label><input type="checkbox" formControlName="reasons" value="space"> Spacious Campus</label>
+      <label><input type="checkbox" formControlName="reasons" value="nearness"> Nearness of home to school</label>
+      <label><input type="checkbox" formControlName="reasons" value="transportation"> Accessible to transportation</label>
+      <label><input type="checkbox" formControlName="reasons" value="qualityEducation"> Better quality of education</label>
+      <label><input type="checkbox" formControlName="reasons" value="adequate"> Adequate School Facilities</label>
+      <label><input type="checkbox" formControlName="reasons" value="son"> Son / Daughter of PUP Employee</label>
+      <label><input type="checkbox" formControlName="reasons" value="close"> Closer Student-Faculty Relations</label>
+      <label><input type="checkbox" formControlName="reasons" value="scholarship"> Expecting Scholarship Offer</label>
+      <label><input type="checkbox" formControlName="reasons" value="others"> Others: <input type="text" name="otherReasons" placeholder="Please specify"></label>
+    </div>
+  </section>
+
+  <section class="personal-information">
+    <h2>I. Personal Information</h2>
+    <table>
+      <tr>
+        <td>Last Name:</td>
+        <td><input type="text" formControlName="lastName" placeholder="e.g., Doe"></td>
+        <td>First Name:</td>
+        <td><input type="text" formControlName="firstName" placeholder="e.g., John"></td>
+        <td>Middle Name:</td>
+        <td><input type="text" formControlName="middleName" placeholder="e.g., A."></td>
+      </tr>
+      <tr>
+        <td>Civil Status:</td>
+        <td><input type="text" formControlName="civilStatus" placeholder="e.g., Single"></td>
+        <td>Religion:</td>
+        <td><input type="text" formControlName="religion" placeholder="e.g., Catholic"></td>
+        <td>High School General Average:</td>
+        <td><input type="number" formControlName="average" placeholder="e.g., 85" step="0.01"></td>
+      </tr>
+      <tr>
+        <td>Course:</td>
+        <td><input type="text" formControlName="course" placeholder="e.g., BSIT"></td>
+        <td>Email Address:</td>
+        <td colspan="3"><input type="email" formControlName="email" placeholder="e.g., example@domain.com"></td>
+      </tr>
+      <tr>
+        <td>Date of Birth:</td>
+        <td><input type="date" formControlName="birthDate"></td>
+        <td>Place of Birth:</td>
+        <td><input type="text" formControlName="birthPlace" placeholder="e.g., Manila"></td>
+        <td>Mobile No.:</td>
+        <td><input type="tel" formControlName="mobileNo" placeholder="e.g., 09123456789"></td>
+      </tr>
+      <tr>
+        <td>Height (ft.):</td>
+        <td><input type="number" formControlName="height" step="0.01" placeholder="e.g., 5.8"></td>
+        <td>Weight (kg.):</td>
+        <td><input type="number" formControlName="weight" step="0.01" placeholder="e.g., 70"></td>
+        <td>Gender:</td>
+        <td>
+          <label><input type="radio" formControlName="gender" value="Male"> Male</label>
+          <label><input type="radio" formControlName="gender" value="Female"> Female</label>
+          <label><input type="radio" formControlName="gender" value="Others"> Others</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Complete Provincial Address:</td>
+        <td colspan="5"><input type="text" formControlName="provincialAddress" placeholder="e.g., Barangay, Municipality, Province"></td>
+      </tr>
+      <tr>
+        <td>Complete Residential or City Address:</td>
+        <td colspan="5"><input type="text" formControlName="cityAddress" placeholder="e.g., House No., Street, City"></td>
+      </tr>
+      <tr>
+        <td>If employed, the name and address of your employer:</td>
+        <td colspan="2"><input type="text" formControlName="employer" placeholder="e.g., Company Name, Address"></td>
+        <td colspan="2">Complete name of the person to be contacted in case of emergency:</td>
+        <td><input type="text" formControlName="emergencyContact" placeholder="e.g., Jane Doe"></td>
+      </tr>
+      <tr>
+        <td>Relationship:</td>
+        <td><input type="text" formControlName="relationship" placeholder="e.g., Mother"></td>
+        <td>Telephone No.:</td>
+        <td><input type="tel" formControlName="emergencyPhone" placeholder="e.g., 09123456789"></td>
+        <td>Email Address:</td>
+        <td><input type="email" formControlName="emergencyEmail" placeholder="e.g., example@domain.com"></td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="educational-background">
+    <h2>II. Educational Background</h2>
+    <table>
+      <tr>
+        <th>Level</th>
+        <th>Name of School</th>
+        <th>Location/Address</th>
+        <th>Public/Private</th>
+        <th>Year Graduated</th>
+        <th>Awards Received</th>
+      </tr>
+      <tr>
+        <td>Elementary</td>
+        <td><input type="text" formControlName="elementarySchool" placeholder="e.g., PUP Elementary School"></td>
+        <td><input type="text" formControlName="elementaryLocation" placeholder="e.g., Manila"></td>
+        <td><input type="text" formControlName="elementaryType" placeholder="e.g., Public"></td>
+        <td><input type="text" formControlName="elementaryYear" placeholder="e.g., 2010"></td>
+        <td><input type="text" formControlName="elementaryAwards" placeholder="e.g., Best in Math"></td>
+      </tr>
+      <tr>
+        <td>Junior HS</td>
+        <td><input type="text" formControlName="juniorSchool" placeholder="e.g., PUP Junior High"></td>
+        <td><input type="text" formControlName="juniorLocation" placeholder="e.g., Manila"></td>
+        <td><input type="text" formControlName="juniorType" placeholder="e.g., Public"></td>
+        <td><input type="text" formControlName="juniorYear" placeholder="e.g., 2014"></td>
+        <td><input type="text" formControlName="juniorAwards" placeholder="e.g., Best in Science"></td>
+      </tr>
+      <tr>
+        <td>Senior HS</td>
+        <td><input type="text" formControlName="seniorSchool" placeholder="e.g., PUP Senior High"></td>
+        <td><input type="text" formControlName="seniorLocation" placeholder="e.g., Manila"></td>
+        <td><input type="text" formControlName="seniorType" placeholder="e.g., Public"></td>
+        <td><input type="text" formControlName="seniorYear" placeholder="e.g., 2018"></td>
+        <td><input type="text" formControlName="seniorAwards" placeholder="e.g., Best in English"></td>
+      </tr>
+      <tr>
+        <td>Others</td>
+        <td colspan="5"><input type="text" formControlName="otherSchool" placeholder="e.g., Name of School"></td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="home-family-background">
+    <h2>III. Home and Family Background</h2>
+    <table>
+      <tr>
+        <td>Name of Father:</td>
+        <td><input type="text" formControlName="fatherName" placeholder="e.g., John Doe"></td>
+        <td>Age:</td>
+        <td><input type="number" formControlName="fatherAge" placeholder="e.g., 45"></td>
+        <td>Name of Mother:</td>
+        <td><input type="text" formControlName="motherName" placeholder="e.g., Jane Doe"></td>
+        <td>Age:</td>
+        <td><input type="number" formControlName="motherAge" placeholder="e.g., 40"></td>
+      </tr>
+      <tr>
+        <td>Contact Number/s:</td>
+        <td><input type="tel" formControlName="fatherContact" placeholder="e.g., 09123456789"></td>
+        <td>Educational Attainment:</td>
+        <td><input type="text" formControlName="fatherEducation" placeholder="e.g., College Graduate"></td>
+        <td>Contact Number/s:</td>
+        <td><input type="tel" formControlName="motherContact" placeholder="e.g., 09123456789"></td>
+        <td>Educational Attainment:</td>
+        <td><input type="text" formControlName="motherEducation" placeholder="e.g., High School Graduate"></td>
+      </tr>
+      <tr>
+        <td>Occupation:</td>
+        <td><input type="text" formControlName="fatherOccupation" placeholder="e.g., Engineer"></td>
+        <td>Company:</td>
+        <td><input type="text" formControlName="fatherCompany" placeholder="e.g., ABC Corp."></td>
+        <td>Occupation:</td>
+        <td><input type="text" formControlName="motherOccupation" placeholder="e.g., Teacher"></td>
+        <td>Company:</td>
+        <td><input type="text" formControlName="motherCompany" placeholder="e.g., XYZ School"></td>
+      </tr>
+      <tr>
+        <td>Parents' Relationship Status:</td>
+        <td colspan="3">
+          <label><input type="radio" formControlName="relationshipStatus" value="Married and Living Together"> Married & Living Together</label>
+          <label><input type="radio" formControlName="relationshipStatus" value="Married but separated/annulled"> Married but separated/annulled</label>
+          <label><input type="radio" formControlName="relationshipStatus" value="Father/Mother working abroad"> Father/Mother working abroad</label>
+          <label><input type="radio" formControlName="relationshipStatus" value="Deceased"> Deceased, please specify: <input type="text" name="deceased" placeholder="Specify details"></label>
+        </td>
+      </tr>
+      <tr>
+        <td>Your Guardian's Name:</td>
+        <td colspan="3"><input type="text" formControlName="guardianName" placeholder="e.g., Mary Doe"></td>
+        <td>Address:</td>
+        <td colspan="3"><input type="text" formControlName="guardianAddress" placeholder="e.g., Address of Guardian"></td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td>Parents' Combined Total Monthly Income:</td>
+        <td colspan="3">
+          <label><input type="radio" formControlName="monthlyIncome" value="Below P5,000"> Below P5,000</label>
+          <label><input type="radio" formControlName="monthlyIncome" value="P5,001 - P10,000"> P5,001 - P10,000</label>
+          <label><input type="radio" formControlName="monthlyIncome" value="P10,001 - P15,000"> P10,001 - P15,000</label>
+          <label><input type="radio" formControlName="monthlyIncome" value="P15,001 - P20,000"> P15,001 - P20,000</label>
+          <label><input type="radio" formControlName="monthlyIncome" value="P20,001 - P25,000"> P20,001 - P25,000</label>
+          <label><input type="radio" formControlName="monthlyIncome" value="P25,001 - P30,000"> P25,001 - P30,000</label>
+          <label><input type="radio" formControlName="monthlyIncome" value="P30,001 - P35,000"> P30,001 - P35,000</label>
+          <label><input type="radio" formControlName="monthlyIncome" value="P35,001 - P40,000"> P35,001 - P40,000</label>
+          <label><input type="radio" formControlName="monthlyIncome" value="P40,001 - P45,000"> P40,001 - P45,000</label>
+          <label><input type="radio" formControlName="monthlyIncome" value="P45,001 - P50,000"> P45,001 - P50,000</label>
+          <label><input type="radio" formControlName="monthlyIncome" value="Above P50,000"> Above P50,000</label>
+          <label><input type="radio" formControlName="monthlyIncome" value="Others"> Others, please specify: <input type="text" name="otherIncome" placeholder="Specify amount"></label>
+        </td>
+      </tr>
+      <tr>
+        <td>Siblings (Including you):</td>
+        <td>Total Number:</td>
+        <td colspan="2"><input type="number" formControlName="siblingsTotal" placeholder="e.g., 2"></td>
+      </tr>
+      <tr>
+        <td>Brothers:</td>
+        <td><input type="number" formControlName="brothers" placeholder="e.g., 1"></td>
+        <td>Sisters:</td>
+        <td><input type="number" formControlName="sisters" placeholder="e.g., 1"></td>
+      </tr>
+      <tr>
+        <td>How many are gainfully employed?</td>
+        <td><input type="number" formControlName="employed" placeholder="e.g., 1"></td>
+        <td>How many support your studies?</td>
+        <td><input type="number" formControlName="supportStudies" placeholder="e.g., 1"></td>
+        <td>How many support your immediate family?</td>
+        <td><input type="number" formControlName="supportFamily" placeholder="e.g., 1"></td>
+      </tr>
+      <tr>
+        <td>Please indicate other sources of financial support to your schooling:</td>
+        <td colspan="5"><input type="text" formControlName="financialSupport" placeholder="e.g., Scholarship, Loan"></td>
+      </tr>
+      <tr>
+        <td>Your weekly school allowance (Please specify the amount):</td>
+        <td colspan="5"><input type="number" formControlName="allowance" placeholder="e.g., 500"></td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="health">
+    <h2>IV. Health</h2>
+    <h3>A. Physical</h3>
+    <table>
+      <tr>
+        <td>Vision</td>
+        <td><input type="checkbox" formControlName="vision" value="No problem"> No problem</td>
+        <td><input type="checkbox" formControlName="visionIssue" value="Issue"> Issue</td>
+      </tr>
+      <tr>
+        <td>Hearing</td>
+        <td><input type="checkbox" formControlName="hearing" value="No problem"> No problem</td>
+        <td><input type="checkbox" formControlName="hearingIssue" value="Issue"> Issue</td>
+      </tr>
+      <tr>
+        <td>Mobility/Physical Disability</td>
+        <td><input type="checkbox" formControlName="mobility" value="No problem"> No problem</td>
+        <td><input type="checkbox" formControlName="mobilityIssue" value="Issue"> Issue</td>
+      </tr>
+      <tr>
+        <td>Speech</td>
+        <td><input type="checkbox" formControlName="speech" value="No problem"> No problem</td>
+        <td><input type="checkbox" formControlName="speechIssue" value="Issue"> Issue</td>
+      </tr>
+      <tr>
+        <td>General Health</td>
+        <td><input type="checkbox" formControlName="generalHealth" value="No problem"> No problem</td>
+        <td><input type="checkbox" formControlName="generalHealthIssue" value="Issue"> Issue</td>
+      </tr>
+    </table>
+
+    <h3>B. Psychological Consultations (Only if applicable)</h3>
+    <table>
+      <tr>
+        <th>Consulted With</th>
+        <th>What Reason</th>
+        <th>When Started</th>
+        <th>Number of Sessions</th>
+        <th>Date Concluded</th>
+      </tr>
+      <tr>
+        <td><input type="text" formControlName="consultedWith" placeholder="e.g., Dr. Smith"></td>
+        <td><input type="text" formControlName="consultationReason" placeholder="e.g., Stress"></td>
+        <td><input type="date" formControlName="startDate"></td>
+        <td><input type="number" formControlName="sessions" placeholder="e.g., 5"></td>
+        <td><input type="date" formControlName="endDate"></td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="test-results">
+    <h2>V. Test Results</h2>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Test Administered</th>
+        <th>RS</th>
+        <th>PR</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><input type="date" formControlName="testDate"></td>
+        <td><input type="text" formControlName="testAdministered" placeholder="e.g., IQ Test"></td>
+        <td><input type="text" formControlName="rs" placeholder="e.g., 120"></td>
+        <td><input type="text" formControlName="pr" placeholder="e.g., 80"></td>
+        <td><input type="text" formControlName="description" placeholder="e.g., Above Average"></td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="significant-notes">
+    <h2>VI. Significant Notes (For Guidance Counselors Only)</h2>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Incident</th>
+        <th>Remarks</th>
+      </tr>
+      <tr>
+        <td><input type="date" formControlName="noteDate"></td>
+        <td><input type="text" formControlName="incident" placeholder="e.g., Counseling"></td>
+        <td><input type="text" formControlName="remarks" placeholder="e.g., Follow-up required"></td>
+      </tr>
+    </table>
+  </section>
+    <!-- Submission Button -->
+    <div class="mt-4">
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+  </form>
+</div>

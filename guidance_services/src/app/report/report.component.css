@@ -1,0 +1,129 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 80px;
+    margin-right: 20px;
+}
+
+.header-text {
+    flex-grow: 1;
+}
+
+.header-text h1 {
+    margin: 0;
+    color: #800000;
+}
+
+.header-text p {
+    margin: 0;
+    color: #800000;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    background: linear-gradient(rgba(128, 0, 0, 0.85), rgba(128, 0, 0, 0.85)), 
+                url('../../assets/images/campus.png') no-repeat center center;
+    background-size: cover;
+    width: 350px;
+    height: calc(100vh - 80px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: width 0.3s ease;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px; 
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 15px 20px; 
+    display: block;
+    border-radius: 8px; 
+    background-color: rgba(128, 0, 0, 0.85); 
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.sidebar ul li a:hover {
+    background-color: #f8f817; 
+    color: #800000; 
+    transform: scale(1.05); 
+}
+
+.report-container {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 50px; 
+    margin-right: 100px;
+    max-width: calc(100% - 350px); 
+    display: flex;
+    flex-direction: column;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.report-table th,
+.report-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.report-table th {
+    background-color: #800000;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.report-table td {
+    background-color: #f9f9f9;
+    font-size: 16px; 
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px; 
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px; 
+}
+
+button:hover {
+    background-color: #0056b3;
+}

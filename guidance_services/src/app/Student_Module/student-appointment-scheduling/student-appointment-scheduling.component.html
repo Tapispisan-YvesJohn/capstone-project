@@ -1,19 +1,57 @@
+<div class="header">
+    <img src="../../assets/images/pup-logo.png" alt="PUP Logo" class="logo">
+    <div class="header-text">
+      <h1>Polytechnic University of the Philippines - Taguig</h1>
+      <p>Guidance Information System</p>
+    </div>
+</div>
+
 <div class="appointment-container">
-    <div class="header">
+    <div class="appointment-header">
         <h1>Schedule an Appointment</h1>
         <p>Select a date and time for your appointment with the guidance counselor.</p>
     </div>
 
     <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
-        <div class="calendar">
-            <label for="appointmentDate">Select a Date:</label>
-            <input id="appointmentDate" type="date" formControlName="appointment_date" (change)="onDateChange($event)" [min]="minDate"/>
+        <div class="form-section">
+            <label for="appointmentDate">Date</label>
+            <div class="calendar-container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Select a Date</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="appointment_date">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker [startAt]="minDate"></mat-datepicker>
+                </mat-form-field>
+            </div>
         </div>
     
         <div class="form-section">
-            <label for="appointmentTime">Select a Time:</label>
-            <input id="appointmentTime" type="time" formControlName="appointment_time" required/>
-        </div>
+            <label>Time</label>
+            <div class="time-schedule-container">
+                <div class="time-column">
+                    <div *ngFor="let time of morningTimes; let i = index" class="time-slot">
+                        <input 
+                          type="radio" 
+                          [value]="time.value" 
+                          formControlName="appointment_time" 
+                          id="morning-time{{i}}" 
+                        />
+                        <label [for]="'morning-time' + i">{{ time.display }}</label>
+                    </div>
+                </div>
+                <div class="time-column">
+                    <div *ngFor="let time of afternoonTimes; let i = index" class="time-slot">
+                        <input 
+                          type="radio" 
+                          [value]="time.value" 
+                          formControlName="appointment_time" 
+                          id="afternoon-time{{i}}" 
+                        />
+                        <label [for]="'afternoon-time' + i">{{ time.display }}</label>
+                    </div>
+                </div>
+            </div>
+        </div>        
 
         <div class="form-section">
             <label for="reason">Reason for Appointment:</label>
