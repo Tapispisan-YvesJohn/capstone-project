@@ -101,30 +101,32 @@
     padding: 20px;
 }
 
-.appointment-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.appointment-card {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
+.appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.appointment-image {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    margin-right: 20px;
+.appointment-table th, .appointment-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
 }
 
-.appointment-info {
-    flex-grow: 1;
+.appointment-table th {
+    background-color: #800000;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.appointment-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.appointment-table td button {
+    margin-right: 5px;
 }
 
 .dropdown {
@@ -134,8 +136,8 @@
 }
 
 .dropbtn {
-    background-color: #f2eb20;
-    color: #000;
+    background-color: #800000;
+    color: #ffffff;
     padding: 10px;
     font-size: 16px;
     border: none;
@@ -146,7 +148,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fbf861;
+    background-color: #a00000;
     min-width: 160px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 1;
@@ -154,7 +156,7 @@
 }
 
 .dropdown-content a {
-    color: black;
+    color: rgb(255, 255, 255);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -163,7 +165,7 @@
 }
 
 .dropdown-content a:hover {
-    background-color: #fff200;
+    background-color:  #800000;
 }
 
 .dropdown:hover .dropdown-content {
@@ -171,7 +173,7 @@
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #e0da16;
+    background-color: #a00000;
 }
 
 .accept-btn {

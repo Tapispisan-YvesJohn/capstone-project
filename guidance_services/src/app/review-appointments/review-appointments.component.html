@@ -26,6 +26,7 @@
 
     <div class="content">
         <h2>Appointments</h2>
+        
         <div class="dropdown">
             <button class="dropbtn">Select Option</button>
             <div class="dropdown-content">
@@ -34,20 +35,30 @@
             </div>
         </div>
         
-        <div class="appointment-list">
-            <div class="appointment-card" *ngFor="let appointment of filteredAppointments()">
-                <img src="../../assets/images/placeholder.png" alt="Appointment Image" class="appointment-image">
-                <div class="appointment-info">
-                    <h3>{{ appointment.name }}</h3>
-                    <p>{{ appointment.appointment_date }}</p>
-                    <p>{{ appointment.appointment_time }}</p>
-                    <p>{{ appointment.reason }}</p>
-                    <p *ngIf="currentView === 'schedule' && appointment.accepted" class="accepted-label">Accepted</p>
-                </div>
-                <button *ngIf="currentView === 'schedule'" class="view-btn" (click)="viewAppointment(appointment)">View</button>
-                <button *ngIf="currentView === 'review'" class="accept-btn" (click)="acceptAppointment(appointment.id)">Accept</button>
-                <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancel</button>
-            </div>
-        </div>
+        <!-- Appointment Table -->
+        <table class="appointment-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Reason</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let appointment of filteredAppointments()">
+                    <td>{{ appointment.name }}</td>
+                    <td>{{ appointment.appointment_date }}</td>
+                    <td>{{ appointment.appointment_time }}</td>
+                    <td>{{ appointment.reason }}</td>
+                    <td>
+                        <button *ngIf="currentView === 'schedule'" class="view-btn" (click)="viewAppointment(appointment)">View</button>
+                        <button *ngIf="currentView === 'review'" class="accept-btn" (click)="acceptAppointment(appointment.id)">Accept</button>
+                        <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>    
 </div>
