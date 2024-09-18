@@ -1,39 +1,39 @@
 .student-dashboard {
     padding: 20px;
-  }
-  
-  .header {
+}
+
+.header {
     display: flex;
     align-items: center;
     background-color: #fff;
     width: 100%;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .logo {
+}
+
+.logo {
     height: 80px;
     margin-right: 20px;
-  }
-  
-  .header-text {
-    flex-grow: 1;
-  }
-  
-  .header-text h1 {
-    margin: 0;
-    color: #800000;
-  }
-  
-  .header-text p {
-    margin: 0;
-    color: #800000;
-  }
+}
 
-  .header + .appointment-container {
-    margin-top: 60px ;
-  }
-  
+.header-text {
+    flex-grow: 1;
+}
+
+.header-text h1 {
+    margin: 0;
+    color: #800000;
+}
+
+.header-text p {
+    margin: 0;
+    color: #800000;
+}
+
+.header + .appointment-container {
+    margin-top: 60px;
+}
+
 .appointment-container {
     max-width: 600px;
     margin: 0 auto;
@@ -48,7 +48,7 @@
     margin-bottom: 20px;
 }
 
-.appointmet-header h1 {
+.appointment-header h1 {
     margin: 0;
     color: #800000;
 }
@@ -57,24 +57,24 @@
     color: #666;
 }
 
-.calendar {
-    margin-bottom: 20px;
+.calendar-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-bottom: 20px;
 }
 
-.calendar label {
+.calendar-container label {
     font-size: 16px;
     color: #333;
     margin-bottom: 10px;
 }
 
-.calendar input {
+.calendar-container input[type="date"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    width: 100%;
 }
 
 .form-section {
@@ -88,13 +88,34 @@
     color: #333;
 }
 
-.form-section input,
 .form-section textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+}
+
+.time-schedule-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.time-column {
+    display: flex;
+    flex-direction: column;
+    width: 45%; /* Adjust as necessary for spacing */
+}
+
+.time-slot {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.time-slot input {
+    margin-right: 10px;
 }
 
 .btn-submit {

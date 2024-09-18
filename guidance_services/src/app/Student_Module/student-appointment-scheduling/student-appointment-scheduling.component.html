@@ -4,7 +4,7 @@
       <h1>Polytechnic University of the Philippines - Taguig</h1>
       <p>Guidance Information System</p>
     </div>
-  </div>
+</div>
 
 <div class="appointment-container">
     <div class="appointment-header">
@@ -13,15 +13,41 @@
     </div>
 
     <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
-        <div class="calendar">
-            <label for="appointmentDate">Select a Date:</label>
-            <input id="appointmentDate" type="date" formControlName="appointment_date" (change)="onDateChange($event)" [min]="minDate"/>
+        <div class="form-section">
+            <label for="appointmentDate">Date</label>
+            <div class="calendar-container">
+                <label for="appointmentDate">Select a Date:</label>
+                <input id="appointmentDate" type="date" formControlName="appointment_date" (change)="onDateChange($event)" [min]="minDate" />
+            </div>
         </div>
     
         <div class="form-section">
-            <label for="appointmentTime">Select a Time:</label>
-            <input id="appointmentTime" type="time" formControlName="appointment_time" required/>
-        </div>
+            <label>Time</label>
+            <div class="time-schedule-container">
+                <div class="time-column">
+                    <div *ngFor="let time of morningTimes; let i = index" class="time-slot">
+                        <input 
+                          type="radio" 
+                          [value]="time.value" 
+                          formControlName="appointment_time" 
+                          id="morning-time{{i}}" 
+                        />
+                        <label [for]="'morning-time' + i">{{ time.display }}</label>
+                    </div>
+                </div>
+                <div class="time-column">
+                    <div *ngFor="let time of afternoonTimes; let i = index" class="time-slot">
+                        <input 
+                          type="radio" 
+                          [value]="time.value" 
+                          formControlName="appointment_time" 
+                          id="afternoon-time{{i}}" 
+                        />
+                        <label [for]="'afternoon-time' + i">{{ time.display }}</label>
+                    </div>
+                </div>
+            </div>
+        </div>        
 
         <div class="form-section">
             <label for="reason">Reason for Appointment:</label>
