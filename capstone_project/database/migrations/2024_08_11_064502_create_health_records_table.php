@@ -11,11 +11,11 @@ class CreateHealthRecordsTable extends Migration
         Schema::create('health_records', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_record_id')->constrained('student_records')->onDelete('cascade');
-            $table->string('vision');
-            $table->string('hearing');
+            $table->string('vision')->nullable();
+            $table->string('hearing')->nullable();
             $table->string('mobility')->nullable();
             $table->string('speech')->nullable();
-            $table->string('general_health');
+            $table->string('general_health')->nullable();
             
             $table->string('consulted_with')->nullable();
             $table->string('consultation_reason')->nullable();

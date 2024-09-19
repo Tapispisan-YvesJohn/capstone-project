@@ -53,10 +53,10 @@ export class CreateRecordComponent implements OnInit {
       emergencyPhone: ['', [Validators.required, Validators.pattern(/^[0-9]{10,11}$/)]],
       emergencyEmail: ['', [Validators.required, Validators.email]],
       employer: [''], // Added employer field
-      relationship: ['', Validators.required],  // Add this for the relationship field
-      average: ['', Validators.required],  // High school general average control
-      height: ['', Validators.required],   // Height control
-      weight: ['', Validators.required],  // Add this for weight
+      relationship: ['', Validators.required],
+      average: ['', [Validators.required, Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$')]],
+      height: ['', [Validators.required, Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$')]],
+      weight: ['', [Validators.required, Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$')]],
       gender: ['', Validators.required],  // Add this for gender (radio buttons)
 
       // Educational Background
