@@ -16,20 +16,15 @@
     <section class="reasons">
       <h2>Your reason/s for enrolling in this University:</h2>
       <div class="checkbox-group">
-        <label><input type="checkbox" formControlName="reasons" value="lowerTuition"> Lower tuition fee</label>
-        <label><input type="checkbox" formControlName="reasons" value="safety"> Safety of the place</label>
-        <label><input type="checkbox" formControlName="reasons" value="space"> Spacious Campus</label>
-        <label><input type="checkbox" formControlName="reasons" value="nearness"> Nearness of home to school</label>
-        <label><input type="checkbox" formControlName="reasons" value="transportation"> Accessible to transportation</label>
-        <label><input type="checkbox" formControlName="reasons" value="qualityEducation"> Better quality of education</label>
-        <label><input type="checkbox" formControlName="reasons" value="adequate"> Adequate School Facilities</label>
-        <label><input type="checkbox" formControlName="reasons" value="son"> Son / Daughter of PUP Employee</label>
-        <label><input type="checkbox" formControlName="reasons" value="close"> Closer Student-Faculty Relations</label>
-        <label><input type="checkbox" formControlName="reasons" value="scholarship"> Expecting Scholarship Offer</label>
-        <label><input type="checkbox" formControlName="reasons" value="others"> Others: <input type="text" name="otherReasons" placeholder="Please specify"></label>
+        <label *ngFor="let reasonControl of reasonsArray.controls; let i = index">
+          <input type="checkbox" [formControl]="reasonsArray.at(i)"> {{ reasonLabels[i] }}
+        </label>
+        <label>
+          Others: <input type="text" formControlName="otherReasons" placeholder="Please specify">
+        </label>
       </div>
     </section>
-  
+    
     <section class="personal-information">
       <h2>I. Personal Information</h2>
       <table>
