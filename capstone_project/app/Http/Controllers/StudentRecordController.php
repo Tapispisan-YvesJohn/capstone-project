@@ -10,6 +10,7 @@ use App\Models\FamilyBackground;
 use App\Models\HealthRecord;
 use App\Models\TestResult;
 use App\Models\SignificantNote;
+use App\Models\EnrollmentReason;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
@@ -22,114 +23,235 @@ class StudentRecordController extends Controller
             // Personal Information
             'lastName' => 'required|string|min:2',
             'firstName' => 'required|string|min:2',
-            'middleName' => 'required|string',
+            'middleName' => 'nullable|string',
             'civilStatus' => 'required|string',
             'religion' => 'required|string',
-            'email' => 'required|string|email|unique:personal_information,email',  // Adjusted table name
+            'average' => 'required|string',
+            'email' => 'required|string|email|unique:users,email',
             'course' => 'required|string',
-            'dob' => 'required|date',
-            'placeOfBirth' => 'required|string',
-            'mobileNo' => 'required|string|regex:/^[0-9]{10,11}$/|unique:personal_information,mobile_no',  // Adjusted table name
-            'address' => 'required|string',
+            'birthDate' => 'required|date',
+            'birthPlace' => 'required|string',
+            'mobileNo' => 'required|string|regex:/^[0-9]{10,11}$/|unique:users,mobileNo',
+            'height' => 'required|string',
+            'weight' => 'required|string',
+            'gender' => 'required|string',
+
+
+            // Addresses
+            'provincialAddress' => 'required|string',
+            'cityAddress' => 'required|string',
+    
+            // Emergency Contact
             'emergencyContact' => 'required|string',
-            
+            'relationship' => 'required|string',
+            'emergencyPhone' => 'required|string|regex:/^[0-9]{10,11}$/',
+            'emergencyEmail' => 'nullable|email',
+    
             // Educational Background
             'elementarySchool' => 'required|string',
-            'juniorHighSchool' => 'required|string',
-            'seniorHighSchool' => 'required|string',
-
+            'elementaryLocation' => 'required|string',
+            'elementaryType' => 'required|string',
+            'elementaryYear' => 'required|string',
+            'elementaryAwards' => 'nullable|string',
+    
+            'juniorSchool' => 'required|string',
+            'juniorLocation' => 'required|string',
+            'juniorType' => 'required|string',
+            'juniorYear' => 'required|string',
+            'juniorAwards' => 'nullable|string',
+    
+            'seniorSchool' => 'required|string',
+            'seniorLocation' => 'required|string',
+            'seniorType' => 'required|string',
+            'seniorYear' => 'required|string',
+            'seniorAwards' => 'nullable|string',
+    
+            'otherSchool' => 'nullable|string',
+    
             // Family Background
             'fatherName' => 'required|string',
-            'fatherAge' => 'required|integer|min:18|max:120',
-            'fatherOccupation' => 'required|string',
+            'fatherAge' => 'required|integer',
             'motherName' => 'required|string',
-            'motherAge' => 'required|integer|min:18|max:120',
-            'motherOccupation' => 'required|string',
-
-            // Health
-            'vision' => 'required|string',
-            'hearing' => 'required|string',
-            'generalHealth' => 'required|string',
-
+            'motherAge' => 'required|integer',
+            'fatherContact' => 'required|string|regex:/^[0-9]{10,11}$/',
+            'fatherEducation' => 'required|string',
+            'motherContact' => 'required|string|regex:/^[0-9]{10,11}$/',
+            'motherEducation' => 'required|string',
+            'fatherOccupation' => 'nullable|string',
+            'fatherCompany' => 'nullable|string',
+            'motherOccupation' => 'nullable|string',
+            'motherCompany' => 'nullable|string',
+            'relationshipStatus' => 'required|string',
+    
+            // Guardian Information
+            'guardianName' => 'nullable|string',
+            'guardianAddress' => 'nullable|string',
+    
+            // Family Income
+            'monthlyIncome' => 'required|string',
+    
+            // Siblings
+            'siblingsTotal' => 'required|integer',
+            'brothers' => 'required|integer',
+            'sisters' => 'required|integer',
+            'employed' => 'required|integer',
+            'supportStudies' => 'required|integer',
+            'supportFamily' => 'required|integer',
+            'financialSupport' => 'nullable|string',
+            'allowance' => 'required|integer',
+    
+            // Health Information
+            'vision' => 'nullable|string',
+            'hearing' => 'nullable|string',
+            'mobility' => 'nullable|string',
+            'speech' => 'nullable|string',
+            'generalHealth' => 'nullable|string',
+    
+            // Psychological Consultations
+            'consultedWith' => 'nullable|string',
+            'consultationReason' => 'nullable|string',
+            'startDate' => 'nullable|date',
+            'sessions' => 'nullable|integer',
+            'endDate' => 'nullable|date',
+    
             // Test Results
-            'testDate' => 'required|date',
-            'testAdministered' => 'required|string',
-            'testResults' => 'required|string',
-            'testDescription' => 'required|string',
+            'testDate' => 'nullable|date',
+            'testAdministered' => 'nullable|string',
+            'rs' => 'nullable|string',
+            'pr' => 'nullable|string',
+            'description' => 'nullable|string',
+    
+            // Significant Notes (For Guidance Counselors Only)
+            'noteDate' => 'nullable|date',
+            'incident' => 'nullable|string',
+            'remarks' => 'nullable|string',
 
-            // Significant Notes
-            'incidentDate' => 'required|date',
-            'incident' => 'required|string',
-            'remarks' => 'required|string',
+            'reasons' => 'array',
+            'reasons.*' => 'string|in:lowerTuition,safety,space,nearness,transportation,qualityEducation,adequate,son,close,scholarship,others',
+            'otherReasons' => 'nullable|string',
         ]);
 
         try {
-            // Create the student record
-            $studentRecord = StudentRecord::create([]);
+            DB::transaction(function () use ($validatedData) {
+                // Create the student record
+                $studentRecord = StudentRecord::create([]);
+        
+                // Store personal information
+                PersonalInformation::create([
+                    'student_record_id' => $studentRecord->id,
+                    'last_name' => $validatedData['lastName'],
+                    'first_name' => $validatedData['firstName'],
+                    'middle_name' => $validatedData['middleName'],
+                    'civil_status' => $validatedData['civilStatus'],
+                    'religion' => $validatedData['religion'],
+                    'average' => $validatedData['average'],
+                    'email' => $validatedData['email'],
+                    'course' => $validatedData['course'],
+                    'birth_date' => $validatedData['birthDate'],
+                    'birth_place' => $validatedData['birthPlace'],
+                    'mobile_no' => $validatedData['mobileNo'],
+                    'height' => $validatedData['height'],
+                    'weight' => $validatedData['weight'],
+                    'gender' => $validatedData['gender'],
+                    'address' => $validatedData['provincialAddress'],
+                    'city_address' => $validatedData['cityAdress'],
+                    'emergency_contact' => $validatedData['emergencyContact'],
+                    'relationship' => $validatedData['relationship'],
+                    'emergency_phone' => $validatedData['emergencyPhone'], 
+                    'emergency_email' => $validatedData['emergencyEmail'],
+                ]);
+        
+                // Store educational background
+                EducationalBackground::create([
+                    'student_record_id' => $studentRecord->id,
+                    'elementary_school' => $validatedData['elementarySchool'],
+                    'elementary_location' => $validatedData['elementaryLocation'],
+                    'elementary_type' => $validatedData['elemeteryType'],
+                    'elementery_year' => $validatedData['elemetaryYear'],
+                    'elementary_awards' => $validatedData['elemetaryAwards'],
+                    'junior_school' => $validatedData['juniorSchool'],
+                    'junior_location' => $validatedData['juniorLocation'],
+                    'junior_type' => $validatedData['juniorType'],
+                    'junior_year' => $validatedData['juniorYear'],
+                    'junior_awards' => $validatedData['juniorAwards'],
+                    'senior_school' => $validatedData['seniorHighSchool'],
+                    'senior_location' => $validatedData['seniorLocation'],
+                    'jsenior_type' => $validatedData['seniorType'],
+                    'senior_year' => $validatedData['seniorYear'],
+                    'senior_awards' => $validatedData['seniorAwards'],
+                    'other_school' => $validatedData['otherSchool']
+                ]);
+        
+                // Store family background
+                FamilyBackground::create([
+                    'student_record_id' => $studentRecord->id,
+                    'father_name' => $validatedData['fatherName'],
+                    'father_age' => $validatedData['fatherAge'],
+                    'father_contact' => $validatedData['fatherContact'],
+                    'father_education' => $validatedData['fatherEducation'],
+                    'father_occupation' => $validatedData['fatherOccupation'],
+                    'father_company' => $validatedData['fatherCompany'],
+                    'mother_name' => $validatedData['motherName'],
+                    'mother_age' => $validatedData['motherAge'],
+                    'mother_contact' => $validatedData['motherContact'],
+                    'mother_education' => $validatedData['motherEducation'],
+                    'mother_occupation' => $validatedData['motherOccupation'],
+                    'mother_company' => $validatedData['motherCompany'],
+                    'relationship_status' => $validatedData['relationshipStatus'],
+                    'guardian_name' => $validatedData['guardianName'],
+                    'guardian_address' => $validatedData['guardianAddress'],
+                    'monthly_income' => $validatedData['monthylIncome'],
+                    'siblings_total' => $validatedData['siblingsTotal'],
+                    'brothers' => $validatedData['brothers'],
+                    'sisters' => $validatedData['sisters'],
+                    'employed' => $validatedData['employed'],
+                    'support_studies' => $validatedData['supportStudies'],
+                    'support_family' => $validatedData['supportFamily'],
+                    'financial_support' => $validatedData['financialSupport'],
+                    'allowance' => $validatedData['allowance']
+                ]);
+        
+                // Store health record
+                HealthRecord::create([
+                    'student_record_id' => $studentRecord->id,
+                    'vision' => $validatedData['vision'],
+                    'hearing' => $validatedData['hearing'],
+                    'mobility' => $validatedData['mobility'],
+                    'speech' => $validatedData['speech'],
+                    'general_health' => $validatedData['generalHealth'],
+                    'consulted_with' => $validatedDatap['consultedWith'],
+                    'consultation_reason' => $validatedDatap['consultationReason'],
+                    'start_date' => $validatedDatap['startDate'],
+                    'session' => $validatedDatap['session'],
+                    'end_date' => $validatedDatap['endDate'],
+                ]);
+        
+                // Store test results
+                TestResult::create([
+                    'student_record_id' => $studentRecord->id,
+                    'test_date' => $validatedData['testDate'],
+                    'test_administered' => $validatedData['testAdministered'],
+                    'rs' => $validatedData['RS'],
+                    'pr' => $validatedDatap['PR'],
+                    'test_description' => $validatedData['description'],
+                ]);
+        
+                // Store significant notes
+                SignificantNote::create([
+                    'student_record_id' => $studentRecord->id,
+                    'date' => $validatedData['noteDate'],
+                    'incident' => $validatedData['incident'],
+                    'remarks' => $validatedData['remarks'],
+                ]);
 
-            // Store personal information
-            PersonalInformation::create([
-                'student_record_id' => $studentRecord->id,
-                'last_name' => $validatedData['lastName'],
-                'first_name' => $validatedData['firstName'],
-                'middle_name' => $validatedData['middleName'],
-                'civil_status' => $validatedData['civilStatus'],
-                'religion' => $validatedData['religion'],
-                'email' => $validatedData['email'],
-                'course' => $validatedData['course'],
-                'dob' => $validatedData['dob'],
-                'place_of_birth' => $validatedData['placeOfBirth'],
-                'mobile_no' => $validatedData['mobileNo'],
-                'address' => $validatedData['address'],
-                'emergency_contact' => $validatedData['emergencyContact'],
-            ]);
-
-            // Store educational background
-            EducationalBackground::create([
-                'student_record_id' => $studentRecord->id,
-                'elementary_school' => $validatedData['elementarySchool'],
-                'junior_high_school' => $validatedData['juniorHighSchool'],
-                'senior_high_school' => $validatedData['seniorHighSchool'],
-            ]);
-
-            // Store family background
-            FamilyBackground::create([
-                'student_record_id' => $studentRecord->id,
-                'father_name' => $validatedData['fatherName'],
-                'father_age' => $validatedData['fatherAge'],
-                'father_occupation' => $validatedData['fatherOccupation'],
-                'mother_name' => $validatedData['motherName'],
-                'mother_age' => $validatedData['motherAge'],
-                'mother_occupation' => $validatedData['motherOccupation'],
-            ]);
-
-            // Store health record
-            HealthRecord::create([
-                'student_record_id' => $studentRecord->id,
-                'vision' => $validatedData['vision'],
-                'hearing' => $validatedData['hearing'],
-                'general_health' => $validatedData['generalHealth'],
-            ]);
-
-            // Store test results
-            TestResult::create([
-                'student_record_id' => $studentRecord->id,
-                'test_date' => $validatedData['testDate'],
-                'test_administered' => $validatedData['testAdministered'],
-                'test_results' => $validatedData['testResults'],
-                'test_description' => $validatedData['testDescription'],
-            ]);
-
-            // Store significant notes
-            SignificantNote::create([
-                'student_record_id' => $studentRecord->id,
-                'date' => $validatedData['incidentDate'],
-                'incident' => $validatedData['incident'],
-                'remarks' => $validatedData['remarks'],
-            ]);
-
+                EnrollmentReason::create([
+                    'student_record_id' => $studentRecord->id,
+                    'reasons' => $validatedData['reasons'],
+                ]);
+                
+            });
+        
             return response()->json(['message' => 'Record created successfully'], 201);
-
         } catch (QueryException $e) {
             // Handle unique constraint violation
             if ($e->errorInfo[1] == 1062) {
@@ -137,7 +259,7 @@ class StudentRecordController extends Controller
                     'message' => 'Duplicate entry detected: ' . $e->getMessage()
                 ], 409); // 409 Conflict status code
             }
-
+        
             // Handle other database errors
             return response()->json([
                 'message' => 'Database error: ' . $e->getMessage()

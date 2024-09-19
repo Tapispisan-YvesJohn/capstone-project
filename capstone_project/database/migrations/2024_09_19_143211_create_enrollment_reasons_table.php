@@ -4,24 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTestResultsTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
-        Schema::create('test_results', function (Blueprint $table) {
+        Schema::create('reasons', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_record_id')->constrained('student_records')->onDelete('cascade');
-            $table->date('test_date');
-            $table->string('test_administered');
-            $table->string('rs');
-            $table->string('pr');
-            $table->text('test_description');
+            $table->json('reasons');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('test_results');
+        Schema::dropIfExists('reasons');
     }
-}
+};

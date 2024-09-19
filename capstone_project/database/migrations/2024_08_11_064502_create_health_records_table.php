@@ -13,7 +13,15 @@ class CreateHealthRecordsTable extends Migration
             $table->foreignId('student_record_id')->constrained('student_records')->onDelete('cascade');
             $table->string('vision');
             $table->string('hearing');
+            $table->string('mobility')->nullable();
+            $table->string('speech')->nullable();
             $table->string('general_health');
+            
+            $table->string('consulted_with')->nullable();
+            $table->string('consultation_reason')->nullable();
+            $table->date('start_date')->nullable();
+            $table->integer('sessions')->nullable();
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }

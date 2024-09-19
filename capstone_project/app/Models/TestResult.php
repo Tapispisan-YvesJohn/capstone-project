@@ -13,8 +13,9 @@ class TestResult extends Model
         'student_record_id', 
         'test_date',
         'test_administered',
-        'test_results',
-        'test_description',
+        'rs',
+        'pr',
+        'test_description', 
     ];
 
     public function studentRecord()
