@@ -53,7 +53,11 @@ export class CreateRecordComponent implements OnInit {
       emergencyPhone: ['', [Validators.required, Validators.pattern(/^[0-9]{10,11}$/)]],
       emergencyEmail: ['', [Validators.required, Validators.email]],
       employer: [''], // Added employer field
-      emergencyRelationship: ['', Validators.required],
+      relationship: ['', Validators.required],  // Add this for the relationship field
+      average: ['', Validators.required],  // High school general average control
+      height: ['', Validators.required],   // Height control
+      weight: ['', Validators.required],  // Add this for weight
+      gender: ['', Validators.required],  // Add this for gender (radio buttons)
 
       // Educational Background
       elementarySchool: ['', Validators.required],
@@ -135,7 +139,7 @@ export class CreateRecordComponent implements OnInit {
       remarks: [''],
 
       // Checkbox for Reasons of Enrollment as an array
-      reasons: this.fb.array(this.reasonLabels.map(() => false)),
+      reasons: this.fb.array(this.reasonLabels.map(() => this.fb.control(false))),
       otherReasons: [''],
     });
   }
@@ -179,8 +183,18 @@ export class CreateRecordComponent implements OnInit {
         panelClass: ['snackbar-error']
       });
       this.markFormGroupTouched(this.inventoryForm);
+      this.logInvalidControls(this.inventoryForm);  // Log the invalid controls
     }
-  }
+  }  
+
+  private logInvalidControls(formGroup: FormGroup): void {
+    Object.keys(formGroup.controls).forEach((key) => {
+      const control = formGroup.get(key);
+      if (control && control.invalid) {
+        console.error(`Invalid control: ${key}, Errors:`, control.errors);
+      }
+    });
+  }  
 
   navigateBack(): void {
     this.router.navigate(['/student-record']); 

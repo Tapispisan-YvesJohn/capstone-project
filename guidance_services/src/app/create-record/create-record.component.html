@@ -16,8 +16,8 @@
     <section class="reasons">
       <h2>Your reason/s for enrolling in this University:</h2>
       <div class="checkbox-group">
-        <label *ngFor="let reason of reasonsArray.controls; let i = index">
-          <input type="checkbox" [formControlName]="i"> {{ reasonLabels[i] }}
+        <label *ngFor="let reasonControl of reasonsArray.controls; let i = index">
+          <input type="checkbox" [formControl]="reasonsArray.at(i)"> {{ reasonLabels[i] }}
         </label>
         <label>
           Others: <input type="text" formControlName="otherReasons" placeholder="Please specify">
