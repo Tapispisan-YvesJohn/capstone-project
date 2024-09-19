@@ -11,9 +11,27 @@ class CreateEducationalBackgroundsTable extends Migration
         Schema::create('educational_backgrounds', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_record_id')->constrained('student_records')->onDelete('cascade');
+
             $table->string('elementary_school');
-            $table->string('junior_high_school');
-            $table->string('senior_high_school');
+            $table->string('elementary_location')->nullable();
+            $table->string('elementary_type')->nullable();
+            $table->string('elementary_year')->nullable();
+            $table->string('elementary_awards')->nullable();
+            
+            $table->string('junior_school');
+            $table->string('junior_location')->nullable();
+            $table->string('junior_type')->nullable();
+            $table->string('junior_year')->nullable();
+            $table->string('junior_awards')->nullable();
+            
+            $table->string('senior_school');
+            $table->string('senior_location')->nullable();
+            $table->string('senior_type')->nullable();
+            $table->string('senior_year')->nullable();
+            $table->string('senior_awards')->nullable();
+
+            $table->string('other_school')->nullable();
+
             $table->timestamps();
         });
     }

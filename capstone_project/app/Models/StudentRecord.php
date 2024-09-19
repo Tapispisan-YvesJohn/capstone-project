@@ -38,4 +38,9 @@ class StudentRecord extends Model
     {
         return $this->hasOne(SignificantNote::class);
     }
+
+    public function enrollmentReason()
+    {
+        return $this->hasone(EnrollmentReason::class);
+    }
 }

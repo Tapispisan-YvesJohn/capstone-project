@@ -11,18 +11,27 @@ class CreatePersonalInformationsTable extends Migration
         Schema::create('personal_information', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_record_id')->constrained('student_records')->onDelete('cascade');
-            $table->string('first_name');
             $table->string('last_name');
+            $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('civil_status');
-            $table->string('religion');
+            $table->string('religion')->nullable();
+            $table->decimal('average', 5, 2)->nullable();
+            $table->string('course')->nullable();
             $table->string('email')->unique();
-            $table->string('course');
-            $table->date('dob');
-            $table->string('place_of_birth');
+            $table->date('birth_date');
+            $table->string('birth_place')->nullable();
             $table->string('mobile_no');
-            $table->string('address');
+            $table->decimal('height', 4, 2)->nullable();
+            $table->decimal('weight', 5, 2)->nullable();
+            $table->enum('gender', ['Male', 'Female', 'Others']);
+            $table->string('provincial_address')->nullable();
+            $table->string('city_address')->nullable();
+            $table->string('employer')->nullable();
             $table->string('emergency_contact');
+            $table->string('relationship');
+            $table->string('emergency_phone');
+            $table->string('emergency_email')->nullable();
             $table->timestamps();
         });
     }
