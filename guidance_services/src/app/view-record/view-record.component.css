@@ -3,7 +3,7 @@
     align-items: center;
     background-color: #fff;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -16,92 +16,50 @@
     flex-grow: 1;
 }
 
-.header-text h1 {
+.header-text h1, .header-text p {
     margin: 0;
     color: #800000;
 }
 
-.header-text p {
-    margin: 0;
-    color: #800000;
+.header + .form-container {
+    margin-top: 150px; 
 }
 
-.container {
-    display: flex;
-    justify-content: center;
+.form-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
     padding: 20px;
-}
-
-.content {
-    background-color: #f9f9f9;
-    padding: 20px;
+    border: 1px solid #ccc;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 1000px;
-    width: 100%;
+    background-color: #fafafa;
 }
 
-.student-record-form {
-    font-family: 'Arial', sans-serif;
+.form-header {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 h2 {
     text-align: center;
-    font-size: 24px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
     margin-bottom: 20px;
 }
 
-h3 {
-    font-size: 20px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: #333;
+th, td {
+    padding: 8px;
+    text-align: left;
 }
 
-.section {
-    margin-bottom: 20px;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
-p {
-    margin: 5px 0;
-    font-size: 16px;
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background: #ccc;
-    background-image: linear-gradient(to right, #ccc, #333, #ccc);
-    margin: 20px 0;
-}
-
-.edit-btn, 
-.save-btn {
-    padding: 10px 20px;
-    border: none;
+input {
+    width: 100%;
+    padding: 8px;
     border-radius: 5px;
-    cursor: pointer;
+    border: 1px solid #ccc;
 }
-
-.edit-btn {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.save-btn {
-    background-color: #007bff;
-    color: #fff;
-}
-

@@ -6,219 +6,313 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="content">
-        <h2>Student Record</h2>
+<div class="form-container">
+    <header class="form-header">
+      <img src="../../assets/images/pup-logo.png" alt="PUP Logo" class="logo">
+      <h4>INDIVIDUAL INVENTORY RECORD FORM</h4>
+    </header>
 
-        <form class="student-record-form" [formGroup]="recordForm">
-            <div class="section">
-                <h3>Personal Information</h3>
-                <div class="form-grid">
-                    <div>
-                        <label>Last Name</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.last_name }}</p>
-                        <input *ngIf="editMode" formControlName="lastName" type="text">
-                    </div>
-                    <div>
-                        <label>First Name</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.first_name }}</p>
-                        <input *ngIf="editMode" formControlName="firstName" type="text">
-                    </div>
-                    <div>
-                        <label>Middle Name</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.middle_name }}</p>
-                        <input *ngIf="editMode" formControlName="middleName" type="text">
-                    </div>
-                    <div>
-                        <label>Civil Status</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.civil_status }}</p>
-                        <input *ngIf="editMode" formControlName="civilStatus" type="text">
-                    </div>
-                    <div>
-                        <label>Religion</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.religion }}</p>
-                        <input *ngIf="editMode" formControlName="religion" type="text">
-                    </div>
-                    <div>
-                        <label>Email</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.email }}</p>
-                        <input *ngIf="editMode" formControlName="email" type="email">
-                    </div>
-                    <div>
-                        <label>Course</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.course }}</p>
-                        <input *ngIf="editMode" formControlName="course" type="text">
-                    </div>
-                    <div>
-                        <label>Date of Birth</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.dob }}</p>
-                        <input *ngIf="editMode" formControlName="dob" type="date">
-                    </div>
-                    <div>
-                        <label>Place of Birth</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.place_of_birth }}</p>
-                        <input *ngIf="editMode" formControlName="placeOfBirth" type="text">
-                    </div>
-                    <div>
-                        <label>Mobile No</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.mobile_no }}</p>
-                        <input *ngIf="editMode" formControlName="mobileNo" type="text">
-                    </div>
-                    <div>
-                        <label>Address</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.address }}</p>
-                        <input *ngIf="editMode" formControlName="address" type="text">
-                    </div>
-                    <div>
-                        <label>Emergency Contact Name</label>
-                        <p *ngIf="!editMode">{{ student.personal_information.emergency_contact }}</p>
-                        <input *ngIf="editMode" formControlName="emergencyContact" type="text">
-                    </div>
-                </div>
+    <form [formGroup]="recordForm">
+        <!-- Reason for Enrollment -->
+        <section class="reasons">
+            <h2>Your reason/s for enrolling in this University:</h2>
+            <div class="checkbox-group">
+                <label *ngFor="let reason of reasonLabels; let i = index">
+                    <input type="checkbox" [checked]="recordForm.get('reasons').value[i]" disabled> {{ reason }}
+                </label>
+                <label>
+                    Others: <input type="text" formControlName="otherReasons" [value]="recordForm.get('otherReasons').value" disabled>
+                </label>
             </div>
-            
-            <hr>
-            
-            <div class="section">
-                <h3>Educational Background</h3>
-                <div class="form-grid">
-                    <div>
-                        <label>Elementary School</label>
-                        <p *ngIf="!editMode">{{ student.educational_background.elementary_school }}</p>
-                        <input *ngIf="editMode" formControlName="elementarySchool" type="text">
-                    </div>
-                    <div>
-                        <label>Junior High School</label>
-                        <p *ngIf="!editMode">{{ student.educational_background.junior_high_school }}</p>
-                        <input *ngIf="editMode" formControlName="juniorHighSchool" type="text">
-                    </div>
-                    <div>
-                        <label>Senior High School</label>
-                        <p *ngIf="!editMode">{{ student.educational_background.senior_high_school }}</p>
-                        <input *ngIf="editMode" formControlName="seniorHighSchool" type="text">
-                    </div>
-                </div>
-            </div>
-            
-            <hr>
-            
-            <div class="section">
-                <h3>Family Background</h3>
-                <div class="form-grid">
-                    <div>
-                        <label>Father's Name</label>
-                        <p *ngIf="!editMode">{{ student.family_background.father_name }}</p>
-                        <input *ngIf="editMode" formControlName="fatherName" type="text">
-                    </div>
-                    <div>
-                        <label>Father's Age</label>
-                        <p *ngIf="!editMode">{{ student.family_background.father_age }}</p>
-                        <input *ngIf="editMode" formControlName="fatherAge" type="number">
-                    </div>
-                    <div>
-                        <label>Father's Occupation</label>
-                        <p *ngIf="!editMode">{{ student.family_background.father_occupation }}</p>
-                        <input *ngIf="editMode" formControlName="fatherOccupation" type="text">
-                    </div>
-                    <div>
-                        <label>Mother's Name</label>
-                        <p *ngIf="!editMode">{{ student.family_background.mother_name }}</p>
-                        <input *ngIf="editMode" formControlName="motherName" type="text">
-                    </div>
-                    <div>
-                        <label>Mother's Age</label>
-                        <p *ngIf="!editMode">{{ student.family_background.mother_age }}</p>
-                        <input *ngIf="editMode" formControlName="motherAge" type="number">
-                    </div>
-                    <div>
-                        <label>Mother's Occupation</label>
-                        <p *ngIf="!editMode">{{ student.family_background.mother_occupation }}</p>
-                        <input *ngIf="editMode" formControlName="motherOccupation" type="text">
-                    </div>
-                </div>
-            </div>
-            
-            <hr>
-            
-            <div class="section">
-                <h3>Health Record</h3>
-                <div class="form-grid">
-                    <div>
-                        <label>Vision</label>
-                        <p *ngIf="!editMode">{{ student.health_record.vision }}</p>
-                        <input *ngIf="editMode" formControlName="vision" type="text">
-                    </div>
-                    <div>
-                        <label>Hearing</label>
-                        <p *ngIf="!editMode">{{ student.health_record.hearing }}</p>
-                        <input *ngIf="editMode" formControlName="hearing" type="text">
-                    </div>
-                    <div>
-                        <label>General Health</label>
-                        <p *ngIf="!editMode">{{ student.health_record.general_health }}</p>
-                        <input *ngIf="editMode" formControlName="generalHealth" type="text">
-                    </div>
-                </div>
-            </div>
-            
-            <hr>
-            
-            <div class="section">
-                <h3>Test Results</h3>
-                <div class="form-grid">
-                    <div>
-                        <label>Date</label>
-                        <p *ngIf="!editMode">{{ student.test_results.test_date }}</p>
-                        <input *ngIf="editMode" formControlName="testDate" type="date">
-                    </div>
-                    <div>
-                        <label>Test Administered</label>
-                        <p *ngIf="!editMode">{{ student.test_results.test_administered }}</p>
-                        <input *ngIf="editMode" formControlName="testAdministered" type="text">
-                    </div>
-                    <div>
-                        <label>Test Results (RS)</label>
-                        <p *ngIf="!editMode">{{ student.test_results.test_results }}</p>
-                        <input *ngIf="editMode" formControlName="testResults" type="text">
-                    </div>
-                    <div>
-                        <label>Description</label>
-                        <p *ngIf="!editMode">{{ student.test_results.test_description }}</p>
-                        <input *ngIf="editMode" formControlName="testDescription" type="text">
-                    </div>
-                </div>
-            </div>
-            
-            <hr>
-            
-            <div class="section">
-                <h3>Significant Notes (For Guidance Counselors Only)</h3>
-                <div class="form-grid">
-                    <div>
-                        <label>Date</label>
-                        <p *ngIf="!editMode">{{ student.significant_notes.date }}</p>
-                        <input *ngIf="editMode" formControlName="incidentDate" type="date">
-                    </div>
-                    <div>
-                        <label>Incident</label>
-                        <p *ngIf="!editMode">{{ student.significant_notes.incident }}</p>
-                        <input *ngIf="editMode" formControlName="incident" type="text">
-                    </div>
-                    <div>
-                        <label>Remarks</label>
-                        <p *ngIf="!editMode">{{ student.significant_notes.remarks }}</p>
-                        <input *ngIf="editMode" formControlName="remarks" type="text">
-                    </div>
-                </div>
-            </div>
+        </section>
 
-            <div *ngIf="!editMode">
-                <button class="edit-btn" (click)="toggleEditMode()">Edit</button>
-            </div>
+        <!-- Personal Information -->
+        <section class="personal-information">
+            <h2>I. Personal Information</h2>
+            <table>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" formControlName="lastName" [value]="recordForm.get('lastName').value" disabled></td>
+                    <td>First Name:</td>
+                    <td><input type="text" formControlName="firstName" [value]="recordForm.get('firstName').value" disabled></td>
+                    <td>Middle Name:</td>
+                    <td><input type="text" formControlName="middleName" [value]="recordForm.get('middleName').value" disabled></td>
+                </tr>
+                <tr>
+                    <td>Civil Status:</td>
+                    <td><input type="text" formControlName="civilStatus" [value]="recordForm.get('civilStatus').value" disabled></td>
+                    <td>Religion:</td>
+                    <td><input type="text" formControlName="religion" [value]="recordForm.get('religion').value" disabled></td>
+                    <td>High School General Average:</td>
+                    <td><input type="text" formControlName="average" [value]="recordForm.get('average').value" disabled></td>
+                </tr>
+                <tr>
+                    <td>Course:</td>
+                    <td><input type="text" formControlName="course" [value]="recordForm.get('course').value" disabled></td>
+                    <td>Email:</td>
+                    <td colspan="3"><input type="email" formControlName="email" [value]="recordForm.get('email').value" disabled></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth:</td>
+                    <td><input type="date" formControlName="birthDate" [value]="recordForm.get('birthDate').value" disabled></td>
+                    <td>Place of Birth:</td>
+                    <td><input type="text" formControlName="birthPlace" [value]="recordForm.get('birthPlace').value" disabled></td>
+                    <td>Mobile No.:</td>
+                    <td><input type="tel" formControlName="mobileNo" [value]="recordForm.get('mobileNo').value" disabled></td>
+                </tr>
+                <tr>
+                    <td>Height (ft.):</td>
+                    <td><input type="number" formControlName="height" [value]="recordForm.get('height').value" disabled></td>
+                    <td>Weight (kg.):</td>
+                    <td><input type="number" formControlName="weight" [value]="recordForm.get('weight').value" disabled></td>
+                    <td>Gender:</td>
+                    <td>
+                        <label><input type="radio" formControlName="gender" value="Male" [checked]="recordForm.get('gender').value === 'Male'" disabled> Male</label>
+                        <label><input type="radio" formControlName="gender" value="Female" [checked]="recordForm.get('gender').value === 'Female'" disabled> Female</label>
+                        <label><input type="radio" formControlName="gender" value="Others" [checked]="recordForm.get('gender').value === 'Others'" disabled> Others</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Complete Provincial Address:</td>
+                    <td colspan="5"><input type="text" formControlName="provincialAddress" [value]="recordForm.get('provincialAddress').value" disabled></td>
+                </tr>
+                <tr>
+                    <td>Complete Residential or City Address:</td>
+                    <td colspan="5"><input type="text" formControlName="cityAddress" [value]="recordForm.get('cityAddress').value" disabled></td>
+                </tr>
+                <tr>
+                    <td>Emergency Contact:</td>
+                    <td colspan="2"><input type="text" formControlName="emergencyContact" [value]="recordForm.get('emergencyContact').value" disabled></td>
+                    <td>Emergency Phone:</td>
+                    <td><input type="text" formControlName="emergencyPhone" [value]="recordForm.get('emergencyPhone').value" disabled></td>
+                </tr>
+            </table>
+        </section>
 
-            <div *ngIf="editMode" class="section">
-                <button class="save-btn" (click)="saveChanges()">Save Changes</button>
-            </div>
-        </form>
-    </div>
+        <section class="educational-background">
+            <h2>II. Educational Background</h2>
+            <table>
+              <tr>
+                <th>Level</th>
+                <th>Name of School</th>
+                <th>Location/Address</th>
+                <th>Public/Private</th>
+                <th>Year Graduated</th>
+                <th>Awards Received</th>
+              </tr>
+              <tr>
+                <td>Elementary</td>
+                <td><input type="text" formControlName="elementarySchool" placeholder="e.g., PUP Elementary School"></td>
+                <td><input type="text" formControlName="elementaryLocation" placeholder="e.g., Manila"></td>
+                <td><input type="text" formControlName="elementaryType" placeholder="e.g., Public"></td>
+                <td><input type="text" formControlName="elementaryYear" placeholder="e.g., 2010"></td>
+                <td><input type="text" formControlName="elementaryAwards" placeholder="e.g., Best in Math"></td>
+              </tr>
+              <tr>
+                <td>Junior HS</td>
+                <td><input type="text" formControlName="juniorSchool" placeholder="e.g., PUP Junior High"></td>
+                <td><input type="text" formControlName="juniorLocation" placeholder="e.g., Manila"></td>
+                <td><input type="text" formControlName="juniorType" placeholder="e.g., Public"></td>
+                <td><input type="text" formControlName="juniorYear" placeholder="e.g., 2014"></td>
+                <td><input type="text" formControlName="juniorAwards" placeholder="e.g., Best in Science"></td>
+              </tr>
+              <tr>
+                <td>Senior HS</td>
+                <td><input type="text" formControlName="seniorSchool" placeholder="e.g., PUP Senior High"></td>
+                <td><input type="text" formControlName="seniorLocation" placeholder="e.g., Manila"></td>
+                <td><input type="text" formControlName="seniorType" placeholder="e.g., Public"></td>
+                <td><input type="text" formControlName="seniorYear" placeholder="e.g., 2018"></td>
+                <td><input type="text" formControlName="seniorAwards" placeholder="e.g., Best in English"></td>
+              </tr>
+              <tr>
+                <td>Others</td>
+                <td colspan="5"><input type="text" formControlName="otherSchool" placeholder="e.g., Name of School"></td>
+              </tr>
+            </table>
+          </section>
+        
+          <section class="home-family-background">
+            <h2>III. Home and Family Background</h2>
+            <table>
+              <tr>
+                <td>Name of Father:</td>
+                <td><input type="text" formControlName="fatherName" placeholder="e.g., John Doe"></td>
+                <td>Age:</td>
+                <td><input type="number" formControlName="fatherAge" placeholder="e.g., 45"></td>
+                <td>Name of Mother:</td>
+                <td><input type="text" formControlName="motherName" placeholder="e.g., Jane Doe"></td>
+                <td>Age:</td>
+                <td><input type="number" formControlName="motherAge" placeholder="e.g., 40"></td>
+              </tr>
+              <tr>
+                <td>Contact Number/s:</td>
+                <td><input type="tel" formControlName="fatherContact" placeholder="e.g., 09123456789"></td>
+                <td>Educational Attainment:</td>
+                <td><input type="text" formControlName="fatherEducation" placeholder="e.g., College Graduate"></td>
+                <td>Contact Number/s:</td>
+                <td><input type="tel" formControlName="motherContact" placeholder="e.g., 09123456789"></td>
+                <td>Educational Attainment:</td>
+                <td><input type="text" formControlName="motherEducation" placeholder="e.g., High School Graduate"></td>
+              </tr>
+              <tr>
+                <td>Occupation:</td>
+                <td><input type="text" formControlName="fatherOccupation" placeholder="e.g., Engineer"></td>
+                <td>Company:</td>
+                <td><input type="text" formControlName="fatherCompany" placeholder="e.g., ABC Corp."></td>
+                <td>Occupation:</td>
+                <td><input type="text" formControlName="motherOccupation" placeholder="e.g., Teacher"></td>
+                <td>Company:</td>
+                <td><input type="text" formControlName="motherCompany" placeholder="e.g., XYZ School"></td>
+              </tr>
+              <tr>
+                <td>Parents' Relationship Status:</td>
+                <td colspan="3">
+                  <label><input type="radio" formControlName="relationshipStatus" value="Married and Living Together"> Married & Living Together</label>
+                  <label><input type="radio" formControlName="relationshipStatus" value="Married but separated/annulled"> Married but separated/annulled</label>
+                  <label><input type="radio" formControlName="relationshipStatus" value="Father/Mother working abroad"> Father/Mother working abroad</label>
+                  <label><input type="radio" formControlName="relationshipStatus" value="Deceased"> Deceased, please specify: <input type="text" name="deceased" placeholder="Specify details"></label>
+                </td>
+              </tr>
+              <tr>
+                <td>Your Guardian's Name:</td>
+                <td colspan="3"><input type="text" formControlName="guardianName" placeholder="e.g., Mary Doe"></td>
+                <td>Address:</td>
+                <td colspan="3"><input type="text" formControlName="guardianAddress" placeholder="e.g., Address of Guardian"></td>
+              </tr>
+            </table>
+        
+            <table>
+              <tr>
+                <td>Parents' Combined Total Monthly Income:</td>
+                <td colspan="3">
+                  <label><input type="radio" formControlName="monthlyIncome" value="Below P5,000"> Below P5,000</label>
+                  <label><input type="radio" formControlName="monthlyIncome" value="P5,001 - P10,000"> P5,001 - P10,000</label>
+                  <label><input type="radio" formControlName="monthlyIncome" value="P10,001 - P15,000"> P10,001 - P15,000</label>
+                  <label><input type="radio" formControlName="monthlyIncome" value="P15,001 - P20,000"> P15,001 - P20,000</label>
+                  <label><input type="radio" formControlName="monthlyIncome" value="P20,001 - P25,000"> P20,001 - P25,000</label>
+                  <label><input type="radio" formControlName="monthlyIncome" value="P25,001 - P30,000"> P25,001 - P30,000</label>
+                  <label><input type="radio" formControlName="monthlyIncome" value="P30,001 - P35,000"> P30,001 - P35,000</label>
+                  <label><input type="radio" formControlName="monthlyIncome" value="P35,001 - P40,000"> P35,001 - P40,000</label>
+                  <label><input type="radio" formControlName="monthlyIncome" value="P40,001 - P45,000"> P40,001 - P45,000</label>
+                  <label><input type="radio" formControlName="monthlyIncome" value="P45,001 - P50,000"> P45,001 - P50,000</label>
+                  <label><input type="radio" formControlName="monthlyIncome" value="Above P50,000"> Above P50,000</label>
+                  <label><input type="radio" formControlName="monthlyIncome" value="Others"> Others, please specify: <input type="text" name="otherIncome" placeholder="Specify amount"></label>
+                </td>
+              </tr>
+              <tr>
+                <td>Siblings (Including you):</td>
+                <td>Total Number:</td>
+                <td colspan="2"><input type="number" formControlName="siblingsTotal" placeholder="e.g., 2"></td>
+              </tr>
+              <tr>
+                <td>Brothers:</td>
+                <td><input type="number" formControlName="brothers" placeholder="e.g., 1"></td>
+                <td>Sisters:</td>
+                <td><input type="number" formControlName="sisters" placeholder="e.g., 1"></td>
+              </tr>
+              <tr>
+                <td>How many are gainfully employed?</td>
+                <td><input type="number" formControlName="employed" placeholder="e.g., 1"></td>
+                <td>How many support your studies?</td>
+                <td><input type="number" formControlName="supportStudies" placeholder="e.g., 1"></td>
+                <td>How many support your immediate family?</td>
+                <td><input type="number" formControlName="supportFamily" placeholder="e.g., 1"></td>
+              </tr>
+              <tr>
+                <td>Please indicate other sources of financial support to your schooling:</td>
+                <td colspan="5"><input type="text" formControlName="financialSupport" placeholder="e.g., Scholarship, Loan"></td>
+              </tr>
+              <tr>
+                <td>Your weekly school allowance (Please specify the amount):</td>
+                <td colspan="5"><input type="number" formControlName="allowance" placeholder="e.g., 500"></td>
+              </tr>
+            </table>
+          </section>
+        
+          <section class="health">
+            <h2>IV. Health</h2>
+            <h3>A. Physical</h3>
+            <table>
+              <tr>
+                <td>Vision</td>
+                <td><input type="radio" formControlName="vision" value="No problem"> No problem</td>
+                <td><input type="radio" formControlName="visionIssue" value="Issue"> Issue</td>
+              </tr>
+              <tr>
+                <td>Hearing</td>
+                <td><input type="radio" formControlName="hearing" value="No problem"> No problem</td>
+                <td><input type="radio" formControlName="hearingIssue" value="Issue"> Issue</td>
+              </tr>
+              <tr>
+                <td>Mobility/Physical Disability</td>
+                <td><input type="radio" formControlName="mobility" value="No problem"> No problem</td>
+                <td><input type="radio" formControlName="mobilityIssue" value="Issue"> Issue</td>
+              </tr>
+              <tr>
+                <td>Speech</td>
+                <td><input type="radio" formControlName="speech" value="No problem"> No problem</td>
+                <td><input type="radio" formControlName="speechIssue" value="Issue"> Issue</td>
+              </tr>
+              <tr>
+                <td>General Health</td>
+                <td><input type="radio" formControlName="generalHealth" value="No problem"> No problem</td>
+                <td><input type="radio" formControlName="generalHealthIssue" value="Issue"> Issue</td>
+              </tr>
+            </table>
+        
+            <h3>B. Psychological Consultations (Only if applicable)</h3>
+            <table>
+              <tr>
+                <th>Consulted With</th>
+                <th>What Reason</th>
+                <th>When Started</th>
+                <th>Number of Sessions</th>
+                <th>Date Concluded</th>
+              </tr>
+              <tr>
+                <td><input type="text" formControlName="consultedWith" placeholder="e.g., Dr. Smith"></td>
+                <td><input type="text" formControlName="consultationReason" placeholder="e.g., Stress"></td>
+                <td><input type="date" formControlName="startDate"></td>
+                <td><input type="number" formControlName="sessions" placeholder="e.g., 5"></td>
+                <td><input type="date" formControlName="endDate"></td>
+              </tr>
+            </table>
+          </section>
+        
+          <section class="test-results">
+            <h2>V. Test Results</h2>
+            <table>
+              <tr>
+                <th>Date</th>
+                <th>Test Administered</th>
+                <th>RS</th>
+                <th>PR</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td><input type="date" formControlName="testDate"></td>
+                <td><input type="text" formControlName="testAdministered" placeholder="e.g., IQ Test"></td>
+                <td><input type="text" formControlName="rs" placeholder="e.g., 120"></td>
+                <td><input type="text" formControlName="pr" placeholder="e.g., 80"></td>
+                <td><input type="text" formControlName="description" placeholder="e.g., Above Average"></td>
+              </tr>
+            </table>
+          </section>
+        
+          <section class="significant-notes">
+            <h2>VI. Significant Notes (For Guidance Counselors Only)</h2>
+            <table>
+              <tr>
+                <th>Date</th>
+                <th>Incident</th>
+                <th>Remarks</th>
+              </tr>
+              <tr>
+                <td><input type="date" formControlName="noteDate"></td>
+                <td><input type="text" formControlName="incident" placeholder="e.g., Counseling"></td>
+                <td><input type="text" formControlName="remarks" placeholder="e.g., Follow-up required"></td>
+              </tr>
+            </table>
+          </section>
+    </form>
 </div>
