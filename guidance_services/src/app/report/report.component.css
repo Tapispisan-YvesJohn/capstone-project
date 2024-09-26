@@ -1,3 +1,4 @@
+/* Header */
 .header {
     display: flex;
     align-items: center;
@@ -26,6 +27,7 @@
     color: #800000;
 }
 
+/* Container and Sidebar */
 .container {
     display: flex;
     flex-direction: row;
@@ -35,13 +37,12 @@
     background: linear-gradient(rgba(128, 0, 0, 0.85), rgba(128, 0, 0, 0.85)), 
                 url('../../assets/images/campus.png') no-repeat center center;
     background-size: cover;
-    width: 350px;
+    width: 300px;
     height: calc(100vh - 80px);
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: width 0.3s ease;
 }
 
 .sidebar ul {
@@ -72,16 +73,54 @@
     transform: scale(1.05); 
 }
 
+/* Report Container */
 .report-container {
     flex-grow: 1;
     padding: 20px;
-    margin-left: 50px; 
-    margin-right: 100px;
-    max-width: calc(100% - 350px); 
+    margin-left: 30px; 
+    max-width: calc(100% - 350px);
     display: flex;
     flex-direction: column;
 }
 
+h2 {
+    margin-bottom: 20px;
+    color: #800000;
+    font-weight: bold;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filters input, .filters select {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.apply-filters {
+    background-color: #800000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.apply-filters:hover {
+    background-color: #f8f817;
+    color: #800000;
+}
+
+/* Report Table */
 .report-table {
     width: 100%;
     border-collapse: collapse;
@@ -108,22 +147,33 @@
     font-size: 16px; 
 }
 
-.actions {
+/* Pagination */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Export buttons */
+.export-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
+    margin-top: 20px;
 }
 
-button {
-    background-color: #007bff;
+.export-button {
+    background-color: #800000;
     color: white;
+    padding: 10px 20px;
     border: none;
-    padding: 5px 10px; 
     cursor: pointer;
     border-radius: 5px;
-    font-size: 14px; 
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
+.export-button:hover {
+    background-color: #f8f817;
+    color: #800000;
 }

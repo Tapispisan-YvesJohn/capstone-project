@@ -1,43 +1,69 @@
 <div class="header">
-    <img src="../../assets/images/pup-logo.png" alt="PUP Logo" class="logo">
-    <div class="header-text">
-        <h1>Polytechnic University of the Philippines - Taguig</h1>
-        <p>Guidance Information System</p>
-    </div>
+  <img src="../../assets/images/pup-logo.png" alt="PUP Logo" class="logo">
+  <div class="header-text">
+    <h1>Polytechnic University of the Philippines - Taguig</h1>
+    <p>Guidance Information System</p>
+  </div>
 </div>
 
 <div class="container">
-    <div class="sidebar">
-        <ul>
-            <li><a (click)="navigateTo('student-record')">Student Records</a></li>
-            <li><a (click)="navigateTo('appointments')">Appointments</a></li> 
-            <li><a (click)="navigateTo('application-status')">Inventory Record Application</a></li>
-            <li><a (click)="navigateTo('report')">Reports</a></li>
-        </ul>
+  <div class="sidebar">
+    <ul>
+      <li><a (click)="navigateTo('student-record')">Student Records</a></li>
+      <li><a (click)="navigateTo('appointments')">Appointments</a></li>
+      <li><a (click)="navigateTo('application-status')">Inventory Record Application</a></li>
+      <li><a (click)="navigateTo('report')">Reports</a></li>
+    </ul>
+  </div>
+
+  <div class="report-container">
+    <h2>Report List</h2>
+
+    <div class="filter-section">
+      <label>Course:</label>
+      <select [(ngModel)]="selectedCourse">
+        <option value="All Courses">All Courses</option>
+        <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+      </select>
+
+      <label>Name:</label>
+      <input type="text" placeholder="Filter by Name" [(ngModel)]="filterName">
+
+      <label>Date:</label>
+      <input type="date" [(ngModel)]="filterDate">
+
+      <button (click)="applyFilters()">Apply Filters</button>
     </div>
 
-    <div class="report-container">
-        <h2>Report List</h2>
-      
-        <table class="report-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let report of reports">
-              <td>{{ report.id }}</td>
-              <td>{{ report.title }}</td>
-              <td>{{ report.date }}</td>
-              <td>
-                <button (click)="exportReport(report.id)">Export</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let report of filteredReports">
+          <td>{{ report.id }}</td>
+          <td>{{ report.title }}</td>
+          <td>{{ report.date }}</td>
+          <td>
+            <!-- Export or other actions -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination Component -->
+    <p-paginator [rows]="rows" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
+
+    <!-- Export buttons -->
+    <div class="export-buttons">
+      <button (click)="exportToCSV()">Export CSV</button>
+      <button (click)="exportToExcel()">Export Excel</button>
+      <button (click)="exportToPDF()">Export PDF</button>
+    </div>
+  </div>
 </div>
