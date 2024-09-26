@@ -1,29 +1,29 @@
 .header {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    width: 100%;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  background-color: #800000;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); 
 }
 
 .logo {
-    height: 80px;
-    margin-right: 20px;
+  height: 80px;
+  margin-right: 20px;
 }
 
 .header-text {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .header-text h1 {
-    margin: 0;
-    color: #800000;
+  margin: 0;
+  color: #ffffff;
 }
 
 .header-text p {
-    margin: 0;
-    color: #800000;
+  margin: 0;
+  color: #ffffff;
 }
 
 .form-container {
