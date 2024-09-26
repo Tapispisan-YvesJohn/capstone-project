@@ -37,12 +37,13 @@
     background: linear-gradient(rgba(128, 0, 0, 0.85), rgba(128, 0, 0, 0.85)), 
                 url('../../assets/images/campus.png') no-repeat center center;
     background-size: cover;
-    width: 300px;
+    width: 350px;
     height: calc(100vh - 80px);
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: width 0.3s ease;
 }
 
 .sidebar ul {
