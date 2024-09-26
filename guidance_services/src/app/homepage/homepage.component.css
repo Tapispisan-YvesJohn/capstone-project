@@ -1,10 +1,10 @@
 .header {
     display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color: #800000;
     width: 100%;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); 
 }
 
 .logo {
@@ -18,12 +18,12 @@
 
 .header-text h1 {
     margin: 0;
-    color: #800000;
+    color: #ffffff;
 }
 
 .header-text p {
     margin: 0;
-    color: #800000;
+    color: #ffffff;
 }
 
 .container {
@@ -42,6 +42,7 @@
     flex-direction: column;
     justify-content: space-between;
     transition: width 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
 }
 
 .sidebar ul {
@@ -161,7 +162,7 @@
 }
 
 .course-filter select:focus {
-    border-color: #800000;
+    border-color: #953c3c;
     outline: none;
 }
 

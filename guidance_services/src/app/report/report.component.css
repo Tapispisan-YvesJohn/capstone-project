@@ -1,11 +1,10 @@
-/* Header */
 .header {
     display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color: #800000;
     width: 100%;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); 
 }
 
 .logo {
@@ -19,12 +18,12 @@
 
 .header-text h1 {
     margin: 0;
-    color: #800000;
+    color: #ffffff;
 }
 
 .header-text p {
     margin: 0;
-    color: #800000;
+    color: #ffffff;
 }
 
 /* Container and Sidebar */
@@ -37,12 +36,13 @@
     background: linear-gradient(rgba(128, 0, 0, 0.85), rgba(128, 0, 0, 0.85)), 
                 url('../../assets/images/campus.png') no-repeat center center;
     background-size: cover;
-    width: 300px;
+    width: 350px;
     height: calc(100vh - 80px);
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: width 0.3s ease;
 }
 
 .sidebar ul {
