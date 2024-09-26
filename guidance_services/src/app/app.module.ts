@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaginatorModule } from 'primeng/paginator';
 
 // Angular Material Modules
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -31,6 +32,8 @@ import { StudentAppointmentSchedulingComponent } from './Student_Module/student-
 import { AppointmentsComponent } from './review-appointments/review-appointments.component';
 import { StudentViewScheduleComponent } from './Student_Module/student-view-schedule/student-view-schedule.component';
 import { ReportComponent } from './report/report.component';
+import { ReportService } from './services/report.service'; 
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -65,11 +68,14 @@ import { ReportComponent } from './report/report.component';
     MatDatepickerModule,     
     MatNativeDateModule,     
     MatFormFieldModule,    
-    MatInputModule           
+    MatInputModule,
+    NgxPaginationModule, 
+    PaginatorModule          
   ],
   providers: [
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReportService
   ],
   bootstrap: [AppComponent]
 })

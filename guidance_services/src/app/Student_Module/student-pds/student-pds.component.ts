@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RecordsService } from '../../services/records.service';
 
 @Component({
@@ -10,6 +11,9 @@ import { RecordsService } from '../../services/records.service';
 })
 export class StudentPdsComponent implements OnInit {
   inventoryForm: FormGroup;
+  formErrorMessage: string = '';
+
+  // Labels for reasons checkboxes
   reasonLabels: string[] = [
     'Lower tuition fee',
     'Safety of the place',
@@ -23,8 +27,12 @@ export class StudentPdsComponent implements OnInit {
     'Expecting Scholarship Offer'
   ];
 
-
-  constructor(private fb: FormBuilder, private router: Router, private recordsService: RecordsService) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private recordsService: RecordsService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.inventoryForm = this.fb.group({
@@ -125,6 +133,11 @@ export class StudentPdsComponent implements OnInit {
       pr: [''],
       description: [''],
 
+      // Significant Notes
+      noteDate: [''],
+      incident: [''],
+      remarks: [''],
+
       // Checkbox for Reasons of Enrollment as an array
       reasons: this.fb.array(this.reasonLabels.map(() => this.fb.control(false))),
       otherReasons: [''],
@@ -140,19 +153,51 @@ export class StudentPdsComponent implements OnInit {
       this.recordsService.createRecord(this.inventoryForm.value).subscribe({
         next: (response) => {
           console.log('Form Submitted successfully', response);
+          this.snackBar.open('Record created successfully!', 'Close', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            panelClass: ['snackbar-success']
+          });
+          this.inventoryForm.reset();
+          this.formErrorMessage = ''; 
         },
         error: (error) => {
           console.error('Error submitting form', error);
+          this.formErrorMessage = 'An error occurred while creating the record. Please check the form and try again.'; 
+          this.snackBar.open('Error creating record. Please try again.', 'Close', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            panelClass: ['snackbar-error']
+          });
         }
       });
     } else {
       console.log('Form not valid');
+      this.formErrorMessage = 'Please fill out all required fields correctly before submitting.';
+      this.snackBar.open('Error creating record. Please try again.', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right',
+        panelClass: ['snackbar-error']
+      });
       this.markFormGroupTouched(this.inventoryForm);
+      this.logInvalidControls(this.inventoryForm);  // Log the invalid controls
     }
-  }
+  }  
 
-  navigateTo(route: string): void {
-    this.router.navigate([route]);
+  private logInvalidControls(formGroup: FormGroup): void {
+    Object.keys(formGroup.controls).forEach((key) => {
+      const control = formGroup.get(key);
+      if (control && control.invalid) {
+        console.error(`Invalid control: ${key}, Errors:`, control.errors);
+      }
+    });
+  }  
+
+  navigateBack(): void {
+    this.router.navigate(['/student-record']); 
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {
