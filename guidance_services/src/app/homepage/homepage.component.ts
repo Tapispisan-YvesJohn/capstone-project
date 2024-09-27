@@ -110,4 +110,22 @@ export class HomepageComponent implements OnInit {
       this.filteredStudents = [...this.students]; // If no course selected, show all students
     }
   }
+
+  // printForm(student: any): void {
+  //   const printWindow = window.open('', '_blank');
+  
+  //   if (printWindow) {
+  //     // Create a URL for the view record page
+  //     const url = `/view-record/${student.id}`;
+  //     printWindow.location.href = url;
+  
+  //     // Listen for the window to load, then trigger print
+  //     printWindow.onload = () => {
+  //       printWindow.print();
+  //       printWindow.close(); // Optionally close the print window after printing
+  //     };
+  //   } else {
+  //     console.error('Failed to open print window.');
+  //   }
+  // }
 }

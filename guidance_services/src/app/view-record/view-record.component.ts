@@ -139,5 +139,9 @@ export class ViewRecordComponent implements OnInit {
       ),
       otherReasons: [student.other_reasons || '']
     });
-}
+  }
+
+  printForm(): void {
+    window.print(); 
+  }
 }
