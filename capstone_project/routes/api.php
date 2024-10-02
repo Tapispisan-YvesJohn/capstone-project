@@ -38,3 +38,5 @@ Route::middleware(['auth:api'])->group(function () {
 });
 
 Route::get('/retrieve/{id}&{email}', [LoginController::class, 'retrieve']);
+
+Route::get('/appointments/{date}', [AppointmentController::class, 'getAppointmentsByDate']);

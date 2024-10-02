@@ -181,3 +181,7 @@
     color: white;
 }
 
+.booked {
+    text-decoration: line-through;
+    color: #ccc;
+}

@@ -44,8 +44,9 @@
                           [value]="time.value" 
                           formControlName="appointment_time" 
                           id="morning-time{{i}}" 
+                          [disabled]="time.disabled"
                         />
-                        <label [for]="'morning-time' + i">{{ time.display }}</label>
+                        <label [for]="'morning-time' + i" [class.booked]="time.disabled">{{ time.display }}</label>
                     </div>
                 </div>
                 <div class="time-column">
@@ -55,8 +56,9 @@
                           [value]="time.value" 
                           formControlName="appointment_time" 
                           id="afternoon-time{{i}}" 
+                          [disabled]="time.disabled"
                         />
-                        <label [for]="'afternoon-time' + i">{{ time.display }}</label>
+                        <label [for]="'afternoon-time' + i" [class.booked]="time.disabled">{{ time.display }}</label>
                     </div>
                 </div>
             </div>
