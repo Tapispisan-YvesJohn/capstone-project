@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar'; // Import Snackbar
+import { MatSnackBar } from '@angular/material/snack-bar'; 
 import { AppointmentsService } from '../../services/appointments.service';
 
 @Component({
@@ -28,8 +29,9 @@ export class StudentAppointmentSchedulingComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,  
+    private router: Router,
     private appointmentService: AppointmentsService,
-    private snackBar: MatSnackBar  // Inject MatSnackBar service
+    private snackBar: MatSnackBar  
   ) {}
 
   ngOnInit(): void {
@@ -84,5 +86,9 @@ export class StudentAppointmentSchedulingComponent implements OnInit {
     } else {
       console.log('Form is invalid');
     }
+  }
+
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
   }
 }
