@@ -215,17 +215,18 @@
     cursor: pointer;
 }
 
-/* .print-btn {
+.print-btn {
     padding: 5px 10px;
     background-color: #4caf50;
     color: #fff;
     border: none;
     border-radius: 3px;
     cursor: pointer;
-} */
+}
 
 .view-btn:hover,
 .delete-btn:hover,
 .print-btn:hover {
     opacity: 0.9;
 }
+

@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="form-container">
+<div class="form-container" id="formToPrint">
     <header class="form-header">
       <img src="../../assets/images/pup-logo.png" alt="PUP Logo" class="logo">
       <h4>INDIVIDUAL INVENTORY RECORD FORM</h4>
@@ -18,10 +18,10 @@
             <h2>Your reason/s for enrolling in this University:</h2>
             <div class="checkbox-group">
                 <label *ngFor="let reason of reasonLabels; let i = index">
-                    <input type="checkbox" [checked]="recordForm.get('reasons').value[i]" disabled> {{ reason }}
+                    <input type="checkbox" [checked]="recordForm.get('reasons').value[i]" > {{ reason }}
                 </label>
                 <label>
-                    Others: <input type="text" formControlName="otherReasons" [value]="recordForm.get('otherReasons').value" disabled>
+                    Others: <input type="text" formControlName="otherReasons" [value]="recordForm.get('otherReasons').value" >
                 </label>
             </div>
         </section>
@@ -32,59 +32,59 @@
             <table>
                 <tr>
                     <td>Last Name:</td>
-                    <td><input type="text" formControlName="lastName" [value]="recordForm.get('lastName').value" disabled></td>
+                    <td><input type="text" formControlName="lastName" [value]="recordForm.get('lastName').value" ></td>
                     <td>First Name:</td>
-                    <td><input type="text" formControlName="firstName" [value]="recordForm.get('firstName').value" disabled></td>
+                    <td><input type="text" formControlName="firstName" [value]="recordForm.get('firstName').value" ></td>
                     <td>Middle Name:</td>
-                    <td><input type="text" formControlName="middleName" [value]="recordForm.get('middleName').value" disabled></td>
+                    <td><input type="text" formControlName="middleName" [value]="recordForm.get('middleName').value" ></td>
                 </tr>
                 <tr>
                     <td>Civil Status:</td>
-                    <td><input type="text" formControlName="civilStatus" [value]="recordForm.get('civilStatus').value" disabled></td>
+                    <td><input type="text" formControlName="civilStatus" [value]="recordForm.get('civilStatus').value" ></td>
                     <td>Religion:</td>
-                    <td><input type="text" formControlName="religion" [value]="recordForm.get('religion').value" disabled></td>
+                    <td><input type="text" formControlName="religion" [value]="recordForm.get('religion').value" ></td>
                     <td>High School General Average:</td>
-                    <td><input type="text" formControlName="average" [value]="recordForm.get('average').value" disabled></td>
+                    <td><input type="text" formControlName="average" [value]="recordForm.get('average').value" ></td>
                 </tr>
                 <tr>
                     <td>Course:</td>
-                    <td><input type="text" formControlName="course" [value]="recordForm.get('course').value" disabled></td>
+                    <td><input type="text" formControlName="course" [value]="recordForm.get('course').value" ></td>
                     <td>Email:</td>
-                    <td colspan="3"><input type="email" formControlName="email" [value]="recordForm.get('email').value" disabled></td>
+                    <td colspan="3"><input type="email" formControlName="email" [value]="recordForm.get('email').value" ></td>
                 </tr>
                 <tr>
                     <td>Date of Birth:</td>
-                    <td><input type="date" formControlName="birthDate" [value]="recordForm.get('birthDate').value" disabled></td>
+                    <td><input type="date" formControlName="birthDate" [value]="recordForm.get('birthDate').value" ></td>
                     <td>Place of Birth:</td>
-                    <td><input type="text" formControlName="birthPlace" [value]="recordForm.get('birthPlace').value" disabled></td>
+                    <td><input type="text" formControlName="birthPlace" [value]="recordForm.get('birthPlace').value" ></td>
                     <td>Mobile No.:</td>
-                    <td><input type="tel" formControlName="mobileNo" [value]="recordForm.get('mobileNo').value" disabled></td>
+                    <td><input type="tel" formControlName="mobileNo" [value]="recordForm.get('mobileNo').value" ></td>
                 </tr>
                 <tr>
                     <td>Height (ft.):</td>
-                    <td><input type="number" formControlName="height" [value]="recordForm.get('height').value" disabled></td>
+                    <td><input type="number" formControlName="height" [value]="recordForm.get('height').value" ></td>
                     <td>Weight (kg.):</td>
-                    <td><input type="number" formControlName="weight" [value]="recordForm.get('weight').value" disabled></td>
+                    <td><input type="number" formControlName="weight" [value]="recordForm.get('weight').value" ></td>
                     <td>Gender:</td>
                     <td>
-                        <label><input type="radio" formControlName="gender" value="Male" [checked]="recordForm.get('gender').value === 'Male'" disabled> Male</label>
-                        <label><input type="radio" formControlName="gender" value="Female" [checked]="recordForm.get('gender').value === 'Female'" disabled> Female</label>
-                        <label><input type="radio" formControlName="gender" value="Others" [checked]="recordForm.get('gender').value === 'Others'" disabled> Others</label>
+                        <label><input type="radio" formControlName="gender" value="Male" [checked]="recordForm.get('gender').value === 'Male'" > Male</label>
+                        <label><input type="radio" formControlName="gender" value="Female" [checked]="recordForm.get('gender').value === 'Female'" > Female</label>
+                        <label><input type="radio" formControlName="gender" value="Others" [checked]="recordForm.get('gender').value === 'Others'" > Others</label>
                     </td>
                 </tr>
                 <tr>
                     <td>Complete Provincial Address:</td>
-                    <td colspan="5"><input type="text" formControlName="provincialAddress" [value]="recordForm.get('provincialAddress').value" disabled></td>
+                    <td colspan="5"><input type="text" formControlName="provincialAddress" [value]="recordForm.get('provincialAddress').value" ></td>
                 </tr>
                 <tr>
                     <td>Complete Residential or City Address:</td>
-                    <td colspan="5"><input type="text" formControlName="cityAddress" [value]="recordForm.get('cityAddress').value" disabled></td>
+                    <td colspan="5"><input type="text" formControlName="cityAddress" [value]="recordForm.get('cityAddress').value" ></td>
                 </tr>
                 <tr>
                     <td>Emergency Contact:</td>
-                    <td colspan="2"><input type="text" formControlName="emergencyContact" [value]="recordForm.get('emergencyContact').value" disabled></td>
+                    <td colspan="2"><input type="text" formControlName="emergencyContact" [value]="recordForm.get('emergencyContact').value" ></td>
                     <td>Emergency Phone:</td>
-                    <td><input type="text" formControlName="emergencyPhone" [value]="recordForm.get('emergencyPhone').value" disabled></td>
+                    <td><input type="text" formControlName="emergencyPhone" [value]="recordForm.get('emergencyPhone').value" ></td>
                 </tr>
             </table>
         </section>
@@ -315,5 +315,4 @@
             </table>
           </section>
     </form>
-    <button class="print-btn" (click)="printForm()">Print</button>
 </div>
