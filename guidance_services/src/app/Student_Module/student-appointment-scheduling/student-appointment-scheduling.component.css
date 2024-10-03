@@ -142,7 +142,7 @@
 .time-column {
     display: flex;
     flex-direction: column;
-    width: 45%; /* Adjust as necessary for spacing */
+    width: 45%; 
 }
 
 .time-slot {
