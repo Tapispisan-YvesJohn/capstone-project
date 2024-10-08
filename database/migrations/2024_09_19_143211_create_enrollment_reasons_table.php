@@ -4,22 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSignificantNotesTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
-        Schema::create('significant_notes', function (Blueprint $table) {
+        Schema::create('enrollment_reasons', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_record_id')->constrained('student_records')->onDelete('cascade');
-            $table->date('date')->nullable();
-            $table->string('incident')->nullable();
-            $table->text('remarks')->nullable();
+            $table->json('reasons');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('significant_notes');
+        Schema::dropIfExists('enrollment_reasons');
     }
-}
+};

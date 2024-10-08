@@ -36,4 +36,12 @@ Route::middleware([CheckToken::class])->group(function () {
     Route::get('/application-status', function () {
         return view ('welcome');
     });
+
+    Route::get('/reports', function () {
+        return view ('welcome');
+    });
+
+    Route::get('/reports/import', function () {
+        return view ('welcome');
+    });
 });

@@ -5,27 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HealthRecord extends Model
+class EnrollmentReason extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'student_record_id', 
-        'vision',
-        'hearing',
-        'mobility',
-        'speech',
-        'general_health',
-        'consulted_with',
-        'consultation_reason',
-        'start_date',
-        'sessions',
-        'end_date'
+        'student_record_id',
+        'reasons',
+    ];
+
+    protected $casts = [
+        'reasons' => 'array',
     ];
 
     public function studentRecord()
     {
         return $this->belongsTo(StudentRecord::class);
     }
-
 }

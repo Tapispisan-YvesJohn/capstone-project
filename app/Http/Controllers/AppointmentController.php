@@ -16,6 +16,15 @@ class AppointmentController extends Controller
             'reason' => 'required|string|max:255',
         ]);
 
+        // Check if an appointment is already scheduled for the selected date and time
+        $existingAppointment = Appointment::where('appointment_date', $request->input('appointment_date'))
+                                          ->where('appointment_time', $request->input('appointment_time'))
+                                          ->first();
+
+        if ($existingAppointment) {
+            return response()->json(['message' => 'The selected time is already booked.'], 409);
+        }
+
         $appointment = new Appointment([
             'user_id' => Auth::id(),
             'appointment_date' => $request->input('appointment_date'),
@@ -58,4 +67,10 @@ class AppointmentController extends Controller
         }
     }
 
+    // New method to get appointments for a specific date
+    public function getAppointmentsByDate($date)
+    {
+        $appointments = Appointment::where('appointment_date', $date)->get();
+        return response()->json($appointments);
+    }
 }
