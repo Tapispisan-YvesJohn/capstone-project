@@ -11,15 +11,8 @@ export class ReportService {
 
   constructor(private http: HttpClient) { }
 
-  // Fetch reports from backend API
+  // Fetch reports (adjusted to fetch Name, Course, Email data)
   getReports(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
-  }
-
-  // Import reports via batch upload
-  importReports(file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('file', file);
-    return this.http.post(`${this.baseUrl}/import`, formData);
+    return this.http.get<any[]>(this.baseUrl);  // Adjust if your API requires additional parameters
   }
 }
