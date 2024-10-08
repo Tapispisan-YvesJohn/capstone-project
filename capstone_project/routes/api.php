@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentRecordController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\RBACController;
+use App\Http\Controllers\ReportController;
 
 Route::post('/login', [LoginController::class, 'login'])->name('api.login');
 
@@ -40,3 +41,7 @@ Route::middleware(['auth:api'])->group(function () {
 Route::get('/retrieve/{id}&{email}', [LoginController::class, 'retrieve']);
 
 Route::get('/appointments/{date}', [AppointmentController::class, 'getAppointmentsByDate']);
+
+Route::get('/reports', [ReportController::class, 'index']);
+
+Route::post('/reports/import', [ReportController::class, 'import']);
