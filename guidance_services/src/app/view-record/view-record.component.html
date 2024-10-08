@@ -270,10 +270,10 @@
                 <th>Date Concluded</th>
               </tr>
               <tr>
-                <td><input type="text" formControlName="consultedWith" placeholder="e.g., Dr. Smith"></td>
-                <td><input type="text" formControlName="consultationReason" placeholder="e.g., Stress"></td>
+                <td><input type="text" formControlName="consultedWith"></td>
+                <td><input type="text" formControlName="consultationReason"></td>
                 <td><input type="date" formControlName="startDate"></td>
-                <td><input type="number" formControlName="sessions" placeholder="e.g., 5"></td>
+                <td><input type="number" formControlName="sessions"></td>
                 <td><input type="date" formControlName="endDate"></td>
               </tr>
             </table>
@@ -291,10 +291,10 @@
               </tr>
               <tr>
                 <td><input type="date" formControlName="testDate"></td>
-                <td><input type="text" formControlName="testAdministered" placeholder="e.g., IQ Test"></td>
-                <td><input type="text" formControlName="rs" placeholder="e.g., 120"></td>
-                <td><input type="text" formControlName="pr" placeholder="e.g., 80"></td>
-                <td><input type="text" formControlName="description" placeholder="e.g., Above Average"></td>
+                <td><input type="text" formControlName="testAdministered"></td>
+                <td><input type="text" formControlName="rs"></td>
+                <td><input type="text" formControlName="pr"></td>
+                <td><input type="text" formControlName="description"></td>
               </tr>
             </table>
           </section>
@@ -309,10 +309,12 @@
               </tr>
               <tr>
                 <td><input type="date" formControlName="noteDate"></td>
-                <td><input type="text" formControlName="incident" placeholder="e.g., Counseling"></td>
-                <td><input type="text" formControlName="remarks" placeholder="e.g., Follow-up required"></td>
+                <td><input type="text" formControlName="incident"></td>
+                <td><input type="text" formControlName="remarks"></td>
               </tr>
             </table>
           </section>
     </form>
+    
+  <button class="print-btn" (click)="printForm()">Print</button>
 </div>

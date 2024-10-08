@@ -31,9 +31,10 @@ export class ViewRecordComponent implements OnInit {
     this.loadStudentRecord(id);
 
     if (printMode) {
-      // Trigger print dialog after the form is populated
       window.addEventListener('load', () => {
-        this.printForm();
+        setTimeout(() => {
+          this.printForm();
+        }, 1000);
       });
     }
   }
