@@ -103,4 +103,9 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('token');
   }
+
+  register(user: any) {
+    return this.http.post('http://127.0.0.1:8000/api/register', user);
+  }
+  
 }
