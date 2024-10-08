@@ -110,4 +110,10 @@ export class HomepageComponent implements OnInit {
       this.filteredStudents = [...this.students]; // If no course selected, show all students
     }
   }
+
+  printForm(student: any) {
+    const url = `/view-record/${student.id}?print=true`;
+    window.open(url, '_blank');  
+  }
+
 }

@@ -27,7 +27,16 @@ export class ViewRecordComponent implements OnInit {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    const printMode = this.route.snapshot.queryParamMap.get('print') === 'true';
     this.loadStudentRecord(id);
+
+    if (printMode) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          this.printForm();
+        }, 1000);
+      });
+    }
   }
 
   loadStudentRecord(id: number): void {
@@ -40,6 +49,10 @@ export class ViewRecordComponent implements OnInit {
         console.error('Error fetching student data:', error);
       }
     });
+  }
+
+  printForm() {
+    window.print();
   }
 
   initializeForm(student: any): void {
@@ -111,10 +124,15 @@ export class ViewRecordComponent implements OnInit {
 
       // Health Record
       vision: [student.health_record?.vision || ''],
+      visionIssue: [student.health_record?.vision || ''],
       hearing: [student.health_record?.hearing || ''],
+      hearingIssue: [student.health_record?.hearing || ''],
       mobility: [student.health_record?.mobility || ''],
+      mobilityIssue: [student.health_record?.mobility || ''],
       speech: [student.health_record?.speech || ''],
+      speechIssue: [student.health_record?.speech || ''],
       generalHealth: [student.health_record?.general_health || ''],
+      generalHealthIssue: [student.health_record?.general_health || ''],
       consultedWith: [student.health_record?.consulted_with || ''],
       consultationReason: [student.health_record?.consultation_reason || ''],
       startDate: [student.health_record?.start_date || ''],
@@ -139,5 +157,6 @@ export class ViewRecordComponent implements OnInit {
       ),
       otherReasons: [student.other_reasons || '']
     });
-}
+  }
+
 }
