@@ -7,45 +7,99 @@
 </div>
   
 <div class="background">
-    <div class="login-container">
-      <div class="login-header">
-        <img src="../../assets/images/admin-icon.png" 
-            alt="Admin Icon" 
-            class="admin-icon">
-        <h2>Login</h2>
-      </div>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="login-container">
+    <div class="login-header">
+        <img src="../../assets/images/admin-icon.png" alt="Admin Icon" class="admin-icon">
+        <h2>{{ isSignup ? 'Signup' : 'Login' }}</h2>
+    </div>
+    <form [formGroup]="isSignup ? signupForm : loginForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Login Form -->
+      <ng-container *ngIf="!isSignup">
         <div class="form-group">
           <label for="email">Email:</label>
           <input type="email" id="email" formControlName="email">
-          @if(emailControl.invalid && emailControl.touched) {
-            <div class="inc">
-              @if(emailControl.errors?.['required']) {
-                <div>Email is required.</div>
-              }
-              @if(emailControl.errors?.['email']) {
-                <div>Invalid email format.</div>
-              }
-            </div>
-          }
+          <div *ngIf="emailControl.invalid && emailControl.touched" class="inc">
+            <div *ngIf="emailControl.errors?.['required']">Email is required.</div>
+            <div *ngIf="emailControl.errors?.['email']">Invalid email format.</div>
+          </div>
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
           <input type="password" id="password" formControlName="password">
-          @if(passwordControl.invalid && passwordControl.touched && 
-                passwordControl.errors?.['required']) {
-            <div class="inc">
-                <div>Password is Required.</div>
+          <div *ngIf="passwordControl.invalid && passwordControl.touched" class="inc">
+            <div *ngIf="passwordControl.errors?.['required']">Password is required.</div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Signup Form -->
+      <ng-container *ngIf="isSignup">
+        <div class="signup-grid">
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" formControlName="firstName">
+            <div *ngIf="firstNameControl.invalid && firstNameControl.touched" class="inc">
+              <div *ngIf="firstNameControl.errors?.['required']">First Name is required.</div>
             </div>
-        }
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" formControlName="lastName">
+            <div *ngIf="lastNameControl.invalid && lastNameControl.touched" class="inc">
+             <div *ngIf="lastNameControl.errors?.['required']">Last Name is required.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="middleName">Middle Name:</label>
+            <input type="text" id="middleName" formControlName="middleName">
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" formControlName="email">
+            <div class="inc" *ngIf="emailControl.invalid && emailControl.touched">
+              <div *ngIf="emailControl.errors?.['required']">Email is required.</div>
+              <div *ngIf="emailControl.errors?.['email']">Invalid email format.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="studentNumber">Student Number:</label>
+            <input type="text" id="studentNumber" formControlName="studentNumber">
+            <div *ngIf="studentNumberControl.invalid && studentNumberControl.touched" class="inc">
+              <div *ngIf="studentNumberControl.errors?.['required']">Student Number is required.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" formControlName="password">
+            <div class="inc" *ngIf="passwordControl.invalid && passwordControl.touched">
+              <div *ngIf="passwordControl.errors?.['required']">Password is required.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" formControlName="confirmPassword">
+            <div class="inc" *ngIf="confirmPasswordControl.invalid && confirmPasswordControl.touched">
+              <div *ngIf="confirmPasswordControl.errors?.['required']">Confirm password is required.</div>
+              <div *ngIf="confirmPasswordControl.errors?.['mustMatch']">Passwords must match.</div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <button type="submit" [disabled]="loginForm.invalid">Login</button>
-        </div>
-        <div class="form-footer">
+      </ng-container>
+
+      <div class="form-group">
+          <button type="submit" [disabled]="isSignup ? signupForm.invalid : loginForm.invalid">
+              {{ isSignup ? 'Signup' : 'Login' }}
+          </button>
+      </div>
+      <div class="form-footer">
           <a href="#">Forgot password?</a>
-        </div>
-      </form>
-    </div>
+        <a routerLink="/login" (click)="toggleForm()">
+          {{ isSignup ? 'Already have an account? Login' : 'Create a new account' }}
+        </a>
+      </div>
+    </form>
+  </div>
+
 </div>
   

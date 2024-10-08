@@ -13,8 +13,8 @@ class UserInfoSeeder extends Seeder
             'first_name' => 'Liwanag',
             'last_name' => 'Maliksi',
             'student_number' => 'N/A',
-            'birthday' => '1987-12-25',
-            'gender' => 'Female',
+            // 'birthday' => '1987-12-25',
+            // 'gender' => 'Female',
             'user_id' => 1,
             'role_id' => 2, 
         ]);
@@ -23,8 +23,8 @@ class UserInfoSeeder extends Seeder
             'first_name' => 'Juan',
             'last_name' => 'Dela Cruz',
             'student_number' => '2021-00001-TG-0',
-            'birthday' => '2001-01-01',
-            'gender' => 'Male',
+            // 'birthday' => '2001-01-01',
+            // 'gender' => 'Male',
             'user_id' => 2,
             'role_id' => 1,
         ]);

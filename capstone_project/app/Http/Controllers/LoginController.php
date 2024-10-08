@@ -5,11 +5,90 @@ namespace App\Http\Controllers;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\UserInfo;
 
 class LoginController extends Controller {
+ 
+  public function register(Request $request){
+    $validator = Validator::make($request->all(), [
+        'firstName' => 'required|string|max:255',
+        'lastName' => 'required|string|max:255',
+        'studentNumber' => 'required|string|max:15|unique:user_info,student_number',
+        'email' => 'required|string|email|max:255|unique:users,email',
+        'password' => 'required|string|min:8',
+    ]);
+
+    try {
+
+        $user = User::create([
+            'first_name' => $request->input('firstName'),
+            'last_name' => $request->input('lastName'),
+            'student_number' => $request->input('studentNumber'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'role_id' => 1,
+        ]);
+
+        UserInfo::create([
+            'first_name' => $request->input('firstName'),
+            'last_name' => $request->input('lastName'),
+            'student_number' => $request->input('studentNumber'),
+            'user_id' => $user->id,
+            'email' => $request->input('email')
+        ]);
+
+        // Respond with success message and user data
+        return response()->json([
+            'status' => 1,
+            'message' => 'User registered successfully',
+            'user' => $user
+        ], 201);
+    } catch (\Exception $e) {
+        // Handle any exceptions
+        return response()->json([
+            'status' => 0,
+            'message' => 'Registration failed',
+            'error' => $e->getMessage()
+        ], 500);
+    }
+  } 
+  
+  // public function register(Request $request){
+  //   $student = User::where('email', $request['email'])->first();
+
+  //   $student_number = UserInfo::where('student_number', 
+  //     $request['student_number'])->first();
+
+  //   if ($student) {
+  //     $response['status'] = 0;
+  //     $response['message'] = 'Email already exists';
+  //     $response['code'] = 409;
+  //   } else if ($student_number) {
+  //     $response['status'] = 0;
+  //     $response['message'] = 'Student number already exists';
+  //     $response['code'] = 409;
+  //   } else {
+  //     $student = DB::table('users')->insertGetId([
+  //       'email' => $request->email,
+  //       'password' => bcrypt($request->password),
+  //       'role_id' => 1,
+  //     ]);
+  //     DB::table('user_info')->insert([
+  //       'first_name' => $request->first_name,
+  //       'last_name' => $request->last_name,
+  //       'student_number' => $request->student_number,
+  //       'user_id' => $student,
+  //       'role_id' => 1,
+  //     ]);
+  //   }
+  //   return response()->json($response);
+  // }
+  
     public function login(Request $request) {
       $credentials = $request->only('email', 'password');
   

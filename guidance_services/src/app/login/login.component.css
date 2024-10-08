@@ -64,7 +64,7 @@ body {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  width: 400px;
   text-align: center;
 }
 
@@ -98,7 +98,8 @@ label {
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -130,4 +131,17 @@ button:hover {
 
 .form-footer a:hover {
   text-decoration: underline;
+}
+
+.signup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+.signup-grid .form-group {
+  grid-column: span 1;
+}
+
+.signup-grid .form-group:nth-child(2) {
+  grid-column: span 1;
 }

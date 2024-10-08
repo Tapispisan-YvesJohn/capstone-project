@@ -10,6 +10,9 @@ use App\Http\Controllers\ReportController;
 
 Route::post('/login', [LoginController::class, 'login'])->name('api.login');
 
+Route::post('/register', [LoginController::class, 'register'])
+  ->name('api.register');
+
 Route::post('/records', [StudentRecordController::class, 'store']);
 
 Route::get('/records', [StudentRecordController::class, 'index']);
