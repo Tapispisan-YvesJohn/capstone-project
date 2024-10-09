@@ -121,31 +121,31 @@ h2 {
 }
 
 /* Report Table */
-.report-table {
+.table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.report-table th,
-.report-table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #a52a2a; 
+    padding: 8px;
     text-align: left;
-}
-
-.report-table th {
+  }
+  
+  .table th {
     background-color: #800000;
     color: white;
     font-weight: bold;
-    text-align: center;
-}
-
-.report-table td {
-    background-color: #f9f9f9;
-    font-size: 16px; 
-}
+  }
+  
+  .table td {
+    background-color: white;
+    color: #333; 
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
 
 /* Pagination */
 .pagination {

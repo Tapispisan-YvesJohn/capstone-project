@@ -32,7 +32,7 @@ import { StudentAppointmentSchedulingComponent } from './Student_Module/student-
 import { AppointmentsComponent } from './review-appointments/review-appointments.component';
 import { StudentViewScheduleComponent } from './Student_Module/student-view-schedule/student-view-schedule.component';
 import { ReportComponent } from './report/report.component';
-import { ReportService } from './services/report.service'; 
+import { ReportService } from './services/report.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
@@ -52,8 +52,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     StudentAppointmentSchedulingComponent,
     AppointmentsComponent,
     StudentAppointmentSchedulingComponent,
-    StudentViewScheduleComponent,
-    ReportComponent
+    StudentViewScheduleComponent, ReportComponent
   ],
   imports: [
     BrowserModule,
