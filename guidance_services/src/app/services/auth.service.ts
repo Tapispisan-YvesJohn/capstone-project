@@ -1,27 +1,3 @@
-// import { Injectable } from '@angular/core';
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { jwtDecode } from 'jwt-decode';
-// import { DecodedToken } from '../login/login.component';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class AuthService {
-
-//   // private apiUrl = 'http://127.0.0.1:8000/api/login';
-
-//   constructor(private http: HttpClient) { }
-
-//   login(data) {
-//     return this.http.post( 'http://127.0.0.1:8000/api/login', data);
-//   }
-
-//   decodeToken(token: string) {
-//     return jwtDecode<DecodedToken>(token);
-//   }
-
-// }
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
@@ -40,17 +16,22 @@ export class AuthService {
     id: 0
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { } // It's already declared as 'http', not 'httpClient'
 
-  login(data) {
+  updateApplicationStatus(status: boolean): Observable<any> {
+    const url = 'http://localhost:8000/api/update-application-status'; 
+    return this.http.post(url, { status }); // Use 'http' instead of 'httpClient'
+  }
+
+  login(data: any): Observable<any> {
     return this.http.post('http://127.0.0.1:8000/api/login', data);
   }
 
-  setAuthStatus(status: boolean) {
+  setAuthStatus(status: boolean): void {
     this.isAuthenticated = status;
   }
 
-  getAuthStatus() {
+  getAuthStatus(): boolean {
     return this.isAuthenticated;
   }
 
@@ -104,7 +85,7 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  register(user: any) {
+  register(user: any): Observable<any> {
     return this.http.post('http://127.0.0.1:8000/api/register', user);
   }
   
