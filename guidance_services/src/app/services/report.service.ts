@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http'; 
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReportService {
+  private apiUrl = 'http://localhost:8000/api/reports'; 
 
-  private baseUrl = 'http://127.0.0.1:8000/api/reports'; // Adjust based on actual API
+  constructor(private httpClient: HttpClient) {} 
 
-  constructor(private http: HttpClient) { }
+  getReports(course: string, filters: any): Observable<any[]> {
+    let params = new HttpParams()
+      .set('course', course || '')
+      .set('name', filters.name || '')
+      .set('date', filters.date || '');
 
-  // Fetch reports (adjusted to fetch Name, Course, Email data)
-  getReports(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);  // Adjust if your API requires additional parameters
+    return this.httpClient.get<any[]>(this.apiUrl, { params }); 
   }
 }
