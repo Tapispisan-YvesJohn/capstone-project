@@ -53,27 +53,37 @@ export class AppointmentsComponent implements OnInit {
   }
 
   cancelAppointment(id: number) {
-    this.appointmentsService.cancelAppointment(id).subscribe(
-      (response) => {
-        console.log('Appointment cancelled:', response);
-        this.appointments = this.appointments.filter(a => a.id !== id);
-      },
-      (error) => {
-        console.error('Error cancelling appointment:', error);
-      }
-    );
+    const confirmCancel = confirm('Are you sure you want to cancel this appointment?');
+    if (confirmCancel) {
+      this.appointmentsService.cancelAppointment(id).subscribe(
+        (response) => {
+          console.log('Appointment cancelled:', response);
+          this.appointments = this.appointments.filter(a => a.id !== id);
+        },
+        (error) => {
+          console.error('Error cancelling appointment:', error);
+        }
+      );
+    } else {
+      console.log('Appointment cancellation cancelled.');
+    }
   }
 
   acceptAppointment(id: number) {
-    this.appointmentsService.acceptAppointment(id).subscribe(
-      (response) => {
-        console.log('Appointment accepted:', response);
-        this.updateAppointmentStatus(id, true);
-      },
-      (error) => {
-        console.error('Error accepting appointment:', error);
-      }
-    );
+    const confirmAccept = confirm('Are you sure you want to accept this appointment?');
+    if (confirmAccept) {
+      this.appointmentsService.acceptAppointment(id).subscribe(
+        (response) => {
+          console.log('Appointment accepted:', response);
+          this.updateAppointmentStatus(id, true);
+        },
+        (error) => {
+          console.error('Error accepting appointment:', error);
+        }
+      );
+    } else {
+      console.log('Appointment acceptance cancelled.');
+    }
   }
 
   updateAppointmentStatus(id: number, accepted: boolean): void {
