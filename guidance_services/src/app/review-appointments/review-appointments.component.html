@@ -35,31 +35,62 @@
             </div>
         </div>
         
-        <!-- Appointment Table -->
-        <table class="appointment-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Reason</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let appointment of filteredAppointments()">
-                    <td>{{ appointment.name }}</td>
-                    <td>{{ appointment.appointment_date }}</td>
-                    <td>{{ appointment.appointment_time }}</td>
-                    <td>{{ appointment.reason }}</td>
-                    <td>
-                        <button *ngIf="currentView === 'schedule'" class="view-btn" (click)="viewAppointment(appointment)">View</button>
-                        <button *ngIf="currentView === 'review'" class="accept-btn" (click)="acceptAppointment(appointment.id)">Accept</button>
-                        <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancel</button>
-                    </td>                    
-                </tr>
-            </tbody>
-        </table>
+        <!-- Table for Viewing Schedule -->
+        <div *ngIf="currentView === 'schedule'">
+            <h3>View Schedule</h3>
+            <table class="appointment-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Reason</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let appointment of filteredAppointments()">
+                        <td>{{ appointment.name }}</td>
+                        <td>{{ appointment.appointment_date }}</td>
+                        <td>{{ appointment.appointment_time }}</td>
+                        <td>{{ appointment.reason }}</td>
+                        <td>
+                            <button class="view-btn" (click)="viewAppointment(appointment)">View</button>
+                            <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancel</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Table for Reviewing Appointments -->
+        <div *ngIf="currentView === 'review'">
+            <h3>Review Appointment</h3>
+            <table class="appointment-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Reason</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let appointment of filteredAppointments()">
+                        <td>{{ appointment.name }}</td>
+                        <td>{{ appointment.appointment_date }}</td>
+                        <td>{{ appointment.appointment_time }}</td>
+                        <td>{{ appointment.reason }}</td>
+                        <td>
+                            <button class="view-btn" (click)="viewAppointment(appointment)">View</button>
+                            <button class="accept-btn" (click)="acceptAppointment(appointment.id)">Accept</button>
+                            <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancel</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>    
 </div>
 
