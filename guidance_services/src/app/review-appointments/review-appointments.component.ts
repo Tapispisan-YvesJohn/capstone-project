@@ -12,6 +12,8 @@ export class AppointmentsComponent implements OnInit {
   appointments: any[] = [];
   currentView: string = 'review';
   userInfo: any = {};
+  showModal: boolean = false;  // To control the modal visibility
+  selectedAppointment: any = null;  // To hold the selected appointment
 
   constructor(
     private appointmentsService: AppointmentsService,
@@ -22,7 +24,7 @@ export class AppointmentsComponent implements OnInit {
   ngOnInit(): void {
     this.fetchAppointments();
 
-    const token = localStorage.getItem('token'); // Assuming token is stored in local storage
+    const token = localStorage.getItem('token');
     if (token) {
       this.authService.getUserInfo(token).subscribe(
         (data) => {
@@ -49,31 +51,42 @@ export class AppointmentsComponent implements OnInit {
 
   viewAppointment(appointment: any) {
     console.log('Viewing appointment:', appointment);
-    // You can add more logic here for what happens when an appointment is viewed
+    this.selectedAppointment = appointment;  // Store the selected appointment
+    this.showModal = true;  // Show the modal
   }
 
   cancelAppointment(id: number) {
-    this.appointmentsService.cancelAppointment(id).subscribe(
-      (response) => {
-        console.log('Appointment cancelled:', response);
-        this.appointments = this.appointments.filter(a => a.id !== id);
-      },
-      (error) => {
-        console.error('Error cancelling appointment:', error);
-      }
-    );
+    const confirmCancel = confirm('Are you sure you want to cancel this appointment?');
+    if (confirmCancel) {
+      this.appointmentsService.cancelAppointment(id).subscribe(
+        (response) => {
+          console.log('Appointment cancelled:', response);
+          this.appointments = this.appointments.filter(a => a.id !== id);
+        },
+        (error) => {
+          console.error('Error cancelling appointment:', error);
+        }
+      );
+    } else {
+      console.log('Appointment cancellation cancelled.');
+    }
   }
 
   acceptAppointment(id: number) {
-    this.appointmentsService.acceptAppointment(id).subscribe(
-      (response) => {
-        console.log('Appointment accepted:', response);
-        this.updateAppointmentStatus(id, true);
-      },
-      (error) => {
-        console.error('Error accepting appointment:', error);
-      }
-    );
+    const confirmAccept = confirm('Are you sure you want to accept this appointment?');
+    if (confirmAccept) {
+      this.appointmentsService.acceptAppointment(id).subscribe(
+        (response) => {
+          console.log('Appointment accepted:', response);
+          this.updateAppointmentStatus(id, true);
+        },
+        (error) => {
+          console.error('Error accepting appointment:', error);
+        }
+      );
+    } else {
+      console.log('Appointment acceptance cancelled.');
+    }
   }
 
   updateAppointmentStatus(id: number, accepted: boolean): void {
@@ -100,5 +113,9 @@ export class AppointmentsComponent implements OnInit {
     } else {
       return this.appointments.filter(a => a.accepted);  
     }
+  }
+
+  closeModal(): void {
+    this.showModal = false;  // Close the modal
   }
 }
