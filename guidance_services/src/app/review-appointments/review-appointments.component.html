@@ -16,10 +16,10 @@
         </ul>
         <div class="profile">
             <div class="profile-pic">
-              <img src="../../assets/images/profile-placeholder.png" alt="Profile Picture">
+                <img src="../../assets/images/profile-placeholder.png" alt="Profile Picture">
             </div>
             <div class="profile-info">
-              <p>{{ userInfo.last_name }}, {{ userInfo.first_name }}</p>
+                <p>{{ userInfo.last_name }}, {{ userInfo.first_name }}</p>
             </div>
         </div>
     </div>
@@ -56,9 +56,24 @@
                         <button *ngIf="currentView === 'schedule'" class="view-btn" (click)="viewAppointment(appointment)">View</button>
                         <button *ngIf="currentView === 'review'" class="accept-btn" (click)="acceptAppointment(appointment.id)">Accept</button>
                         <button class="cancel-btn" (click)="cancelAppointment(appointment.id)">Cancel</button>
-                    </td>
+                    </td>                    
                 </tr>
             </tbody>
         </table>
     </div>    
+</div>
+
+<!-- Modal Structure -->
+<div class="modal" [ngClass]="{'show': showModal}">
+    <div class="modal-content">
+        <div class="modal-header">Appointment Details</div>
+        <div class="modal-body">
+            <p><strong>Reason:</strong> {{ selectedAppointment?.reason }}</p>
+            <p><strong>Date:</strong> {{ selectedAppointment?.appointment_date }}</p>
+            <p><strong>Time:</strong> {{ selectedAppointment?.appointment_time }}</p>
+        </div>
+        <div class="modal-footer">
+            <button class="close-btn" (click)="closeModal()">Close</button>
+        </div>
+    </div>
 </div>
