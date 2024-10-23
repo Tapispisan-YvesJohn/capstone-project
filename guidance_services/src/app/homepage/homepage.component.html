@@ -11,7 +11,7 @@
         <ul>
             <li><a (click)="navigateTo('student-record')">Student Records</a></li>
             <li><a (click)="navigateTo('appointments')">Appointments</a></li> 
-            <li><a (click)="navigateTo('application-status')">Inventory Record Application</a></li>
+            <!-- <li><a (click)="navigateTo('application-status')">Inventory Record Application</a></li> -->
             <li><a (click)="navigateTo('report')">Reports</a></li>
         </ul>
         <div class="profile">
@@ -28,7 +28,7 @@
         <div class="content-header">
             <h1>List of Students</h1>
             <div class="button-group">
-                <button class="applicant-btn" (click)="navigateTo('review-applicants')">Review Applicants</button>
+                <!-- <button class="applicant-btn" (click)="navigateTo('review-applicants')">Review Applicants</button> -->
                 <button class="add-record-btn" (click)="navigateTo('create-record')">Add Record</button>
                 <button class="history-btn" (click)="navigateTo('history')">History</button>
             </div>
@@ -57,9 +57,18 @@
                     <td>{{ student.course }}</td>
                     <td>{{ student.email }}</td>
                     <td class="actions">
-                        <img src="../../assets/images/view.png" alt="View" class="action-icon view-icon" (click)="viewRecord(student)">
-                        <img src="../../assets/images/bin.png" alt="Delete" class="action-icon delete-icon" (click)="deleteRecord(student.id)">
-                        <img src="../../assets/images/printer.png" alt="Print" class="action-icon print-icon" (click)="printForm(student)">
+                        <button class="action-btn view-btn" (click)="viewRecord(student)">
+                            <img src="../../assets/images/view.png" alt="View" class="action-icon">
+                            View
+                        </button>
+                        <button class="action-btn delete-btn" (click)="deleteRecord(student.id)">
+                            <img src="../../assets/images/bin.png" alt="Delete" class="action-icon">
+                            Delete
+                        </button>
+                        <button class="action-btn print-btn" (click)="printForm(student)">
+                            <img src="../../assets/images/printer.png" alt="Print" class="action-icon">
+                            Print
+                        </button>
                     </td>
                 </tr>
             </tbody>
