@@ -245,3 +245,15 @@
     background-color: #218838;
     transform: scale(1.05);
 }
+
+/* Custom Snackbar for Success */
+.snackbar-success {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+  
+  /* Custom Snackbar for Error */
+  .snackbar-error {
+    background-color: #f44336; /* Red */
+    color: white;
+  }

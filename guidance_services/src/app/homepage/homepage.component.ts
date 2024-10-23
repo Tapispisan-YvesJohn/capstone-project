@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecordsService } from '../services/records.service';
 import { AuthService } from '../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-homepage',
@@ -18,8 +19,11 @@ export class HomepageComponent implements OnInit {
     'BSPSYCH', 'BSOA', 'DICT', 'DOMT'
   ];
 
-  constructor(private router: Router, private recordsService: RecordsService,
-    private authService: AuthService
+  constructor(
+    private router: Router,
+    private recordsService: RecordsService,
+    private authService: AuthService,
+    private snackBar: MatSnackBar // Inject MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -86,10 +90,17 @@ export class HomepageComponent implements OnInit {
         next: () => {
           this.students = this.students.filter(student => student.id !== id);
           this.filteredStudents = this.filteredStudents.filter(student => student.id !== id);
-          console.log('Record deleted successfully');
+          this.snackBar.open('Record deleted successfully', 'Close', {
+            duration: 3000, // 3 seconds
+            panelClass: ['snackbar-success']
+          });
         },
         error: (error) => {
           console.error('Error deleting record', error);
+          this.snackBar.open('Error deleting record', 'Close', {
+            duration: 3000, // 3 seconds
+            panelClass: ['snackbar-error']
+          });
         }
       });
     }
@@ -115,5 +126,4 @@ export class HomepageComponent implements OnInit {
     const url = `/view-record/${student.id}?print=true`;
     window.open(url, '_blank');  
   }
-
 }
