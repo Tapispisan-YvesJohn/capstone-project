@@ -36,4 +36,9 @@ export class AppointmentsService {
     const headers = this.getAuthHeaders();
     return this.http.delete(`${this.apiUrl}/${id}`, { headers });
   }
+
+  getAppointmentsByDate(date: string): Observable<any[]> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<any[]>(`${this.apiUrl}?date=${date}`, { headers });
+  }
 }

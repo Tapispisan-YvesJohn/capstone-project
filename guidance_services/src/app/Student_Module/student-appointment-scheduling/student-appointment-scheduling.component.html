@@ -4,7 +4,16 @@
       <h1>Polytechnic University of the Philippines - Taguig</h1>
       <p>Guidance Information System</p>
     </div>
-  </div>
+</div>
+
+<div class="nav-bar">
+    <div class="nav-links">
+      <a (click)="navigateTo('/student-dashboard')">Home</a>
+      <a (click)="navigateTo('/student-appointment-scheduling')">Schedule Appointment</a>
+      <a (click)="navigateTo('/student-pds')">Fill out Form</a>
+      <a (click)="navigateTo('/view-schedule')">View Schedule</a>
+    </div>
+</div>
 
 <div class="appointment-container">
     <div class="appointment-header">
@@ -35,8 +44,9 @@
                           [value]="time.value" 
                           formControlName="appointment_time" 
                           id="morning-time{{i}}" 
+                          [disabled]="time.disabled"
                         />
-                        <label [for]="'morning-time' + i">{{ time.display }}</label>
+                        <label [for]="'morning-time' + i" [class.booked]="time.disabled">{{ time.display }}</label>
                     </div>
                 </div>
                 <div class="time-column">
@@ -46,8 +56,9 @@
                           [value]="time.value" 
                           formControlName="appointment_time" 
                           id="afternoon-time{{i}}" 
+                          [disabled]="time.disabled"
                         />
-                        <label [for]="'afternoon-time' + i">{{ time.display }}</label>
+                        <label [for]="'afternoon-time' + i" [class.booked]="time.disabled">{{ time.display }}</label>
                     </div>
                 </div>
             </div>

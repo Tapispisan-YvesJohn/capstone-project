@@ -1,25 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http'; 
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReportService {
+  private apiUrl = 'http://localhost:8000/api/reports'; 
 
-  private baseUrl = 'http://127.0.0.1:8000/api/reports'; // Adjust based on actual API
+  constructor(private httpClient: HttpClient) {} 
 
-  constructor(private http: HttpClient) { }
+  getReports(course: string, filters: any): Observable<any[]> {
+    let params = new HttpParams()
+      .set('course', course || '')
+      .set('name', filters.name || '')
+      .set('date', filters.date || '');
 
-  // Fetch reports from backend API
-  getReports(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
-  }
-
-  // Import reports via batch upload
-  importReports(file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('file', file);
-    return this.http.post(`${this.baseUrl}/import`, formData);
+    return this.httpClient.get<any[]>(this.apiUrl, { params }); 
   }
 }

@@ -57,9 +57,9 @@
                     <td>{{ student.course }}</td>
                     <td>{{ student.email }}</td>
                     <td class="actions">
-                        <button class="view-btn" (click)="viewRecord(student)">View</button>
-                        <button class="delete-btn" (click)="deleteRecord(student.id)">Delete</button>
-                        <button class="print-btn" (click)="printForm(student)">Print</button>
+                        <img src="../../assets/images/view.png" alt="View" class="action-icon view-icon" (click)="viewRecord(student)">
+                        <img src="../../assets/images/bin.png" alt="Delete" class="action-icon delete-icon" (click)="deleteRecord(student.id)">
+                        <img src="../../assets/images/printer.png" alt="Print" class="action-icon print-icon" (click)="printForm(student)">
                     </td>
                 </tr>
             </tbody>

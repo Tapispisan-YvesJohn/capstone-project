@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppointmentsService } from '../../services/appointments.service'; // Updated path based on the folder structure
+import { Router } from '@angular/router';
+import { AppointmentsService } from '../../services/appointments.service'; 
 
 @Component({
   selector: 'app-student-view-schedule',
@@ -9,7 +10,7 @@ import { AppointmentsService } from '../../services/appointments.service'; // Up
 export class StudentViewScheduleComponent implements OnInit {
   appointments: any[] = [];
 
-  constructor(private appointmentsService: AppointmentsService) {}
+  constructor(private appointmentsService: AppointmentsService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchAppointments();
@@ -26,5 +27,9 @@ export class StudentViewScheduleComponent implements OnInit {
         console.error('Error fetching appointments:', error);
       }
     );
+  }
+
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
   }
 }

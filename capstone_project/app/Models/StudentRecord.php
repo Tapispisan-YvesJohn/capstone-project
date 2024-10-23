@@ -43,4 +43,9 @@ class StudentRecord extends Model
     {
         return $this->hasone(EnrollmentReason::class);
     }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class, 'student_id');
+    }
 }

@@ -9,57 +9,58 @@
 <div class="container">
   <div class="sidebar">
     <ul>
-      <li><a (click)="navigateTo('student-record')">Student Records</a></li>
-      <li><a (click)="navigateTo('appointments')">Appointments</a></li>
-      <li><a (click)="navigateTo('application-status')">Inventory Record Application</a></li>
-      <li><a (click)="navigateTo('report')">Reports</a></li>
+      <li><a routerLink="/student-record">Student Records</a></li>
+      <li><a routerLink="/appointments">Appointments</a></li>
+      <li><a routerLink="/application-status">Inventory Record Application</a></li>
+      <li><a routerLink="/report">Reports</a></li>
     </ul>
   </div>
 
-  <div class="report-container">
+  <div class="content">
     <h2>Report List</h2>
 
-    <div class="filter-section">
-      <label>Course:</label>
-      <select [(ngModel)]="selectedCourse">
-        <option value="All Courses">All Courses</option>
-        <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
-      </select>
+    <form>
+      <div>
+        <label for="course">Course:</label>
+        <select name="course" [(ngModel)]="selectedCourse" (change)="applyFilters()">
+          <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+        </select>
+      </div>
 
-      <label>Name:</label>
-      <input type="text" placeholder="Filter by Name" [(ngModel)]="filterName">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" [(ngModel)]="filters.name" placeholder="Search by name">
+      </div>
 
-      <label>Date:</label>
-      <input type="date" [(ngModel)]="filterDate">
+      <div>
+        <label for="date">Date:</label>
+        <input type="date" name="date" [(ngModel)]="filters.date">
+      </div>
 
-      <button (click)="applyFilters()">Apply Filters</button>
-    </div>
+      <div>
+        <button type="button" (click)="applyFilters()">Apply Filters</button>
+      </div>
+    </form>
 
-    <table class="report-table">
+    <table class="table">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Date</th>
-          <th>Actions</th>
+          <th>Name</th>
+          <th>Course</th>
+          <th>Email</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let report of filteredReports">
-          <td>{{ report.id }}</td>
-          <td>{{ report.title }}</td>
-          <td>{{ report.date }}</td>
-          <td>
-            <!-- Export or other actions -->
-          </td>
+        <tr *ngFor="let report of rows">
+          <td>{{ report.last_name }}, {{ report.first_name }} {{ report.middle_name[0] }}.</td> <!-- Format the name properly -->
+          <td>{{ report.course }}</td>
+          <td>{{ report.email }}</td>
         </tr>
       </tbody>
     </table>
 
-    <!-- Pagination Component -->
-    <p-paginator [rows]="rows" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
+    <pagination-controls (pageChange)="paginateReports($event)"></pagination-controls>
 
-    <!-- Export buttons -->
     <div class="export-buttons">
       <button (click)="exportToCSV()">Export CSV</button>
       <button (click)="exportToExcel()">Export Excel</button>
