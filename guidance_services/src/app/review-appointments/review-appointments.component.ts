@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppointmentsService } from '../services/appointments.service';
 import { AuthService } from '../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';  // Import MatSnackBar
 
 @Component({
   selector: 'app-review-appointments',
@@ -18,7 +19,8 @@ export class AppointmentsComponent implements OnInit {
   constructor(
     private appointmentsService: AppointmentsService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar  // Inject MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -56,37 +58,47 @@ export class AppointmentsComponent implements OnInit {
   }
 
   cancelAppointment(id: number) {
-    const confirmCancel = confirm('Are you sure you want to cancel this appointment?');
-    if (confirmCancel) {
+    this.snackBar.open('Are you sure you want to cancel this appointment?', 'Yes', { 
+      duration: 5000
+    }).onAction().subscribe(() => {
       this.appointmentsService.cancelAppointment(id).subscribe(
         (response) => {
           console.log('Appointment cancelled:', response);
           this.appointments = this.appointments.filter(a => a.id !== id);
+          this.snackBar.open('Appointment successfully cancelled.', 'Close', {
+            duration: 3000
+          });
         },
         (error) => {
           console.error('Error cancelling appointment:', error);
+          this.snackBar.open('Error cancelling appointment.', 'Close', {
+            duration: 3000
+          });
         }
       );
-    } else {
-      console.log('Appointment cancellation cancelled.');
-    }
+    });
   }
 
   acceptAppointment(id: number) {
-    const confirmAccept = confirm('Are you sure you want to accept this appointment?');
-    if (confirmAccept) {
+    this.snackBar.open('Are you sure you want to accept this appointment?', 'Yes', { 
+      duration: 5000
+    }).onAction().subscribe(() => {
       this.appointmentsService.acceptAppointment(id).subscribe(
         (response) => {
           console.log('Appointment accepted:', response);
           this.updateAppointmentStatus(id, true);
+          this.snackBar.open('Appointment successfully accepted.', 'Close', {
+            duration: 3000
+          });
         },
         (error) => {
           console.error('Error accepting appointment:', error);
+          this.snackBar.open('Error accepting appointment.', 'Close', {
+            duration: 3000
+          });
         }
       );
-    } else {
-      console.log('Appointment acceptance cancelled.');
-    }
+    });
   }
 
   updateAppointmentStatus(id: number, accepted: boolean): void {
