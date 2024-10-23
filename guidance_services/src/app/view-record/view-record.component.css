@@ -1,67 +1,133 @@
 .header {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    width: 100%;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  background-color:#800000;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .logo {
-    height: 80px;
-    margin-right: 20px;
+  height: 80px;
+  margin-right: 20px;
 }
 
 .header-text {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .header-text h1, .header-text p {
-    margin: 0;
-    color: #800000;
+  margin: 0;
+  color: #ffffff;
 }
 
 .header + .form-container {
-    margin-top: 150px; 
+  margin-top: 150px; 
 }
 
 .form-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #fafafa;
+  max-width: 1200px;
+  margin: 40px auto; 
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fafafa;
 }
 
 .form-header {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
 }
 
-h2 {
-    text-align: center;
+.logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+h1, h2, h3, h4 {
+  margin: 5px 0;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
 }
 
 th, td {
-    padding: 8px;
-    text-align: left;
+  padding: 8px;
+  text-align: left;
 }
 
-input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  margin-right: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.checkbox-group label {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.reasons, .personal-information, .educational-background, .home-family-background, .health, .test-results, .significant-notes {
+  margin-bottom: 30px;
+}
+
+h2, h3 {
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.btn-primary {
+  background-color: #800000;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color:#a00000;
+}
+
+.snackbar-success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.snackbar-error {
+  background-color: #f44336;
+  color: white;
 }
 
 .print-btn {
@@ -74,39 +140,12 @@ input {
 }
 
 @media print {
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      color: #000;
-    }
-  
-    .header {
-      display: none; /* Hide the header */
-    }
-  
-    .form-container {
-      margin: 0;
-      padding: 0;
-      page-break-after: avoid;
-    }
-  
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-  
-    th, td {
-      padding: 8px;
-      border: 1px solid #000;
-    }
-  
-    input, select, textarea {
-      border: 1px solid #000;
-      padding: 5px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-  
+  .header {
+    display: none; /* Hide the header */
+  }
+
+  .print-btn {
+    display: none;
+  }
 }
   
