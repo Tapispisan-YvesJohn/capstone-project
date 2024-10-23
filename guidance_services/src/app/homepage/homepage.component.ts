@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RecordsService } from '../services/records.service';
 import { AuthService } from '../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-homepage',
@@ -85,25 +86,32 @@ export class HomepageComponent implements OnInit {
   }
 
   deleteRecord(id: number): void {
-    if (confirm('Are you sure you want to delete this record?')) {
+    // Show Snackbar with Delete/Cancel options
+    const snackBarRef: MatSnackBarRef<TextOnlySnackBar> = this.snackBar.open('Do you want to delete this record?', 'Delete', {
+      duration: 5000, // 5 seconds
+      panelClass: ['snackbar-warning']
+    });
+
+    // Handle action based on the Snackbar response
+    snackBarRef.onAction().subscribe(() => {
       this.recordsService.deleteRecord(id).subscribe({
         next: () => {
           this.students = this.students.filter(student => student.id !== id);
           this.filteredStudents = this.filteredStudents.filter(student => student.id !== id);
           this.snackBar.open('Record deleted successfully', 'Close', {
-            duration: 3000, // 3 seconds
+            duration: 3000,
             panelClass: ['snackbar-success']
           });
         },
         error: (error) => {
           console.error('Error deleting record', error);
           this.snackBar.open('Error deleting record', 'Close', {
-            duration: 3000, // 3 seconds
+            duration: 3000,
             panelClass: ['snackbar-error']
           });
         }
       });
-    }
+    });
   }
 
   viewRecord(student: any): void {

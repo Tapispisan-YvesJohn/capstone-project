@@ -250,10 +250,16 @@
 .snackbar-success {
     background-color: #4CAF50; /* Green */
     color: white;
-  }
-  
-  /* Custom Snackbar for Error */
-  .snackbar-error {
+}
+
+/* Custom Snackbar for Error */
+.snackbar-error {
     background-color: #f44336; /* Red */
     color: white;
-  }
+}
+
+/* Custom Snackbar for Delete Prompt */
+.snackbar-warning {
+    background-color: #FFA726; /* Orange */
+    color: white;
+}
