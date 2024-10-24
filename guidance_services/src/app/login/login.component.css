@@ -16,10 +16,10 @@ body {
 .header {
   display: flex;
   align-items: center;
-  background-color: #fff;
+  background-color: #800000;
   width: 100%;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); 
 }
 
 .logo {
@@ -33,12 +33,12 @@ body {
 
 .header-text h1 {
   margin: 0;
-  color: #800000;
+  color: #ffffff;
 }
 
 .header-text p {
   margin: 0;
-  color: #800000;
+  color: #ffffff;
 }
 
 .background {
@@ -144,4 +144,14 @@ button:hover {
 
 .signup-grid .form-group:nth-child(2) {
   grid-column: span 1;
+}
+
+.snack-bar-success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.snack-bar-error {
+  background-color: #f44336;
+  color: white;
 }

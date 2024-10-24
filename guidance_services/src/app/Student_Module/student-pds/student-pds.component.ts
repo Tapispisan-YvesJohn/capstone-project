@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RecordsService } from '../../services/records.service';
+import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http'; // Import HttpClient for API calls
 
 @Component({
@@ -33,6 +34,7 @@ export class StudentPdsComponent implements OnInit {
     private router: Router,
     private recordsService: RecordsService,
     private snackBar: MatSnackBar,
+    private authService: AuthService,
     private http: HttpClient // Inject HttpClient
   ) { }
 
@@ -146,6 +148,10 @@ export class StudentPdsComponent implements OnInit {
         control.markAsTouched();
       }
     });
+  }
+
+  logout(): void {
+    this.authService.logout();  
   }
 
   navigateTo(route: string): void {

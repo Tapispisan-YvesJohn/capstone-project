@@ -4,6 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 import { DecodedToken } from '../login/login.component';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,10 @@ export class AuthService {
     id: 0
   };
 
-  constructor(private http: HttpClient) { } // It's already declared as 'http', not 'httpClient'
-
-  updateApplicationStatus(status: boolean): Observable<any> {
-    const url = 'http://localhost:8000/api/update-application-status'; 
-    return this.http.post(url, { status }); // Use 'http' instead of 'httpClient'
-  }
+  constructor(
+    private http: HttpClient, 
+    private router: Router
+  ) { }
 
   login(data: any): Observable<any> {
     return this.http.post('http://127.0.0.1:8000/api/login', data);
@@ -87,6 +86,11 @@ export class AuthService {
 
   register(user: any): Observable<any> {
     return this.http.post('http://127.0.0.1:8000/api/register', user);
+  }
+
+  logout(): void {
+    localStorage.removeItem('token'); // Remove the token from local storage
+    this.router.navigate(['/login']);  // Redirect to login page
   }
   
 }

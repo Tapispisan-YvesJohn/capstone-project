@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar'; 
 import { AppointmentsService } from '../../services/appointments.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-student-appointment-scheduling',
@@ -32,7 +33,8 @@ export class StudentAppointmentSchedulingComponent implements OnInit {
     private fb: FormBuilder,  
     private router: Router,
     private appointmentService: AppointmentsService,
-    private snackBar: MatSnackBar  
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -113,6 +115,11 @@ export class StudentAppointmentSchedulingComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'top'
     });
+  }
+
+  
+  logout(): void {
+    this.authService.logout();  
   }
 
   navigateTo(route: string): void {
