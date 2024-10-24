@@ -13,6 +13,14 @@ Route::middleware([CheckToken::class])->group(function () {
         return view ('welcome');
     });
 
+    Route::get('/register', function () {
+        return view ('welcome');
+    });
+
+    Route::get('/records', function () {
+        return view ('welcome');
+    });
+
     Route::get('/appointments', function () {
         return view ('welcome');
     });
@@ -43,5 +51,11 @@ Route::middleware([CheckToken::class])->group(function () {
 
     Route::get('/reports/import', function () {
         return view ('welcome');
+    });
+
+    Route::get('/view-record/{student_id}', function ($student_id) {
+        $print = request()->query('print', false); // Fetch query parameter "print"
+        // Logic to fetch student record and pass to view
+        return view('welcome', ['student_id' => $student_id, 'print' => $print]);
     });
 });
