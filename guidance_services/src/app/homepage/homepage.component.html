@@ -10,10 +10,12 @@
     <div class="sidebar">
         <ul>
             <li><a (click)="navigateTo('student-record')">Student Records</a></li>
-            <li><a (click)="navigateTo('appointments')">Appointments</a></li> 
-            <!-- <li><a (click)="navigateTo('application-status')">Inventory Record Application</a></li> -->
+            <li><a (click)="navigateTo('appointments')">Appointments</a></li>
             <li><a (click)="navigateTo('report')">Reports</a></li>
         </ul>
+        <div>
+            <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
         <div class="profile">
             <div class="profile-pic">
               <img src="../../assets/images/profile-placeholder.png" alt="Profile Picture">
@@ -28,7 +30,6 @@
         <div class="content-header">
             <h1>List of Students</h1>
             <div class="button-group">
-                <!-- <button class="applicant-btn" (click)="navigateTo('review-applicants')">Review Applicants</button> -->
                 <button class="add-record-btn" (click)="navigateTo('create-record')">Add Record</button>
                 <button class="history-btn" (click)="navigateTo('history')">History</button>
             </div>

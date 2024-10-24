@@ -23,7 +23,7 @@ export class HomepageComponent implements OnInit {
   constructor(
     private router: Router,
     private recordsService: RecordsService,
-    private authService: AuthService,
+    private authService: AuthService,  // Inject AuthService for logout
     private snackBar: MatSnackBar // Inject MatSnackBar
   ) { }
 
@@ -86,13 +86,11 @@ export class HomepageComponent implements OnInit {
   }
 
   deleteRecord(id: number): void {
-    // Show Snackbar with Delete/Cancel options
     const snackBarRef: MatSnackBarRef<TextOnlySnackBar> = this.snackBar.open('Do you want to delete this record?', 'Delete', {
       duration: 5000, // 5 seconds
       panelClass: ['snackbar-warning']
     });
 
-    // Handle action based on the Snackbar response
     snackBarRef.onAction().subscribe(() => {
       this.recordsService.deleteRecord(id).subscribe({
         next: () => {
@@ -112,6 +110,11 @@ export class HomepageComponent implements OnInit {
         }
       });
     });
+  }
+
+  // New logout method that calls AuthService's logout
+  logout(): void {
+    this.authService.logout();  // Calls AuthService to handle logout and redirect to login
   }
 
   viewRecord(student: any): void {

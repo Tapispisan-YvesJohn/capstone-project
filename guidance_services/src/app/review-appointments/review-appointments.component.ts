@@ -127,6 +127,11 @@ export class AppointmentsComponent implements OnInit {
     }
   }
 
+  // New logout method that calls AuthService's logout
+  logout(): void {
+    this.authService.logout();  // Calls AuthService to handle logout and redirect to login
+  }
+
   closeModal(): void {
     this.showModal = false;  // Close the modal
   }
