@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\AppointmentMail;
+use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
@@ -39,32 +41,42 @@ class AppointmentController extends Controller
 
     public function index()
     {
-        $appointments = Appointment::all();
+        $appointments = Appointment::with('user:id,first_name,last_name')->get();
         return response()->json($appointments);
     }
 
     public function destroy($id)
     {
-        $appointment = Appointment::find($id);
-        if ($appointment) {
-            $appointment->delete();
-            return response()->json(['message' => 'Appointment cancelled successfully']);
-        } else {
+        $appointment = Appointment::with('mail')->find($id);
+        if (!$appointment) {
             return response()->json(['message' => 'Appointment not found'], 404);
         }
-    }
+    
+        $appointment->delete();
+        $appointment->save();
+    
+        // Send email notification
+        $statusMessage = 'canceled';
+        Mail::to($appointment->mail->email)->send(new AppointmentMail($appointment, $statusMessage));
+    
+        return response()->json(['message' => 'Appointment canceled and user notified.']);
+    } 
 
     public function accept($id)
     {
-        $appointment = Appointment::find($id);
-        if ($appointment) {
-            $appointment->accepted = true;
-            $appointment->save();
-    
-            return response()->json(['message' => 'Appointment accepted successfully'], 200);
-        } else {
+        $appointment = Appointment::with('mail')->find($id);
+        if (!$appointment) {
             return response()->json(['message' => 'Appointment not found'], 404);
         }
+    
+        $appointment->accepted = true;
+        $appointment->save();
+    
+        // Send email notification
+        $statusMessage = 'accepted';
+        Mail::to($appointment->mail->email)->send(new AppointmentMail($appointment, $statusMessage));
+    
+        return response()->json(['message' => 'Appointment accepted and user notified.']);
     }
 
     // New method to get appointments for a specific date
@@ -73,4 +85,5 @@ class AppointmentController extends Controller
         $appointments = Appointment::where('appointment_date', $date)->get();
         return response()->json($appointments);
     }
+
 }

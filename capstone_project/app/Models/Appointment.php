@@ -14,9 +14,13 @@ class Appointment extends Model
         'accepted' 
     ];
 
-    public function user()
+    public function mail()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(UserInfo::class, 'user_id');
+    }
 }
