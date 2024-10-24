@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppointmentsService } from '../../services/appointments.service'; 
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-student-view-schedule',
@@ -10,7 +11,11 @@ import { AppointmentsService } from '../../services/appointments.service';
 export class StudentViewScheduleComponent implements OnInit {
   appointments: any[] = [];
 
-  constructor(private appointmentsService: AppointmentsService, private router: Router) {}
+  constructor(
+    private appointmentsService: AppointmentsService, 
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.fetchAppointments();
@@ -27,6 +32,10 @@ export class StudentViewScheduleComponent implements OnInit {
         console.error('Error fetching appointments:', error);
       }
     );
+  }
+  
+  logout(): void {
+    this.authService.logout();  
   }
 
   navigateTo(route: string): void {
