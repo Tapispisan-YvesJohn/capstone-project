@@ -5,6 +5,8 @@
     width: 100%;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); 
+    justify-content: space-between; /* Align items horizontally */
+    position: relative;
 }
 
 .logo {
@@ -26,6 +28,26 @@
     color: #ffffff;
 }
 
+.logout-btn {
+    background-color: #f44336; /* Red */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: absolute;
+    right: 45px; 
+    top: 45px;   
+}
+
+.logout-btn:hover {
+    background-color: #e57373;
+    transform: scale(1.05);
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -33,7 +55,7 @@
 
 .sidebar {
     background: linear-gradient(rgba(128, 0, 0, 0.85), rgba(128, 0, 0, 0.85)), 
-                url('../../assets/images/campus.png') no-repeat center center;
+                url('../../assets/images/py.png') no-repeat center center;
     background-size: cover;
     width: 350px;
     height: calc(100vh - 80px);
@@ -268,19 +290,3 @@
     color: white;
 }
 
-.logout-btn {
-    background-color: #f44336; /* Red */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.logout-btn:hover {
-    background-color: #e57373; /* Lighter red */
-    transform: scale(1.05);
-}

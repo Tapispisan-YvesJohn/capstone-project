@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../services/report.service';
+import { AuthService } from '../services/auth.service';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
 import jsPDF from 'jspdf';
@@ -19,7 +20,7 @@ export class ReportComponent implements OnInit {
   rows: any[] = [];
   courses: string[] = ['All Courses', 'BSIT', 'BSBA', 'BSHM']; 
 
-  constructor(private reportService: ReportService) {}
+  constructor(private reportService: ReportService, private authService: AuthService) {}
 
   ngOnInit() {
     this.applyFilters(); 
@@ -96,5 +97,9 @@ export class ReportComponent implements OnInit {
 
   paginateReports(event) {
     console.log('Pagination event:', event);
+  }
+
+  logout(): void {
+    this.authService.logout();  
   }
 }
