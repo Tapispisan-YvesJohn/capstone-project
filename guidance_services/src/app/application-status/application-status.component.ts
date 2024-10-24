@@ -26,6 +26,10 @@ export class ApplicationStatusComponent implements OnInit {
     }
   }
 
+  logout(): void {
+    this.authService.logout();  
+  }
+
   navigateTo(route: string): void {
     this.router.navigate([route]);
   }

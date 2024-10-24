@@ -5,6 +5,8 @@
   width: 100%;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); 
+  justify-content: space-between; /* Align items horizontally */
+  position: relative;
 }
 
 .logo {
@@ -24,6 +26,26 @@
 .header-text p {
   margin: 0;
   color: #ffffff;
+}
+
+.logout-btn {
+  background-color: #f44336; /* Red */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: absolute;
+  right: 45px; 
+  top: 45px;   
+}
+
+.logout-btn:hover {
+  background-color: #e57373;
+  transform: scale(1.05);
 }
 
 .nav-bar {
@@ -77,7 +99,7 @@
   border-radius: 10px;
   padding: 20px; /* Apply padding inside the card */
   margin: 20px auto; /* Apply margin to separate the card from other content */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow for card */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Add subtle shadow for card */
   max-width: 1200px; /* Set max-width for better control over card size */
 }
 
@@ -118,7 +140,7 @@
   border-radius: 8px;
   text-align: center;
   flex: 1;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .option-card h2 {
@@ -133,8 +155,12 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .option-card button:hover {
-  background-color: #a00000;
+  background-color: #f8f817;
+  color: #800000; 
+  transform: scale(1.05);
 }

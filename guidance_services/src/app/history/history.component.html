@@ -4,6 +4,7 @@
         <h1>Polytechnic University of the Philippines - Taguig</h1>
         <p>Guidance Information System</p>
     </div>
+    <button class="logout-btn" (click)="logout()">Logout</button> 
 </div>
 
 <div class="container">
@@ -11,7 +12,7 @@
         <ul>
             <li><a (click)="navigateTo('student-record')">Student Records</a></li>
             <li><a (click)="navigateTo('appointments')">Appointments</a></li>
-            <li><a (click)="navigateTo('application-status')">Inventory Record Application</a></li>
+            <!-- <li><a (click)="navigateTo('application-status')">Inventory Record Application</a></li> -->
             <li><a (click)="navigateTo('report')">Reports</a></li>
         </ul>
         <div class="profile">

@@ -5,6 +5,8 @@
     width: 100%;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); 
+    justify-content: space-between; /* Align items horizontally */
+    position: relative;
 }
 
 .logo {
@@ -26,6 +28,26 @@
     color: #ffffff;
 }
 
+.logout-btn {
+    background-color: #f44336; /* Red */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: absolute;
+    right: 45px; 
+    top: 45px;   
+}
+
+.logout-btn:hover {
+    background-color: #e57373;
+    transform: scale(1.05);
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -33,7 +55,7 @@
 
 .sidebar {
     background: linear-gradient(rgba(128, 0, 0, 0.85), rgba(128, 0, 0, 0.85)), 
-                url('../../assets/images/campus.png') no-repeat center center;
+                url('../../assets/images/py.png') no-repeat center center;
     background-size: cover;
     width: 350px;
     height: calc(100vh - 80px);
@@ -130,12 +152,16 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .add-record-btn:hover,
 .history-btn:hover,
 .applicant-btn:hover {
-    background-color: #a00000;
+    background-color: #f8f817;
+    color: #800000; 
+    transform: scale(1.05);
 }
 
 .course-filter {
@@ -194,34 +220,73 @@
 .actions {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Add space between each icon box */
+    gap: 5px;
 }
 
-.icon-box {
-    width: 40px; /* Set the width and height of the box */
-    height: 40px;
+.action-btn {
     display: flex;
-    justify-content: center;
     align-items: center;
-    border: 1px solid #ddd; /* Add a border around the box */
-    border-radius: 5px; /* Rounded corners for the box */
-    background-color: #f9f9f9; /* Background color for the box */
-    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.icon-box:hover {
-    background-color: #e0e0e0; /* Slight background color change on hover */
-    transform: scale(1.05); /* Slight zoom effect on hover */
-}
-
-.action-icon {
-    width: 20px; /* Set consistent size for the icons */
+.action-btn img {
+    margin-right: 5px;
+    width: 20px;
     height: 20px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.action-icon:hover {
-    transform: scale(1.2); /* Slight zoom on hover for the icon itself */
-    opacity: 0.8;
+.view-btn {
+    background-color: #007bff; /* Blue */
+    box-shadow: 2px 2px 5px rgba(0, 123, 255, 0.5);
 }
+
+.view-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    background-color: #dc3545; /* Red */
+    box-shadow: 2px 2px 5px rgba(220, 53, 69, 0.5);
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+.print-btn {
+    background-color: #28a745; /* Green */
+    box-shadow: 2px 2px 5px rgba(40, 167, 69, 0.5);
+}
+
+.print-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Custom Snackbar for Success */
+.snackbar-success {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+/* Custom Snackbar for Error */
+.snackbar-error {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+/* Custom Snackbar for Delete Prompt */
+.snackbar-warning {
+    background-color: #FFA726; /* Orange */
+    color: white;
+}
+

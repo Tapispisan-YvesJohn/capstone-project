@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RecordsService } from '../services/records.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-view-record',
@@ -22,7 +23,8 @@ export class ViewRecordComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private recordsService: RecordsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -157,6 +159,10 @@ export class ViewRecordComponent implements OnInit {
       ),
       otherReasons: [student.other_reasons || '']
     });
+  }
+
+  logout(): void {
+    this.authService.logout();  
   }
 
 }

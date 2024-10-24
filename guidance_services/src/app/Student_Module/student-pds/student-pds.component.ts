@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RecordsService } from '../../services/records.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-student-pds',
@@ -31,7 +32,8 @@ export class StudentPdsComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private recordsService: RecordsService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -207,6 +209,10 @@ export class StudentPdsComponent implements OnInit {
         control.markAsTouched();
       }
     });
+  }
+
+  logout(): void {
+    this.authService.logout();  
   }
 
   navigateTo(route: string): void {
