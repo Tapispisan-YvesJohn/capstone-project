@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControlOptions } from '@ang
 import { MustMatch } from './confirmed.validator';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar'; // Import MatSnackBar
 
 export interface DecodedToken {
   user_id: number;
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private snackBar: MatSnackBar // Inject MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -66,10 +68,10 @@ export class LoginComponent implements OnInit {
       this.authService.register(this.signupForm.value).subscribe(res => {
         this.data = res;
         if (this.data.status === 1) {
-          console.log('Signup successful');
+          this.showSnackBar('Signup successful', 'success');
           this.toggleForm(); // Switch to login form
         } else {
-          console.log('Failed to sign up');
+          this.showSnackBar('Failed to sign up', 'error');
         }
       });
     } else {
@@ -93,12 +95,12 @@ export class LoginComponent implements OnInit {
           } else if (role === 'student') {
             this.router.navigate(['/student-dashboard']);
           } else {
-            console.log("Error Signing You In");
+            this.showSnackBar("Error Signing You In", 'error');
           }
           
-          console.log("Log in Success");
+          this.showSnackBar("Login successful", 'success');
         } else {
-          console.log("Failed to log in");
+          this.showSnackBar("Invalid credentials", 'error');
         }
       });
     }
@@ -131,6 +133,14 @@ export class LoginComponent implements OnInit {
 
   get confirmPasswordControl() {
     return this.signupForm.get('confirmPassword');
-  }  
+  }
+
+  // Method to display the snack bar notifications
+  showSnackBar(message: string, type: 'success' | 'error') {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+      panelClass: type === 'success' ? ['snack-bar-success'] : ['snack-bar-error'],
+    });
+  }
 
 }

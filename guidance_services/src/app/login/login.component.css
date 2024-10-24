@@ -145,3 +145,13 @@ button:hover {
 .signup-grid .form-group:nth-child(2) {
   grid-column: span 1;
 }
+
+.snack-bar-success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.snack-bar-error {
+  background-color: #f44336;
+  color: white;
+}

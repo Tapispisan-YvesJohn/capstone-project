@@ -195,10 +195,13 @@
     color: #fff;
     cursor: pointer;
     margin-left: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .accept-btn:hover {
     background-color: #218838;
+    transform: scale(1.05);
 }
 
 .view-btn {
@@ -208,6 +211,12 @@
     background-color: #007bff;
     color: #fff;
     cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-btn:hover {
+    transform: scale(1.05);
 }
 
 .cancel-btn {
@@ -217,6 +226,12 @@
     background-color: #dc3545;
     color: #fff;
     cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cancel-btn:hover {
+    transform: scale(1.05);
 }
 
 .modal {
