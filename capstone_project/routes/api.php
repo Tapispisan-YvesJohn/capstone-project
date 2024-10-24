@@ -7,6 +7,7 @@ use App\Http\Controllers\StudentRecordController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\RBACController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ApplicationController;
 
 Route::post('/login', [LoginController::class, 'login'])->name('api.login');
 
@@ -48,3 +49,5 @@ Route::get('/appointments/{date}', [AppointmentController::class, 'getAppointmen
 Route::get('/reports', [ReportController::class, 'index']);
 
 Route::post('/reports/import', [ReportController::class, 'import']);
+
+Route::post('/update-application-status', [ApplicationController::class, 'updateStatus']);

@@ -29,8 +29,9 @@
     <div class="content">
         <div class="application-status-box">
             <h3>Start Application</h3>
-            <button class="application-btn">Start Application</button>
-            <button class="application-btn">End Application</button>
+            <button class="application-btn" (click)="toggleApplicationStatus(true)">Start Application</button>
+            <button class="application-btn" (click)="toggleApplicationStatus(false)">End Application</button>
         </div>
     </div>
+    
 </div>
