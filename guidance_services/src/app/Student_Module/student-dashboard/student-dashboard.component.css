@@ -71,11 +71,22 @@
   padding: 20px;
 }
 
+/* Card container for header-dash and option-cards */
+.dashboard-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px; /* Apply padding inside the card */
+  margin: 20px auto; /* Apply margin to separate the card from other content */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow for card */
+  max-width: 1200px; /* Set max-width for better control over card size */
+}
+
+/* Update for header-dash to maintain its current styling */
 .header-dash {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #eeebeb;
+  background-color: #800000;
   border-radius: 10px;
   padding: 40px 20px;
   margin-bottom: 30px;
@@ -87,15 +98,18 @@
 
 .header-dash h1 {
   font-size: 60px;
-  color: #000000;
+  color: #ffffff;
   margin: 0;
   z-index: 1;
 }
 
+/* Option-cards inside the card */
 .option-cards {
   display: flex;
   gap: 20px;
   margin-bottom: 30px;
+  margin-left: 20px;  /* Add left margin */
+  margin-right: 20px; /* Add right margin */
 }
 
 .option-card {
